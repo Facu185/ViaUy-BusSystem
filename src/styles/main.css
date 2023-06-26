@@ -80,3 +80,54 @@
     color: #48BBED;
     cursor: pointer;
 }
+.register{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+}
+.register__menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 2rem;
+    text-align: center;
+}
+.register__form{
+    width: 100%;
+}
+.register__form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+.register__form form > input {
+    padding: 0.8rem 3rem;
+    border-radius: 0.25rem;
+    border: 1px solid #616161;
+    width: 100%;
+    text-align: center;
+}
+.register__form form > label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register__welcome{
+    font-size: 2.3rem;
+    font-weight: 400;
+}
+.register__text{
+    color: #616161;
+}
+.register__form form > label{
+    color: #616161;
+}
