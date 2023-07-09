@@ -24,7 +24,7 @@
                     <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
                     <label for="registerEmail" >Ingrese su email: </label>
                     <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
-                    <label for="registePassword">Ingrse su contraseña: </label>
+                    <label for="registePassword">Ingrese su contraseña: </label>
                     <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
                     <button class="button--primary" id="registerButton" type="button">Registrarse</button>
                 </form>
