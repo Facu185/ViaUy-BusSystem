@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include "../controlers/signup.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
             <h2 class="register__welcome">Bienvenido</h2>
             <p class="register__text">Debe registrarse para continuar.</p>
             <div class="register__form">
-                <form action="submit" method="post">
+                <form method="post">
                     <label for="registerName">Ingrese su nombre: </label>
                     <input type="text" id="registerName" name="registerName" placeholder="Nombre">
                     <label for="registerLastName">Ingrese su apellido: </label>
@@ -26,11 +27,11 @@
                     <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
                     <label for="registePassword">Ingrese su contraseña: </label>
                     <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
-                    <button class="button--primary" id="registerButton" type="button">Registrarse</button>
+                    <input class="button--primary" id="registerButton" type="submit" name="registerButton">Registrarse</input>
                 </form>
             </div>
         </section>
     </main>
-    <script src="../js/modules/createUser.js" type="module"></script>
+    <!-- <script src="../js/modules/createUser.js" type="module"></script> -->
 </body>
 </html>

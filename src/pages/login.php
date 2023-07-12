@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include "./controlers/signin.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +17,10 @@
             <h2 class="menu__welcome">Bienvenido</h2>
             <p class="menu__text">Ingrese para poder acceder a mas funcionalidades</p>
             <div class="login__form">
-                <form action="submit" method="post">
+                <form  method="post">
                     <input type="email" id="loginEmail" name="email" placeholder="Email">
                     <input type="password" id="loginPassword" name="password" placeholder="Contraseña">
-                    <button type="button" class="button--primary" id="loginButton">Ingresar</button>
+                    <input type="submit" class="button--primary" id="loginButton" name="loginButton">Ingresar</input>
                 </form>
                 <p class="login__register">No tienes una cuenta? Registrate <a href="./pages/register.php"><span>aqui.</span></a> </p>
             </div>
@@ -27,6 +28,6 @@
 
         </section>
     </main>
-    <script src="./js/index.js" type="module"></script>
+    <!-- <script src="./js/index.js" type="module"></script> -->
 </body>
 </html>
