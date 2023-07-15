@@ -12,6 +12,7 @@
 </head>
 <body>
     <main class="register">
+       <h1>Via<span>UY</span></h1>
         <section class="register__menu"> 
             <h2 class="register__welcome">Bienvenido</h2>
             <p class="register__text">Debe registrarse para continuar.</p>
@@ -27,7 +28,7 @@
                     <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
                     <label for="registePassword">Ingrese su contraseña: </label>
                     <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
-                    <input class="button--primary" id="registerButton" type="submit" name="registerButton">Registrarse</input>
+                    <input class="button--primary" id="registerButton" type="submit" name="registerButton" value="Registrarse"></input>
                 </form>
             </div>
         </section>

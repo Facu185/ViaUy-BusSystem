@@ -20,7 +20,7 @@
                 <form  method="post">
                     <input type="email" id="loginEmail" name="email" placeholder="Email">
                     <input type="password" id="loginPassword" name="password" placeholder="Contraseña">
-                    <input type="submit" class="button--primary" id="loginButton" name="loginButton">Ingresar</input>
+                    <input type="submit" class="button--primary" id="loginButton" name="loginButton" value="Ingresar"></input>
                 </form>
                 <p class="login__register">No tienes una cuenta? Registrate <a href="./pages/register.php"><span>aqui.</span></a> </p>
             </div>
