@@ -30,7 +30,7 @@ try {
         if (!validarEmail($email))
             throw new Exception("Email invalido", 400);
         $password = $_POST["registerPassword"];
-        if (strlen($telefono) < 8)
+        if (strlen($password) < 8)
             throw new Exception("La contraseña debe contener minimo 8 carcteres", 400);
         $passwordCifrada = password_hash($password, PASSWORD_DEFAULT);
         $checkEmail = "SELECT email FROM usuario WHERE email = :email";
