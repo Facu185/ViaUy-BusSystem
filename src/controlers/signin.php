@@ -1,5 +1,5 @@
 <?php 
-require "./database/db.php";
+require "../database/db.php";
 try{
     if (!empty($_POST["loginButton"])) {
         if (empty($_POST["email"]) || empty($_POST["password"])) {

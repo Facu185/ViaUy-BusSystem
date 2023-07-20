@@ -19,7 +19,7 @@ session_start();
     </header>
     <main class="main--travel">
         <section class="selected__travel">
-            <p>Seleccione su viaje</p>
+            <p id="travelsSelected"></p>
             <div>
                 <p>Montevideo</p>
                 <i class="fa-solid fa-right-left"></i>
@@ -59,31 +59,41 @@ session_start();
         </div>
     </section>
     <footer class="nav__bar">
-            <div class="home">
+        <div class="home">
+            <a href="./home.php">
                 <i class="fa-solid fa-house-user"></i>
                 <div class="home__text">
-                    <p>Incio</p>
+                    <p id="travelsHome"></p>
                 </div>
-            </div>
-            <div class="travels">
+            </a>
+        </div>
+        <div class="travels">
+            <a href="./travels.php">
                 <i class="fa-solid fa-bus"></i>
                 <div class="travels__text">
-                    <p>Viajes</p>
+                    <p id="travelsGo"></p>
                 </div>
-            </div>
-            <div class="routes">
+            </a>
+        </div>
+        <div class="routes">
+            <a href="">
                 <i class="fa-solid fa-map-location-dot"></i>
                 <div class="routes__text">
-                    <p>Rutas</p>
+                    <p id="travelsRoutes"></p>
                 </div>
-            </div>
-            <div class="porfile">
+            </a>
+        </div>
+        <div class="porfile">
+            <a href="./porfile.php">
                 <i class="fa-regular fa-user"></i>
                 <div class="porfile__text">
-                    <p>Perfil</p>
+                    <p id="travelsPorfile"></p>
                 </div>
-            </div>
-        </footer>
+            </a>
+        </div>
+    </footer>
+
 </body>
+<script src="../js/index.js" type="module"></script>
 
 </html>

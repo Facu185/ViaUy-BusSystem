@@ -14,25 +14,25 @@
     <main class="register">
        <h1>Via<span>UY</span></h1>
         <section class="register__menu"> 
-            <h2 class="register__welcome">Bienvenido</h2>
-            <p class="register__text">Debe registrarse para continuar.</p>
+            <h2 class="register__welcome" id="registerWelcome"></h2>
+            <p class="register__text" id="registerMessage"></p>
             <div class="register__form">
                 <form method="post">
-                    <label for="registerName">Ingrese su nombre: </label>
+                    <label for="registerName" id="registerTextName"> </label>
                     <input type="text" id="registerName" name="registerName" placeholder="Nombre">
-                    <label for="registerLastName">Ingrese su apellido: </label>
+                    <label for="registerLastName" id="registerTextLastName"> </label>
                     <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido">
-                    <label for="registerPhone">Ingrese su número de telefono: </label>
+                    <label for="registerPhone" id="registerTextPhone"> </label>
                     <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
-                    <label for="registerEmail" >Ingrese su email: </label>
+                    <label for="registerEmail" id="registerTextEmail"> </label>
                     <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
-                    <label for="registePassword">Ingrese su contraseña: </label>
+                    <label for="registerPassword" id="registerTextPassword"> </label>
                     <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
-                    <input class="button--primary" id="registerButton" type="submit" name="registerButton" value="Registrarse"></input>
+                    <input class="button--primary" id="registerButton" type="submit" name="registerButton" value="Registrarse">
                 </form>
             </div>
         </section>
     </main>
-    <!-- <script src="../js/modules/createUser.js" type="module"></script> -->
+    <script src="../js/index.js" type="module"></script>
 </body>
 </html>

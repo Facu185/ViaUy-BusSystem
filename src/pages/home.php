@@ -16,23 +16,32 @@ session_start();
 <body>
     <main class="main">
         <section class="main__welcome">
+            <header class="header--login">
+                <div class="dropdown">
+                    <button type="button" class="dropbtn">Language</button>
+                    <div class="dropdown-content">
+                        <button type='button' id="engSwitcher">Ingles</button>
+                        <button type='button' id="esSwitcher">Español</button>
+                    </div>
+                </div>
+            </header>
             <div class="welcome__text">
-                <h2 class="main__text">Bienvenido</h2>
-                <p>A donde quieres ir?</p>
+                <h2 class="main__text" id="homeWelcome"></h2>
+                <p id="homeMessage"></p>
             </div>
             <img src="../assets/home-bus.png" alt="bus">
         </section>
         <div class="container">
             <section class="main__selector">
-                <input type="text" placeholder="Origen">
+                <input type="text" placeholder="Origen" id="homeOrigin">
                 <i class="fa-solid fa-arrows-up-down"></i>
-                <input type="text" placeholder="Destino">
-                <input id="input__date" type="date" placeholder="Fecha">
-                <button class="button--primary">Buscar pasajes</button>
+                <input type="text" placeholder="Destino" id="homeDestination">
+                <input id="input__date" type="date">
+                <button class="button--primary" id="homeButton"></button>
             </section>
         </div>
         <section class="main__travels">
-            <h2 class="main__text">Viajes frecuentes.</h2>
+            <h2 class="main__text" id="homeTravels"></h2>
             <div class="travels__list">
                 <div class="travel__card">
                     <div class="card__header">
@@ -47,7 +56,7 @@ session_start();
                             <div class="card__info">
                                 <i class="fa-solid fa-circle-arrow-right"></i>
                                 <div>
-                                    <p>Punto de partida</p>
+                                    <p id="homeStartingPoint"></p>
                                     <p>Tres cruces, Montevideo</p>
                                 </div>
                             </div>
@@ -61,7 +70,7 @@ session_start();
                             <div class="card__info">
                                 <i class="fa-solid fa-circle-arrow-left"></i>
                                 <div>
-                                    <p>Punto de Llegada</p>
+                                    <p id="homeArrivalPoint"></p>
                                     <p>Colonia del sacramento</p>
                                 </div>
                             </div>
@@ -77,31 +86,40 @@ session_start();
         </section>
         <footer class="nav__bar">
             <div class="home">
-                <i class="fa-solid fa-house-user"></i>
-                <div class="home__text">
-                    <p>Incio</p>
-                </div>
+                <a href="./home.php">
+                    <i class="fa-solid fa-house-user"></i>
+                    <div class="home__text">
+                        <p id="homeStart">a</p>
+                    </div>
+                </a>
             </div>
             <div class="travels">
-                <i class="fa-solid fa-bus"></i>
-                <div class="travels__text">
-                    <p>Viajes</p>
-                </div>
+                <a href="./travels.php">
+                    <i class="fa-solid fa-bus"></i>
+                    <div class="travels__text">
+                        <p id="homeTravelsGo"></p>
+                    </div>
+                </a>
             </div>
             <div class="routes">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <div class="routes__text">
-                    <p>Rutas</p>
-                </div>
+                <a href="">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <div class="routes__text">
+                        <p id="homeRoutes"></p>
+                    </div>
+                </a>
             </div>
             <div class="porfile">
-                <i class="fa-regular fa-user"></i>
-                <div class="porfile__text">
-                    <p>Perfil</p>
-                </div>
+                <a href="./porfile.php">
+                    <i class="fa-regular fa-user"></i>
+                    <div class="porfile__text">
+                        <p id="homePorfile"></p>
+                    </div>
+                </a>
             </div>
         </footer>
     </main>
 </body>
+<script src="../js/index.js" type="module"></script>
 
 </html>
