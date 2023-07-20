@@ -84,7 +84,7 @@ session_start();
             </a>
         </div>
         <div class="porfile">
-            <a href="./porfile.php">
+            <a href="./profile.php">
                 <i class="fa-regular fa-user"></i>
                 <div class="porfile__text">
                     <p id="travelsPorfile"></p>

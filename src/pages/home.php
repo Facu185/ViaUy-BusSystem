@@ -22,6 +22,7 @@ session_start();
                     <div class="dropdown-content">
                         <button type='button' id="engSwitcher">Ingles</button>
                         <button type='button' id="esSwitcher">Español</button>
+                        <button type='button' id="prSwitcher">Portuguese</button>
                     </div>
                 </div>
             </header>
@@ -110,7 +111,7 @@ session_start();
                 </a>
             </div>
             <div class="porfile">
-                <a href="./porfile.php">
+                <a href="./profile.php">
                     <i class="fa-regular fa-user"></i>
                     <div class="porfile__text">
                         <p id="homePorfile"></p>
