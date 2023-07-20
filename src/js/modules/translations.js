@@ -113,8 +113,8 @@ const translate = async (language) => {
     data[language].profileTextPassword;
     document.getElementById("profilePassword").placeholder =
     data[language].profilePassword;
-    document.getElementById("buttonPorfile").textContent =
-    data[language].buttonPorfile;
+    document.getElementById("buttonProfile").textContent =
+    data[language].buttonProfile;
     document.getElementById("profileHome").textContent =
     data[language].profileHome;
     document.getElementById("profileTravels").textContent =

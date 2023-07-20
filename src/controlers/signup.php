@@ -49,7 +49,7 @@ try {
         $sql->bindParam(":passwd", $passwordCifrada);
         $sql->bindParam(":celular", $telefono);
         $sql->execute();
-        header("location:../index.php");
+        header("location:../home.php");
 
     }
 } catch (Exception $error) {

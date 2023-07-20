@@ -24,7 +24,7 @@ session_start();
                 <input type="email" name="" id="" placeholder="Email">
                 <label for="" id="profileTextPassword"></label>
                 <input type="password" name="" id="profilePassword" placeholder="Contraseña">
-                <button class="button--primary" id="buttonPorfile"></button>
+                <button class="button--primary" id="buttonProfile"></button>
             </form>
         </div>
         <footer class="nav__bar">

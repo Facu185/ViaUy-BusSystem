@@ -410,18 +410,3 @@
   color: blue;
 }
 
-@media screen and (min-width: 480px) {
-  .login {
-    max-height: 100vh;
-    padding: 0;
-  }
-  .login img{ 
-    width: 20%;
-  }
-  .dropdown {
-    position: absolute;
-  }
-  .login__menu {
-    gap: 0;
-  }
-}
