@@ -25,6 +25,13 @@ session_start();
                         <button type='button'  id="prHome"></button>
                     </div>
                 </div>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="homeSesion"></button>
+                    <div class="dropdown-content">
+                        <a type='button'  id="homeLogin" href="./login.php"></a>
+                        <a type='button'  id="homeRegister" href="./register.php"></a>
+                    </div>
+                </div>
             </header>
             <div class="welcome__text">
                 <h2 class="main__text" id="homeWelcome"></h2>

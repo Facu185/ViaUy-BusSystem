@@ -61,6 +61,12 @@ const translate = async (language) => {
     data[language].esHome;
     document.getElementById("prHome").textContent =
     data[language].prHome;
+    document.getElementById("homeSesion").textContent =
+    data[language].homeSesion;
+    document.getElementById("homeLogin").textContent =
+    data[language].homeLogin;
+    document.getElementById("homeRegister").textContent =
+    data[language].homeRegister;
     document.getElementById("homeWelcome").textContent =
     data[language].homeWelcome;
     document.getElementById("homeMessage").textContent =

@@ -333,16 +333,20 @@
   font-weight: 600;
   font-size: 1.5rem;
 }
+
 .dropbtn {
   top: 0;
   color: white;
   border: none;
   background: transparent;
+  padding: .5rem;
 }
+
 .header--login {
   display: flex;
   width: 100%;
   justify-content: end;
+  gap: .5rem;
 }
 .dropdown-content {
   display: none;
@@ -359,7 +363,9 @@
   text-decoration: none;
   gap: 1rem;
 }
-
+.dropdown-content a{
+  color: white;
+}
 .dropdown:hover .dropdown-content {display: flex;}
 
 
