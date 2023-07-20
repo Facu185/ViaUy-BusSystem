@@ -52,7 +52,15 @@ const translate = async (language) => {
   document.getElementById("registerButton").value =
     data[language].registerButton;
   }
-  if( document.getElementById("homeWelcome")){
+  if( document.getElementById("homeLanguage")){
+    document.getElementById("homeLanguage").textContent =
+    data[language].homeLanguage;
+    document.getElementById("enHome").textContent =
+    data[language].enHome;
+    document.getElementById("esHome").textContent =
+    data[language].esHome;
+    document.getElementById("prHome").textContent =
+    data[language].prHome;
     document.getElementById("homeWelcome").textContent =
     data[language].homeWelcome;
     document.getElementById("homeMessage").textContent =
@@ -76,7 +84,7 @@ const translate = async (language) => {
     document.getElementById("homeRoutes").textContent =
     data[language].homeRoutes;
     document.getElementById("homePorfile").textContent =
-    data[language].homePorfile;
+    data[language].homeProfile;
   }
   if(document.getElementById("travelsSelected")){
     document.getElementById("travelsSelected").textContent =
@@ -88,7 +96,27 @@ const translate = async (language) => {
     document.getElementById("travelsRoutes").textContent =
     data[language].travelsRoutes;
     document.getElementById("travelsPorfile").textContent =
-    data[language].travelsPorfile;
+    data[language].travelsProfile;
+  }
+  if(document.getElementById("porfileName")){
+    document.getElementById("porfileName").textContent =
+    data[language].porfileName;
+    document.getElementById("profileTextEmail").textContent =
+    data[language].profileTextEmail;
+    document.getElementById("profileTextPassword").textContent =
+    data[language].profileTextPassword;
+    document.getElementById("profilePassword").placeholder =
+    data[language].profilePassword;
+    document.getElementById("buttonPorfile").textContent =
+    data[language].buttonPorfile;
+    document.getElementById("profileHome").textContent =
+    data[language].profileHome;
+    document.getElementById("profileTravels").textContent =
+    data[language].profileTravels;
+    document.getElementById("profileRoutes").textContent =
+    data[language].profileRoutes;
+    document.getElementById("profileProfile").textContent =
+    data[language].profileProfile;
   }
 };
 export default translate;

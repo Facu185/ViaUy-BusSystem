@@ -64,6 +64,6 @@ session_start();
     </main>
     <script src="../js/index.js" type="module"></script>
 </body>
-</body>
+
 
 </html>

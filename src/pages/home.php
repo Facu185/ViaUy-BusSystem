@@ -18,11 +18,11 @@ session_start();
         <section class="main__welcome">
             <header class="header--login">
                 <div class="dropdown">
-                    <button type="button" class="dropbtn">Language</button>
+                    <button type="button" class="dropbtn" id="homeLanguage"></button>
                     <div class="dropdown-content">
-                        <button type='button' id="engSwitcher">Ingles</button>
-                        <button type='button' id="esSwitcher">Español</button>
-                        <button type='button' id="prSwitcher">Portuguese</button>
+                        <button type='button'  id="enHome"></button>
+                        <button type='button'  id="esHome"></button>
+                        <button type='button'  id="prHome"></button>
                     </div>
                 </div>
             </header>
@@ -90,7 +90,7 @@ session_start();
                 <a href="./home.php">
                     <i class="fa-solid fa-house-user"></i>
                     <div class="home__text">
-                        <p id="homeStart">a</p>
+                        <p id="homeStart"></p>
                     </div>
                 </a>
             </div>
@@ -120,7 +120,6 @@ session_start();
             </div>
         </footer>
     </main>
+    <script src="../js/index.js" type="module"></script>
 </body>
-<script src="../js/index.js" type="module"></script>
-
 </html>

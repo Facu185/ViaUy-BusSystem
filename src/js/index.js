@@ -10,17 +10,24 @@ if (!localStorage.getItem("lang")) {
   translate(language);
 }
 
-if (document.getElementById("engSwitcher")) {
-  document.getElementById("engSwitcher").addEventListener("click", (e) => {
+if (document.getElementById("enHome")) {
+  document.getElementById("enHome").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "EN");
     location.reload();
   });
 }
-if (document.getElementById("esSwitcher")) {
-  document.getElementById("esSwitcher").addEventListener("click", (e) => {
+if (document.getElementById("esHome")) {
+  document.getElementById("esHome").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
+    location.reload();
+  });
+}
+if (document.getElementById("prHome")) {
+  document.getElementById("prHome").addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
