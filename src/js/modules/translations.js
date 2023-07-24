@@ -34,7 +34,7 @@ const translate = async (language) => {
     document.getElementById("registerTextName").textContent =
       data[language].registerTextName;
     document.getElementById("registerName").placeholder =
-      data[language].refisterName;
+      data[language].registerName;
     document.getElementById("registerTextLastName").textContent =
       data[language].registerTextLastName;
     document.getElementById("registerLastName").placeholder =
@@ -105,7 +105,18 @@ const translate = async (language) => {
     document.getElementById("homeContact").textContent =
       data[language].homeContact;
   }
-  if (document.getElementById("travelsSelected")) {
+  if (document.getElementById("travelLanguage")) {
+    document.getElementById("travelLanguage").textContent =
+      data[language].travelLanguage;
+    document.getElementById("enTravel").textContent = data[language].enTravel;
+    document.getElementById("esTravel").textContent = data[language].esTravel;
+    document.getElementById("prTravel").textContent = data[language].prTravel;
+    document.getElementById("travelSesion").textContent =
+      data[language].travelSesion;
+    document.getElementById("travelLogin").textContent =
+      data[language].travelLogin;
+    document.getElementById("travelRegister").textContent =
+      data[language].travelRegister;
     document.getElementById("travelsSelected").textContent =
       data[language].travelsSelected;
     document.getElementById("travelsHome").textContent =
@@ -122,7 +133,18 @@ const translate = async (language) => {
     document.getElementById("travelsContact").textContent =
       data[language].travelsContact;
   }
-  if (document.getElementById("porfileName")) {
+  if (document.getElementById("profileLanguage")) {
+    document.getElementById("profileLanguage").textContent =
+      data[language].profileLanguage;
+    document.getElementById("enProfile").textContent = data[language].enProfile;
+    document.getElementById("esProfile").textContent = data[language].esProfile;
+    document.getElementById("prProfile").textContent = data[language].prProfile;
+    document.getElementById("profileSesion").textContent =
+      data[language].profileSesion;
+    document.getElementById("profileLogin").textContent =
+      data[language].profileLogin;
+    document.getElementById("profileRegister").textContent =
+      data[language].profileRegister;
     document.getElementById("porfileName").textContent =
       data[language].porfileName;
     document.getElementById("profileTextEmail").textContent =
@@ -148,7 +170,18 @@ const translate = async (language) => {
     document.getElementById("profileContact").textContent =
       data[language].profileContact;
   }
-  if (document.getElementById("aboutTitle")) {
+  if (document.getElementById("aboutLanguage")) {
+    document.getElementById("aboutLanguage").textContent =
+      data[language].aboutLanguage;
+    document.getElementById("enAbout").textContent = data[language].enAbout;
+    document.getElementById("esAbout").textContent = data[language].esAbout;
+    document.getElementById("prAbout").textContent = data[language].prAbout;
+    document.getElementById("aboutSesion").textContent =
+      data[language].aboutSesion;
+    document.getElementById("aboutLogin").textContent =
+      data[language].aboutLogin;
+    document.getElementById("aboutRegister").textContent =
+      data[language].aboutRegister;
     document.getElementById("aboutTitle").textContent =
       data[language].aboutTitle;
     document.getElementById("aboutFtext").textContent =
@@ -183,7 +216,18 @@ const translate = async (language) => {
     document.getElementById("aboutContact").textContent =
       data[language].aboutContact;
   }
-  if (document.getElementById("contactForm")) {
+  if (document.getElementById("contactLanguage")) {
+    document.getElementById("contactLanguage").textContent =
+      data[language].contactLanguage;
+    document.getElementById("enContact").textContent = data[language].enContact;
+    document.getElementById("esContact").textContent = data[language].esContact;
+    document.getElementById("prContact").textContent = data[language].prContact;
+    document.getElementById("contactSesion").textContent =
+      data[language].contactSesion;
+    document.getElementById("contactLogin").textContent =
+      data[language].contactLogin;
+    document.getElementById("contactRegister").textContent =
+      data[language].contactRegister;
     document.getElementById("contactForm").innerHTML =
       data[language].contactForm + ' <span id="contactFormSpan"> </span>';
     document.getElementById("contactFormSpan").textContent =
@@ -215,7 +259,21 @@ const translate = async (language) => {
     document.getElementById("contactContact").textContent =
       data[language].contactContact;
   }
-  if (document.getElementById("servicesRent")) {
+  if (document.getElementById("servicesLanguage")) {
+    document.getElementById("servicesLanguage").textContent =
+      data[language].servicesLanguage;
+    document.getElementById("enServices").textContent =
+      data[language].enServices;
+    document.getElementById("esServices").textContent =
+      data[language].esServices;
+    document.getElementById("prServices").textContent =
+      data[language].prServices;
+    document.getElementById("servicesSesion").textContent =
+      data[language].servicesSesion;
+    document.getElementById("servicesLogin").textContent =
+      data[language].servicesLogin;
+    document.getElementById("servicesRegister").textContent =
+      data[language].servicesRegister;
     document.getElementById("servicesRent").innerHTML =
       data[language].servicesRent + ' <span id="servicesRentspan"> </span>';
     document.getElementById("servicesRentspan").textContent =
