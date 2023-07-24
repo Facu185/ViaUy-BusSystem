@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Formulario de contacto." />
-    <meta name="keywords" content="Veterinaria, Veterinarias en montevideo, perro, gato, mascotas, animales" />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
