@@ -258,7 +258,6 @@
   padding: 1rem;
   position: fixed;
   width: 100%;
-  bottom: 0;
 }
 .nav__bar > div {
   text-align: center;
@@ -267,6 +266,12 @@
 .nav__bar a {
   color: rgba(8, 8, 8, 0.89);
 }
+.nav__bar > a > i {
+  font-size: 1rem;
+}
+.nav__bar__text {
+  font-size: .5rem;
+}
 .main__text {
   font-family: "Ubuntu", sans-serif;
 }
@@ -274,11 +279,10 @@
 .header--travel {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 3rem;
   font-size: 1.5rem;
   position: absolute;
   width: 100%;
-  top: 0;
   color: white;
 }
 .main--travel {
@@ -351,14 +355,18 @@
 }
 
 .header--login {
+  top: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
   gap: 0.5rem;
+  background: url("../assets/bg.png") no-repeat center fixed;
+  background-size: cover;
 }
 .dropdowns {
   display: flex;
   align-items: center;
+  padding-right: 3rem;
 }
 .dropdown-content {
   display: none;
@@ -367,6 +375,8 @@
   z-index: 1;
   gap: 1rem;
   padding: 0.5rem;
+  background: url("../assets/bg.png") no-repeat center fixed;
+  background-size: cover;
 }
 .dropdown-content button {
   background: transparent;
@@ -377,9 +387,14 @@
 }
 .dropdown-content a {
   color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 .dropdown:hover .dropdown-content {
   display: flex;
+  position: absolute;
 }
 
 .profile {
@@ -462,6 +477,7 @@
 }
 
 .logoHead {
+  padding-left: .5rem;
   color: white;
   font-size: 2rem;
 }
@@ -482,6 +498,7 @@
 }
 .footer span {
   color: #FFCC00;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .footer i {
@@ -515,11 +532,12 @@
 .footer__bottom .footer__column1 {
   display: flex;
   justify-content: flex-end;
+  padding: 1rem;
+  gap: 1rem;
 }
-
 .footer__bottom .footer__column3 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -804,6 +822,23 @@
   .benefits p {
     width: 100%;
   }
+  .footer__bottom .footer__column3 {
+    display: flex;
+    flex-direction: row;
+  }
+  .nav__bar > a > i {
+    font-size: 3rem;
+  }
+  .nav__bar__text {
+    font-size: 1rem;
+  }
+  .footer__column1 p{
+    padding-right: 2rem;
+  }
+  .footer__column1 span{
+    padding-right: 2rem;
+  }
+  
 }
 
 @media screen and (max-width: 480px) {
@@ -864,11 +899,9 @@
       gap: 1rem;
       text-align: center;
     }
-
     .footer .footer_column3 {
       font-size: 1.5rem;
     }
-
     .footer__row {
       justify-content: center;
       align-items: center;
