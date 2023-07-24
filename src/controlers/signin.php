@@ -15,7 +15,7 @@ try{
         if(empty($data)) throw new Exception("Alguno de los campos es invalido", 404);
         print_r($data);
         if(!password_verify($password,$data["passwd"])) throw new Exception("Alguno de los campos es invalido", 403);
-        header("location:./pages/home.php");
+        header("location:../pages/home.php");
     }
 }catch(Exception $error){
     echo($error->getMessage());
