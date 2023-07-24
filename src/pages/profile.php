@@ -27,41 +27,65 @@ session_start();
                 <button class="button--primary" id="buttonProfile"></button>
             </form>
         </div>
-        <footer class="nav__bar">
-            <div class="home">
-                <a href="./home.php">
-                    <i class="fa-solid fa-house-user"></i>
-                    <div class="home__text">
-                        <p id="profileHome"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="travels">
-                <a href="./travels.php">
-                    <i class="fa-solid fa-bus"></i>
-                    <div class="travels__text">
-                        <p id="profileTravels"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="routes">
-                <a href="">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    <div class="routes__text">
-                        <p id="profileRoutes"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="porfile">
-                <a href="./profile.php">
-                    <i class="fa-regular fa-user"></i>
-                    <div class="porfile__text">
-                        <p id="profileProfile"></p>
-                    </div>
-                </a>
-            </div>
-        </footer>
     </main>
+    <nav class="nav__bar">
+        <div class="home">
+            <a href="./home.php">
+                <i class="fa-solid fa-house-user"></i>
+                <div class="home__text">
+                    <p id="profileHome"></p>
+                </div>
+            </a>
+        </div>
+        <div class="travels">
+            <a href="./travels.php">
+                <i class="fa-solid fa-bus"></i>
+                <div class="travels__text">
+                    <p id="profileTravels"></p>
+                </div>
+            </a>
+        </div>
+        <div class="routes">
+            <a href="">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <div class="routes__text">
+                    <p id="profileRoutes"></p>
+                </div>
+            </a>
+        </div>
+        <div class="porfile">
+            <a href="./profile.php">
+                <i class="fa-regular fa-user"></i>
+                <div class="porfile__text">
+                    <p id="profileProfile"></p>
+                </div>
+            </a>
+        </div>
+        <div class="about__us">
+                <a href="./aboutUs.php">
+                    <i class="fa-solid fa-users"></i>
+                    <div class="about__us__text">
+                        <p id="profileAbout"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="services">
+                <a href="./services.php">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <div class="services__text">
+                        <p id="profileService"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="contact">
+                <a href="./contact.php">
+                    <i class="fa-solid fa-comments"></i>
+                    <div class="contact__text">
+                        <p id="profileContact"></p>
+                    </div>
+                </a>
+            </div>
+    </nav>
     <script src="../js/index.js" type="module"></script>
 </body>
 

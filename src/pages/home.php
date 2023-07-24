@@ -17,19 +17,22 @@ session_start();
     <main class="main">
         <section class="main__welcome">
             <header class="header--login">
-                <div class="dropdown">
-                    <button type="button" class="dropbtn" id="homeLanguage"></button>
-                    <div class="dropdown-content">
-                        <button type='button'  id="enHome"></button>
-                        <button type='button'  id="esHome"></button>
-                        <button type='button'  id="prHome"></button>
+                <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
+                <div class="dropdowns">
+                    <div class="dropdown">
+                        <button type="button" class="dropbtn" id="homeLanguage"></button>
+                        <div class="dropdown-content">
+                            <button type='button' id="enHome"></button>
+                            <button type='button' id="esHome"></button>
+                            <button type='button' id="prHome"></button>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown">
-                    <button type="button" class="dropbtn" id="homeSesion"></button>
-                    <div class="dropdown-content">
-                        <a type='button'  id="homeLogin" href="./login.php"></a>
-                        <a type='button'  id="homeRegister" href="./register.php"></a>
+                    <div class="dropdown">
+                        <button type="button" class="dropbtn" id="homeSesion"></button>
+                        <div class="dropdown-content">
+                            <a type='button' id="homeLogin" href="./login.php"></a>
+                            <a type='button' id="homeRegister" href="./register.php"></a>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -60,39 +63,129 @@ session_start();
                                 <p>2x1(30)sleeper</p>
                             </div>
                         </div>
-                        <div class="card__row">
-                            <div class="card__info">
-                                <i class="fa-solid fa-circle-arrow-right"></i>
-                                <div>
-                                    <p id="homeStartingPoint"></p>
-                                    <p>Tres cruces, Montevideo</p>
-                                </div>
-                            </div>
-                            <div class="card__date">
-                                <p>Montevideo</p>
-                                <p>9:00AM</p>
-                                <p>Viernes 19 mayo.</p>
+
+                    </div>
+                    <div class="card__row">
+                        <div class="card__info">
+                            <i class="fa-solid fa-circle-arrow-right"></i>
+                            <div>
+                                <p id="homeStartingPoint"></p>
+                                <p>Tres cruces, Montevideo</p>
                             </div>
                         </div>
-                        <div class="card__row">
-                            <div class="card__info">
-                                <i class="fa-solid fa-circle-arrow-left"></i>
-                                <div>
-                                    <p id="homeArrivalPoint"></p>
-                                    <p>Colonia del sacramento</p>
-                                </div>
+                        <div class="card__date">
+                            <p>Montevideo</p>
+                            <p>9:00AM</p>
+                            <p>Viernes.</p>
+                        </div>
+                    </div>
+                    <div class="card__row">
+                        <div class="card__info">
+                            <i class="fa-solid fa-circle-arrow-left"></i>
+                            <div>
+                                <p id="homeArrivalPoint"></p>
+                                <p>Colonia del sacramento</p>
                             </div>
-                            <div class="card__date">
-                                <p>Colonia</p>
-                                <p>12:00AM</p>
-                                <p>Viernes 19 de mayo</p>
+                        </div>
+                        <div class="card__date">
+                            <p>Colonia</p>
+                            <p>12:00AM</p>
+                            <p>Viernes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="travel__card">
+                    <div class="card__header">
+                        <div class="header__text">
+                            <i class="fa-solid fa-bus"></i>
+                            <div>
+                                <p>Turismar</p>
+                                <p>2x1(30)sleeper</p>
                             </div>
+                        </div>
+
+                    </div>
+                    <div class="card__row">
+                        <div class="card__info">
+                            <i class="fa-solid fa-circle-arrow-right"></i>
+                            <div>
+                                <p id="homeStartingPoint"></p>
+                                <p>Tres cruces, Montevideo</p>
+                            </div>
+                        </div>
+                        <div class="card__date">
+                            <p>Montevideo</p>
+                            <p>9:00AM</p>
+                            <p>Viernes.</p>
+                        </div>
+                    </div>
+                    <div class="card__row">
+                        <div class="card__info">
+                            <i class="fa-solid fa-circle-arrow-left"></i>
+                            <div>
+                                <p id="homeArrivalPoint"></p>
+                                <p>Colonia del sacramento</p>
+                            </div>
+                        </div>
+                        <div class="card__date">
+                            <p>Colonia</p>
+                            <p>12:00AM</p>
+                            <p>Viernes</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <footer class="nav__bar">
+
+        <section class="ad">
+            <h3 id="adHome"></h3>
+        </section>
+        <section class="benefits">
+            <div class="benefits__item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <p id="likeHome"></p>
+                <p id="likeHometxt"> </p>
+            </div>
+            <div class="benefits__item">
+                <i class="fa-regular fa-clock"></i>
+                <p id="frecuencyHome"></p>
+                <p id="frecuencyHometxt"> </p>
+            </div>
+            <div class="benefits__item">
+                <i class="fa-solid fa-ticket"></i>
+                <p id="pricesHome"></p>
+                <p id="pricesHometxt"></p>
+            </div>
+        </section>
+        <footer class="footer">
+            <h3>Via<span>UY</span></h3>
+            <div class="footer__bottom">
+                <div class="footer__column1">
+                    <p id="copyHome"> <span>ViaUY</span> </p>
+                </div>
+                <div>
+                    <div class="footer__row">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+599 123 456</p>
+                    </div>
+                    <div class="footer__row">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <p>viauy@gmail.com</p>
+                    </div>
+                    <div class="footer__row">
+                        <i class="fa-sharp fa-solid fa-location-pin"></i>
+                        <p>Montevideo, Uruguay</p>
+                    </div>
+                </div>
+                <div class="footer__column3">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+            </div>
+        </footer>
+
+        <nav class="nav__bar">
             <div class="home">
                 <a href="./home.php">
                     <i class="fa-solid fa-house-user"></i>
@@ -125,8 +218,33 @@ session_start();
                     </div>
                 </a>
             </div>
-        </footer>
+            <div class="about__us">
+                <a href="./aboutUs.php">
+                    <i class="fa-solid fa-users"></i>
+                    <div class="about__us__text">
+                        <p id="homeAbout"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="services">
+                <a href="./services.php">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <div class="services__text">
+                        <p id="homeService"></p>
+                    </div>
+                </a>
+            </div>
+            <div class="contact">
+                <a href="./contact.php">
+                    <i class="fa-solid fa-comments"></i>
+                    <div class="contact__text">
+                        <p id="homeContact"></p>
+                    </div>
+                </a>
+            </div>
+        </nav>
     </main>
     <script src="../js/index.js" type="module"></script>
 </body>
+
 </html>
