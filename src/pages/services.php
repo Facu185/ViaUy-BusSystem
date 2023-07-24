@@ -11,6 +11,26 @@
 
 <body>
   <main class="services">
+    <header class="header--login">
+      <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
+      <div class="dropdowns">
+        <div class="dropdown">
+          <button type="button" class="dropbtn" id="servicesLanguage"></button>
+          <div class="dropdown-content">
+            <button type='button' id="enServices"></button>
+            <button type='button' id="esServices"></button>
+            <button type='button' id="prServices"></button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="dropbtn" id="servicesSesion"></button>
+          <div class="dropdown-content">
+            <a type='button' id="servicesLogin" href="./login.php"></a>
+            <a type='button' id="servicesRegister" href="./register.php"></a>
+          </div>
+        </div>
+      </div>
+    </header>
     <div class="services__card">
       <div class="card__text">
         <h2 id="servicesRent"><span id="servicesRentspan"></span></h2>
@@ -88,8 +108,9 @@
     <div class="footer__bottom">
       <div class="footer__column1">
         <p id="serviceCopy">
-          <span>ViaUY</span>
+
         </p>
+        <span>ViaUY</span>
       </div>
       <div>
         <div class="footer__row">
@@ -117,7 +138,7 @@
       <a href="./home.php">
         <i class="fa-solid fa-house-user"></i>
         <div class="home__text">
-          <p id="serviceHome"></p>
+          <p id="serviceHome" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -125,7 +146,7 @@
       <a href="./travels.php">
         <i class="fa-solid fa-bus"></i>
         <div class="travels__text">
-          <p id="serviceTravel"></p>
+          <p id="serviceTravel" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -133,7 +154,7 @@
       <a href="">
         <i class="fa-solid fa-map-location-dot"></i>
         <div class="routes__text">
-          <p id="serviceRoutes"></p>
+          <p id="serviceRoutes" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -141,7 +162,7 @@
       <a href="./profile.php">
         <i class="fa-regular fa-user"></i>
         <div class="porfile__text">
-          <p id="servicePorfile"></p>
+          <p id="servicePorfile" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -149,7 +170,7 @@
       <a href="./aboutUs.php">
         <i class="fa-solid fa-users"></i>
         <div class="about__us__text">
-          <p id="serviceAbout"></p>
+          <p id="serviceAbout" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -157,7 +178,7 @@
       <a href="./services.php">
         <i class="fa-solid fa-hand-holding-dollar"></i>
         <div class="services__text">
-          <p id="serviceService"></p>
+          <p id="serviceService" class="nav__bar__text"></p>
         </div>
       </a>
     </div>
@@ -165,7 +186,7 @@
       <a href="./contact.php">
         <i class="fa-solid fa-comments"></i>
         <div class="contact__text">
-          <p id="serviceContact"></p>
+          <p id="serviceContact" class="nav__bar__text"></p>
         </div>
       </a>
     </div>

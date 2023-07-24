@@ -14,6 +14,26 @@ session_start();
 </head>
 
 <body>
+    <header class="header--login">
+        <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
+        <div class="dropdowns">
+            <div class="dropdown">
+                <button type="button" class="dropbtn" id="travelLanguage"></button>
+                <div class="dropdown-content">
+                    <button type='button' id="enTravel"></button>
+                    <button type='button' id="esTravel"></button>
+                    <button type='button' id="prTravel"></button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="dropbtn" id="travelSesion"></button>
+                <div class="dropdown-content">
+                    <a type='button' id="travelLogin" href="./login.php"></a>
+                    <a type='button' id="travelRegister" href="./register.php"></a>
+                </div>
+            </div>
+        </div>
+    </header>
     <header class="header--travel">
         <i class="fa-solid fa-filter"></i>
     </header>
@@ -63,7 +83,7 @@ session_start();
             <a href="./home.php">
                 <i class="fa-solid fa-house-user"></i>
                 <div class="home__text">
-                    <p id="travelsHome"></p>
+                    <p id="travelsHome" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -71,7 +91,7 @@ session_start();
             <a href="./travels.php">
                 <i class="fa-solid fa-bus"></i>
                 <div class="travels__text">
-                    <p id="travelsGo"></p>
+                    <p id="travelsGo" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -79,7 +99,7 @@ session_start();
             <a href="">
                 <i class="fa-solid fa-map-location-dot"></i>
                 <div class="routes__text">
-                    <p id="travelsRoutes"></p>
+                    <p id="travelsRoutes" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -87,34 +107,34 @@ session_start();
             <a href="./profile.php">
                 <i class="fa-regular fa-user"></i>
                 <div class="porfile__text">
-                    <p id="travelsProfile"></p>
+                    <p id="travelsProfile" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
         <div class="about__us">
-                <a href="./aboutUs.php">
-                    <i class="fa-solid fa-users"></i>
-                    <div class="about__us__text">
-                        <p id="travelsAbout"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="services">
-                <a href="./services.php">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <div class="services__text">
-                        <p id="travelsService"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="contact">
-                <a href="./contact.php">
-                    <i class="fa-solid fa-comments"></i>
-                    <div class="contact__text">
-                        <p id="travelsContact"></p>
-                    </div>
-                </a>
-            </div>
+            <a href="./aboutUs.php">
+                <i class="fa-solid fa-users"></i>
+                <div class="about__us__text">
+                    <p id="travelsAbout" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="services">
+            <a href="./services.php">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div class="services__text">
+                    <p id="travelsService" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="contact">
+            <a href="./contact.php">
+                <i class="fa-solid fa-comments"></i>
+                <div class="contact__text">
+                    <p id="travelsContact" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
     </nav>
 
     <script src="../js/index.js" type="module"></script>

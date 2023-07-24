@@ -18,6 +18,26 @@
 
 <body>
     <main>
+        <header class="header--login">
+            <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
+            <div class="dropdowns">
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="contactLanguage"></button>
+                    <div class="dropdown-content">
+                        <button type='button' id="enContact"></button>
+                        <button type='button' id="esContact"></button>
+                        <button type='button' id="prContact"></button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="contactSesion"></button>
+                    <div class="dropdown-content">
+                        <a type='button' id="contactLogin" href="./login.php"></a>
+                        <a type='button' id="contactRegister" href="./register.php"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
         <section class="contact">
             <div class="contact__banner">
                 <h2 id="contactForm"> <span id="contactFormSpan"></span></h2>
@@ -39,8 +59,9 @@
         <div class="footer__bottom">
             <div class="footer__column1">
                 <p id="contactCopy">
-                     <span>ViaUY</span>
+
                 </p>
+                <span>ViaUY</span>
             </div>
             <div>
                 <div class="footer__row">
@@ -68,7 +89,7 @@
             <a href="./home.php">
                 <i class="fa-solid fa-house-user"></i>
                 <div class="home__text">
-                    <p id="contactHome"></p>
+                    <p id="contactHome" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -76,7 +97,7 @@
             <a href="./travels.php">
                 <i class="fa-solid fa-bus"></i>
                 <div class="travels__text">
-                    <p id="contactTravel"></p>
+                    <p id="contactTravel" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -84,7 +105,7 @@
             <a href="">
                 <i class="fa-solid fa-map-location-dot"></i>
                 <div class="routes__text">
-                    <p id="contactRoutes"></p>
+                    <p id="contactRoutes" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -92,34 +113,34 @@
             <a href="./profile.php">
                 <i class="fa-regular fa-user"></i>
                 <div class="porfile__text">
-                    <p id="contactPorfile"></p>
+                    <p id="contactPorfile" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
         <div class="about__us">
-                <a href="./aboutUs.php">
-                    <i class="fa-solid fa-users"></i>
-                    <div class="about__us__text">
-                        <p id="contactAbout"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="services">
-                <a href="./services.php">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <div class="services__text">
-                        <p id="contactService"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="contact">
-                <a href="./contact.php">
-                    <i class="fa-solid fa-comments"></i>
-                    <div class="contact__text">
-                        <p id="contactContact"></p>
-                    </div>
-                </a>
-            </div>
+            <a href="./aboutUs.php">
+                <i class="fa-solid fa-users"></i>
+                <div class="about__us__text">
+                    <p id="contactAbout" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="services">
+            <a href="./services.php">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div class="services__text">
+                    <p id="contactService" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="contact">
+            <a href="./contact.php">
+                <i class="fa-solid fa-comments"></i>
+                <div class="contact__text">
+                    <p id="contactContact" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
     </nav>
     <script src="../js/index.js" type="module"></script>
 </body>

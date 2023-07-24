@@ -14,6 +14,26 @@ session_start();
 
 <body>
     <main class="profile">
+        <header class="header--login">
+            <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
+            <div class="dropdowns">
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="profileLanguage"></button>
+                    <div class="dropdown-content">
+                        <button type='button' id="enProfile"></button>
+                        <button type='button' id="esProfile"></button>
+                        <button type='button' id="prProfile"></button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="profileSesion"></button>
+                    <div class="dropdown-content">
+                        <a type='button' id="profileLogin" href="./login.php"></a>
+                        <a type='button' id="profileRegister" href="./register.php"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
         <div class="profile__header">
             <img src="../assets/profile-avatar.png" alt="">
             <h2 id="porfileName"></h2>
@@ -33,7 +53,7 @@ session_start();
             <a href="./home.php">
                 <i class="fa-solid fa-house-user"></i>
                 <div class="home__text">
-                    <p id="profileHome"></p>
+                    <p id="profileHome" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -41,7 +61,7 @@ session_start();
             <a href="./travels.php">
                 <i class="fa-solid fa-bus"></i>
                 <div class="travels__text">
-                    <p id="profileTravels"></p>
+                    <p id="profileTravels" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -49,7 +69,7 @@ session_start();
             <a href="">
                 <i class="fa-solid fa-map-location-dot"></i>
                 <div class="routes__text">
-                    <p id="profileRoutes"></p>
+                    <p id="profileRoutes" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
@@ -57,34 +77,34 @@ session_start();
             <a href="./profile.php">
                 <i class="fa-regular fa-user"></i>
                 <div class="porfile__text">
-                    <p id="profileProfile"></p>
+                    <p id="profileProfile" class="nav__bar__text"></p>
                 </div>
             </a>
         </div>
         <div class="about__us">
-                <a href="./aboutUs.php">
-                    <i class="fa-solid fa-users"></i>
-                    <div class="about__us__text">
-                        <p id="profileAbout"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="services">
-                <a href="./services.php">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <div class="services__text">
-                        <p id="profileService"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="contact">
-                <a href="./contact.php">
-                    <i class="fa-solid fa-comments"></i>
-                    <div class="contact__text">
-                        <p id="profileContact"></p>
-                    </div>
-                </a>
-            </div>
+            <a href="./aboutUs.php">
+                <i class="fa-solid fa-users"></i>
+                <div class="about__us__text">
+                    <p id="profileAbout" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="services">
+            <a href="./services.php">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <div class="services__text">
+                    <p id="profileService" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
+        <div class="contact">
+            <a href="./contact.php">
+                <i class="fa-solid fa-comments"></i>
+                <div class="contact__text">
+                    <p id="profileContact" class="nav__bar__text"></p>
+                </div>
+            </a>
+        </div>
     </nav>
     <script src="../js/index.js" type="module"></script>
 </body>

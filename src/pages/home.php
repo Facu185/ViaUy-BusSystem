@@ -161,7 +161,8 @@ session_start();
             <h3>Via<span>UY</span></h3>
             <div class="footer__bottom">
                 <div class="footer__column1">
-                    <p id="copyHome"> <span>ViaUY</span> </p>
+                    <p id="copyHome"> </p>
+                    <span>ViaUY</span>
                 </div>
                 <div>
                     <div class="footer__row">
@@ -190,7 +191,7 @@ session_start();
                 <a href="./home.php">
                     <i class="fa-solid fa-house-user"></i>
                     <div class="home__text">
-                        <p id="homeStart"></p>
+                        <p id="homeStart" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -198,7 +199,7 @@ session_start();
                 <a href="./travels.php">
                     <i class="fa-solid fa-bus"></i>
                     <div class="travels__text">
-                        <p id="homeTravelsGo"></p>
+                        <p id="homeTravelsGo" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -206,7 +207,7 @@ session_start();
                 <a href="">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <div class="routes__text">
-                        <p id="homeRoutes"></p>
+                        <p id="homeRoutes" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -214,7 +215,7 @@ session_start();
                 <a href="./profile.php">
                     <i class="fa-regular fa-user"></i>
                     <div class="porfile__text">
-                        <p id="homePorfile"></p>
+                        <p id="homePorfile" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -222,7 +223,7 @@ session_start();
                 <a href="./aboutUs.php">
                     <i class="fa-solid fa-users"></i>
                     <div class="about__us__text">
-                        <p id="homeAbout"></p>
+                        <p id="homeAbout" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -230,7 +231,7 @@ session_start();
                 <a href="./services.php">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <div class="services__text">
-                        <p id="homeService"></p>
+                        <p id="homeService" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
@@ -238,7 +239,7 @@ session_start();
                 <a href="./contact.php">
                     <i class="fa-solid fa-comments"></i>
                     <div class="contact__text">
-                        <p id="homeContact"></p>
+                        <p id="homeContact" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
