@@ -1,6 +1,7 @@
 <?php
 session_start();
-?>
+include "../controlers/travels.php"
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +45,13 @@ session_start();
         </section>
         <div class="container">
             <section class="main__selector">
-                <input type="text" placeholder="Origen" id="homeOrigin">
-                <i class="fa-solid fa-arrows-up-down"></i>
-                <input type="text" placeholder="Destino" id="homeDestination">
-                <input id="input__date" type="date">
-                <button class="button--primary" id="homeButton"></button>
+                <form method="POST" action="../controlers/travels.php">
+                    <input type="text" placeholder="Origen" id="homeOrigin" name="origen">
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                    <input type="text" placeholder="Destino" id="homeDestination" name="destino">
+                    <input id="input__date" type="date">
+                    <input class="button--primary" id="homeButton" type="submit" value="Buscar">
+                </form>
             </section>
         </div>
         <section class="main__travels">
@@ -69,7 +72,7 @@ session_start();
                         <div class="card__info">
                             <i class="fa-solid fa-circle-arrow-right"></i>
                             <div>
-                                <p id="homeStartingPoint"></p>
+                                <p id="homeStartingPoint1"></p>
                                 <p>Tres cruces, Montevideo</p>
                             </div>
                         </div>
@@ -83,7 +86,7 @@ session_start();
                         <div class="card__info">
                             <i class="fa-solid fa-circle-arrow-left"></i>
                             <div>
-                                <p id="homeArrivalPoint"></p>
+                                <p id="homeArrivalPoint1"></p>
                                 <p>Colonia del sacramento</p>
                             </div>
                         </div>
@@ -215,7 +218,7 @@ session_start();
                 <a href="./profile.php">
                     <i class="fa-regular fa-user"></i>
                     <div class="porfile__text">
-                        <p id="homePorfile" class="nav__bar__text"></p>
+                        <p id="homeProfile" class="nav__bar__text"></p>
                     </div>
                 </a>
             </div>
