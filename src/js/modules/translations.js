@@ -79,13 +79,10 @@ const translate = async (language) => {
       data[language].homeStartingPoint;
     document.getElementById("homeArrivalPoint").textContent =
       data[language].homeArrivalPoint;
-    document.getElementById("homeStart").textContent = data[language].homeStart;
-    document.getElementById("homeTravelsGo").textContent =
-      data[language].homeTravelsGo;
-    document.getElementById("homeRoutes").textContent =
-      data[language].homeRoutes;
-    document.getElementById("homePorfile").textContent =
-      data[language].homeProfile;
+      document.getElementById("homeStartingPoint1").textContent =
+      data[language].homeStartingPoint1;
+    document.getElementById("homeArrivalPoint1").textContent =
+      data[language].homeArrivalPoint1;
     document.getElementById("adHome").textContent = data[language].adHome;
     document.getElementById("likeHome").textContent = data[language].likeHome;
     document.getElementById("likeHometxt").textContent =
@@ -96,9 +93,16 @@ const translate = async (language) => {
       data[language].frecuencyHometxt;
     document.getElementById("pricesHome").textContent =
       data[language].pricesHome;
-    document.getElementById("pricesHometxt").textContent =
-      data[language].pricesHometxt;
+    document.getElementById("frecuencyHometxt").textContent =
+      data[language].frecuencyHometxt;
     document.getElementById("copyHome").textContent = data[language].copyHome;
+    document.getElementById("homeStart").textContent = data[language].homeStart;
+    document.getElementById("homeTravelsGo").textContent =
+      data[language].homeTravelsGo;
+    document.getElementById("homeRoutes").textContent =
+      data[language].homeRoutes;
+    document.getElementById("homeProfile").textContent =
+      data[language].homeProfile;
     document.getElementById("homeAbout").textContent = data[language].homeAbout;
     document.getElementById("homeService").textContent =
       data[language].homeService;
