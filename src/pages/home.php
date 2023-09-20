@@ -49,7 +49,7 @@ include "../controlers/travels.php"
                     <input type="text" placeholder="Origen" id="homeOrigin" name="origen">
                     <i class="fa-solid fa-arrows-up-down"></i>
                     <input type="text" placeholder="Destino" id="homeDestination" name="destino">
-                    <input id="input__date" type="date">
+                    <input id="input__date" type="date" name="date">
                     <input class="button--primary" id="homeButton" type="submit" value="Buscar">
                 </form>
             </section>
@@ -207,7 +207,7 @@ include "../controlers/travels.php"
                 </a>
             </div>
             <div class="routes">
-                <a href="">
+                <a href="./routes.php">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <div class="routes__text">
                         <p id="homeRoutes" class="nav__bar__text"></p>
