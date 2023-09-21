@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../controlers/travels.php"
+print_r($_SESSION['login']);
     ?>
 
 <!DOCTYPE html>
@@ -45,7 +44,7 @@ include "../controlers/travels.php"
         </section>
         <div class="container">
             <section class="main__selector">
-                <form method="POST" action="../controlers/travels.php">
+                <form method="POST" action="./travels">
                     <input type="text" placeholder="Origen" id="homeOrigin" name="origen">
                     <i class="fa-solid fa-arrows-up-down"></i>
                     <input type="text" placeholder="Destino" id="homeDestination" name="destino">
