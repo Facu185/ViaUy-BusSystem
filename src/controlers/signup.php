@@ -1,5 +1,7 @@
 <?php
-require "../database/db.php";
+
+
+require "./database/db.php";
 try {
     function validarEmail($email)
     {
@@ -49,10 +51,12 @@ try {
         $sql->bindParam(":passwd", $passwordCifrada);
         $sql->bindParam(":celular", $telefono);
         $sql->execute();
-        header("location:../pages/home.php");
+        header("location:./login");
 
     }
 } catch (Exception $error) {
     echo ($error->getMessage());
 }
+
+
 ?>
