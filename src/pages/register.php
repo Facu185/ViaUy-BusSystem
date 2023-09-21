@@ -1,6 +1,6 @@
 <?php 
-    session_start();
-    include "../controlers/signup.php"
+
+    include "./controlers/signup.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">

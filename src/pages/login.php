@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../controlers/signin.php"
+include "./controlers/signin.php"
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,8 @@ include "../controlers/signin.php"
             <p class="menu__text" id="loginMessage"></p>
             <div class="login__form">
                 <form method="post">
-                    <input type="email" id="loginEmail" name="email" placeholder="Email">
-                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña">
+                    <input type="email" id="loginEmail" name="email" placeholder="Email" value='f@f.com'>
+                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña" value='123456789'>
                     <input type="submit" class="button--primary" id="loginButton" name="loginButton"
                         value="Ingresar"></input>
                 </form>

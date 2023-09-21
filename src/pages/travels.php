@@ -1,6 +1,11 @@
 <?php
-session_start();
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include './controlers/travels.php';
+    $search = true;
+} else {
+    $search = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,42 +47,53 @@ session_start();
         <section class="selected__travel">
             <p id="travelsSelected"></p>
             <div>
-                <p>Montevideo</p>
+                <p>
+                    <?php echo ($info_linea['origen_tramo']) ?>
+                </p>
                 <i class="fa-solid fa-right-left"></i>
-                <p>Montevideo</p>
+                <p>
+                    <?php echo ($info_linea['destino_tramo']) ?>
+                </p>
             </div>
-            <p>19 -Mayo - 2023 | Viernes</p>
             <img src="../assets/travels-bus.png" alt="bus">
         </section>
     </main>
     <section class="travel__cards">
-        <div class="travel__card">
-            <div class="tcard__header">
-                <p>Turismar</p>
-                <p class="sky">$500</p>
-            </div>
-            <p class="gray">A/C Sleeper (2+2)</p>
-            <p>9:00 AM - 12:00 AM</p>
-            <p class="green">15 Asientos libres</p>
-        </div>
-        <div class="travel__card">
-            <div class="tcard__header">
-                <p>Turismar</p>
-                <p class="sky">$500</p>
-            </div>
-            <p class="gray">A/C Sleeper (2+2)</p>
-            <p>9:00 AM - 12:00 AM</p>
-            <p class="green">15 Asientos libres</p>
-        </div>
-        <div class="travel__card">
-            <div class="tcard__header">
-                <p>Turismar</p>
-                <p class="sky">$500</p>
-            </div>
-            <p class="gray">A/C Sleeper (2+2)</p>
-            <p>9:00 AM - 12:00 AM</p>
-            <p class="green">15 Asientos libres</p>
-        </div>
+
+        <?php foreach ($info_linea as $lineas):?>
+            <?php if (gettype($lineas) === "array"): ?>
+                <?php foreach ($lineas as $unidad => $valor):
+                    ?>
+                    <?php if (gettype($unidad) === "integer"): ?>
+                        <div class="travel__card">
+                            <div class="tcard__header">
+                                <p>
+                                    Linea:
+                                    <?php echo ($lineas['nombre_linea']) ?>
+                                </p>
+                                <p class="sky">
+                                    $
+                                    <?php echo ($lineas['precio_total']) ?>
+                                </p>
+                            </div>
+                            <p class="gray">
+                                <?php echo ($valor['caracteristicas']) ?>
+                            </p>
+                            <p>
+                                <?php echo ($valor['hora_salida']) ?> -
+                                <?php echo ($valor['hora_llegada']) ?>
+                            </p>
+                            <p class="<?php echo ($valor['asientos_libres'] < 10 ? 'red' : 'green') ?>">
+                                <?php echo $valor['asientos_libres'] ?> Asientos disponibles
+                            </p>
+                        </div>
+                    <?php endif ?>
+                <?php endforeach ?>
+            <?php endif ?>
+
+
+        <?php endforeach ?>
+
     </section>
     <nav class="nav__bar">
         <div class="home">
