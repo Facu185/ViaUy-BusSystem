@@ -1,3 +1,10 @@
+<?php
+
+if (!empty($_SESSION["login"])) {
+    $login = $_SESSION["login"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,31 +14,14 @@
   <link rel="stylesheet" href="../styles/main.css">
   <title>Services</title>
   <script src="https://kit.fontawesome.com/2940ba2046.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
   <main class="services">
-    <header class="header--login">
-      <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
-      <div class="dropdowns">
-        <div class="dropdown">
-          <button type="button" class="dropbtn" id="servicesLanguage"></button>
-          <div class="dropdown-content">
-            <button type='button' id="enServices"></button>
-            <button type='button' id="esServices"></button>
-            <button type='button' id="prServices"></button>
-          </div>
-        </div>
-        <div class="dropdown">
-          <button type="button" class="dropbtn" id="servicesSesion"></button>
-          <div class="dropdown-content">
-            <a type='button' id="servicesLogin" href="./login.php"></a>
-            <a type='button' id="servicesRegister" href="./register.php"></a>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="services__card">
+    <?php include('./components/menu.php'); ?>
+    <div class="services__card " data-aos="fade-left">
       <div class="card__text">
         <h2 id="servicesRent"><span id="servicesRentspan"></span></h2>
         <p id="servicesRentText">
@@ -42,7 +32,7 @@
         <img src="../assets/transporte interdepartamental" alt="transporte interdepartamental" />
       </div>
     </div>
-    <div class="services__card" id="secondary--card">
+    <div class="services__card" data-aos="fade-right" id="secondary--card">
       <div class="card__img">
         <img src="../assets/express.png" alt="express" />
       </div>
@@ -52,7 +42,7 @@
         </p>
       </div>
     </div>
-    <div class="services__card">
+    <div class="services__card" data-aos="fade-left">
       <div class="card__text">
         <h2 id="servicesTourism"> <span id="servicesTourismSpan"></span></h2>
         <p id="servicesTourismText">
@@ -62,7 +52,7 @@
         <img src="../assets/turistico.jpg" alt="" />
       </div>
     </div>
-    <div class="services__card" id="secondary--card">
+    <div class="services__card" data-aos="fade-right" id="secondary--card">
       <div class="card__img">
         <img src="../assets/ejecutivo.jpg" alt="ejecutivo" />
       </div>
@@ -72,7 +62,7 @@
         </p>
       </div>
     </div>
-    <div class="services__card">
+    <div class="services__card" data-aos="fade-left">
       <div class="card__text">
         <h2 id="serviceTransport"> <span id="serviceTransportSpan"> </span></h2>
         <p id="serviceTransporttext">
@@ -82,7 +72,7 @@
         <img src="../assets/alquiler.png" alt="alquiler" />
       </div>
     </div>
-    <div class="services__card" id="secondary--card">
+    <div class="services__card" data-aos="fade-right" id="secondary--card">
       <div class="card__img">
         <img src="../assets/encomiendas.jpg" alt="encomiendas" />
       </div>
@@ -92,7 +82,7 @@
         </p>
       </div>
     </div>
-    <div class="services__card">
+    <div class="services__card" data-aos="fade-left">
       <div class="card__text">
         <h2 id="serviceCustomer"><span id="serviceCustomerSpan"> </span></h2>
         <p id="serviceCustomerText">
@@ -103,95 +93,13 @@
       </div>
     </div>
   </main>
-  <footer class="footer">
-    <h3>Via<span>UY</span></h3>
-    <div class="footer__bottom">
-      <div class="footer__column1">
-        <p id="serviceCopy">
-
-        </p>
-        <span>ViaUY</span>
-      </div>
-      <div>
-        <div class="footer__row">
-          <i class="fa-solid fa-phone"></i>
-          <p>+599 123 456</p>
-        </div>
-        <div class="footer__row">
-          <i class="fa-solid fa-envelope-open-text"></i>
-          <p>viauy@gmail.com</p>
-        </div>
-        <div class="footer__row">
-          <i class="fa-sharp fa-solid fa-location-pin"></i>
-          <p>Montevideo, Uruguay</p>
-        </div>
-      </div>
-      <div class="footer__column3">
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-facebook-f"></i>
-        <i class="fa-brands fa-tiktok"></i>
-      </div>
-    </div>
-  </footer>
-  <nav class="nav__bar">
-    <div class="home">
-      <a href="./home.php">
-        <i class="fa-solid fa-house-user"></i>
-        <div class="home__text">
-          <p id="serviceHome" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="travels">
-      <a href="./travels.php">
-        <i class="fa-solid fa-bus"></i>
-        <div class="travels__text">
-          <p id="serviceTravel" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="routes">
-      <a href="">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <div class="routes__text">
-          <p id="serviceRoutes" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="porfile">
-      <a href="./profile.php">
-        <i class="fa-regular fa-user"></i>
-        <div class="porfile__text">
-          <p id="servicePorfile" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="about__us">
-      <a href="./aboutUs.php">
-        <i class="fa-solid fa-users"></i>
-        <div class="about__us__text">
-          <p id="serviceAbout" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="services">
-      <a href="./services.php">
-        <i class="fa-solid fa-hand-holding-dollar"></i>
-        <div class="services__text">
-          <p id="serviceService" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-    <div class="contact">
-      <a href="./contact.php">
-        <i class="fa-solid fa-comments"></i>
-        <div class="contact__text">
-          <p id="serviceContact" class="nav__bar__text"></p>
-        </div>
-      </a>
-    </div>
-  </nav>
+  <?php include('./components/footer.php'); ?>
+  <?php include('./components/navbar.php'); ?>
   <script src="../js/index.js" type="module"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

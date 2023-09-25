@@ -55,7 +55,7 @@ try {
 
     }
 } catch (Exception $error) {
-    echo ($error->getMessage());
+    echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 
 

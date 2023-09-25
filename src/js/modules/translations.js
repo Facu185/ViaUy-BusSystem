@@ -19,7 +19,7 @@ const translate = async (language) => {
     document.getElementById("loginButton").value = data[language].buttonLogin;
     document.getElementById("loginNoAccount").innerHTML =
       data[language].noAccountMessage +
-      ' <a href="../pages/register.php" id="loginGoRegister"></a>';
+      ' <a href="./register" id="loginGoRegister"></a>';
     document.getElementById("loginGoRegister").innerText =
       data[language].goToRegister;
     document.getElementById("loginTerms").innerHTML =
@@ -55,292 +55,518 @@ const translate = async (language) => {
   if (document.getElementById("homeLanguage")) {
     document.getElementById("homeLanguage").textContent =
       data[language].homeLanguage;
-    document.getElementById("enHome").textContent = data[language].enHome;
-    document.getElementById("esHome").textContent = data[language].esHome;
-    document.getElementById("prHome").textContent = data[language].prHome;
-    document.getElementById("homeSesion").textContent =
-      data[language].homeSesion;
-    document.getElementById("homeLogin").textContent = data[language].homeLogin;
-    document.getElementById("homeRegister").textContent =
-      data[language].homeRegister;
-    document.getElementById("homeWelcome").textContent =
-      data[language].homeWelcome;
-    document.getElementById("homeMessage").textContent =
-      data[language].homeMessage;
-    document.getElementById("homeOrigin").placeholder =
-      data[language].homeOrigin;
-    document.getElementById("homeDestination").placeholder =
-      data[language].homeDestination;
-    document.getElementById("homeButton").textContent =
-      data[language].homeButton;
-    document.getElementById("homeTravels").textContent =
-      data[language].homeTravels;
-    document.getElementById("homeStartingPoint").textContent =
-      data[language].homeStartingPoint;
-    document.getElementById("homeArrivalPoint").textContent =
-      data[language].homeArrivalPoint;
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+
+    if (document.getElementById("homeWelcome")) {
+      document.getElementById("homeWelcome").textContent =
+        data[language].homeWelcome;
+      document.getElementById("homeMessage").textContent =
+        data[language].homeMessage;
+      document.getElementById("homeOrigin").placeholder =
+        data[language].homeOrigin;
+      document.getElementById("homeDestination").placeholder =
+        data[language].homeDestination;
+      document.getElementById("homeButton").textContent =
+        data[language].homeButton;
+      document.getElementById("homeTravels").textContent =
+        data[language].homeTravels;
+      document.getElementById("homeStartingPoint").textContent =
+        data[language].homeStartingPoint;
+      document.getElementById("homeArrivalPoint").textContent =
+        data[language].homeArrivalPoint;
       document.getElementById("homeStartingPoint1").textContent =
-      data[language].homeStartingPoint1;
-    document.getElementById("homeArrivalPoint1").textContent =
-      data[language].homeArrivalPoint1;
-    document.getElementById("adHome").textContent = data[language].adHome;
-    document.getElementById("likeHome").textContent = data[language].likeHome;
-    document.getElementById("likeHometxt").textContent =
-      data[language].likeHometxt;
-    document.getElementById("frecuencyHome").textContent =
-      data[language].frecuencyHome;
-    document.getElementById("frecuencyHometxt").textContent =
-      data[language].frecuencyHometxt;
-    document.getElementById("pricesHome").textContent =
-      data[language].pricesHome;
-    document.getElementById("frecuencyHometxt").textContent =
-      data[language].frecuencyHometxt;
-    document.getElementById("copyHome").textContent = data[language].copyHome;
-    document.getElementById("homeStart").textContent = data[language].homeStart;
-    document.getElementById("homeTravelsGo").textContent =
-      data[language].homeTravelsGo;
-    document.getElementById("homeRoutes").textContent =
-      data[language].homeRoutes;
-    document.getElementById("homeProfile").textContent =
-      data[language].homeProfile;
+        data[language].homeStartingPoint1;
+      document.getElementById("homeArrivalPoint1").textContent =
+        data[language].homeArrivalPoint1;
+      document.getElementById("adHome").textContent = data[language].adHome;
+      document.getElementById("likeHome").textContent = data[language].likeHome;
+      document.getElementById("likeHometxt").textContent =
+        data[language].likeHometxt;
+      document.getElementById("frecuencyHome").textContent =
+        data[language].frecuencyHome;
+      document.getElementById("frecuencyHometxt").textContent =
+        data[language].frecuencyHometxt;
+      document.getElementById("pricesHome").textContent =
+        data[language].pricesHome;
+      document.getElementById("pricesHometxt").textContent =
+        data[language].pricesHometxt;
+      document.getElementById("frecuencyHometxt").textContent =
+        data[language].frecuencyHometxt;
+      document.getElementById("textAbout").textContent =
+        data[language].textAbout;
+      document.getElementById("navigateFooter").textContent =
+        data[language].navigateFooter;
+      document.getElementById("socialFooter").textContent =
+        data[language].socialFooter;
+      document.getElementById("footerHome").textContent =
+        data[language].homeStart;
+      document.getElementById("footerRoutes").textContent =
+        data[language].homeRoutes;
+      document.getElementById("footerAbout").textContent =
+        data[language].homeAbout;
+      document.getElementById("footerService").textContent =
+        data[language].homeService;
+      document.getElementById("footerContact").textContent =
+        data[language].homeContact;
+      document.getElementById("homeStart").textContent =
+        data[language].homeStart;
+      document.getElementById("homeRoutes").textContent =
+        data[language].homeRoutes;
+      if (document.getElementById("homeProfile")) {
+        document.getElementById("homeProfile").textContent =
+          data[language].homeProfile;
+          document.getElementById("aboutFooter").textContent =
+          data[language].homeAbout;
+      }
+      document.getElementById("homeAbout").textContent =
+        data[language].homeAbout;
+      document.getElementById("homeService").textContent =
+        data[language].homeService;
+      document.getElementById("homeContact").textContent =
+        data[language].homeContact;
+    }
+  }
+
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+
+    if (document.getElementById("homeLanguage")) {
+      document.getElementById("homeLanguage").textContent =
+        data[language].homeLanguage;
+      if (document.getElementById("homeSesion")) {
+        document.getElementById("homeSesion").textContent =
+          data[language].homeSesion;
+      }
+
+      if (document.getElementById("homeLogin")) {
+        document.getElementById("homeLogin").textContent =
+          data[language].homeLogin;
+        document.getElementById("homeRegister").textContent =
+          data[language].homeRegister;
+      } else {
+        document.getElementById("closeSesion").textContent =
+          data[language].closeSesion;
+      }
+      if (document.getElementById("travelsSelected")) {
+        document.getElementById("travelsSelected").textContent =
+          data[language].travelsSelected;
+      }
+
+      document.getElementById("homeStart").textContent =
+        data[language].homeStart;
+      document.getElementById("homeRoutes").textContent =
+        data[language].homeRoutes;
+    }
+    if (document.getElementById("homeProfile")) {
+      document.getElementById("homeProfile").textContent =
+        data[language].homeProfile;
+    }
     document.getElementById("homeAbout").textContent = data[language].homeAbout;
     document.getElementById("homeService").textContent =
       data[language].homeService;
     document.getElementById("homeContact").textContent =
       data[language].homeContact;
   }
-  if (document.getElementById("travelLanguage")) {
-    document.getElementById("travelLanguage").textContent =
-      data[language].travelLanguage;
-    document.getElementById("enTravel").textContent = data[language].enTravel;
-    document.getElementById("esTravel").textContent = data[language].esTravel;
-    document.getElementById("prTravel").textContent = data[language].prTravel;
-    document.getElementById("travelSesion").textContent =
-      data[language].travelSesion;
-    document.getElementById("travelLogin").textContent =
-      data[language].travelLogin;
-    document.getElementById("travelRegister").textContent =
-      data[language].travelRegister;
-    document.getElementById("travelsSelected").textContent =
-      data[language].travelsSelected;
-    document.getElementById("travelsHome").textContent =
-      data[language].travelsHome;
-    document.getElementById("travelsGo").textContent = data[language].travelsGo;
-    document.getElementById("travelsRoutes").textContent =
-      data[language].travelsRoutes;
-    document.getElementById("travelsProfile").textContent =
-      data[language].travelsProfile;
-    document.getElementById("travelsAbout").textContent =
-      data[language].travelsAbout;
-    document.getElementById("travelsService").textContent =
-      data[language].travelsService;
-    document.getElementById("travelsContact").textContent =
-      data[language].travelsContact;
+
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent = null;
+      document.getElementById("homeRegister").textContent = null;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("profileWelcome")) {
+      document.getElementById("profileWelcome").textContent =
+        data[language].profileWelcome;
+      document.getElementById("profileData").textContent =
+        data[language].profileData;
+        document.getElementById("profileName").textContent =
+        data[language].profileName;
+      document.getElementById("profileSurname").textContent =
+        data[language].profileSurname;
+      document.getElementById("profilePhone").textContent =
+        data[language].profilePhone;
+      document.getElementById("profileMail").textContent =
+        data[language].profileMail;
+      document.getElementById("profileSettings").textContent =
+        data[language].profileSettings;
+      document.getElementById("profileTravels").textContent =
+        data[language].profileTravels;
+      document.getElementById("profileModify").textContent =
+        data[language].profileModify;
+      document.getElementById("mineTravels").textContent =
+        data[language].mineTravels;
+    }
+
+    document.getElementById("homeStart").textContent = data[language].homeStart;
+    document.getElementById("homeRoutes").textContent =
+      data[language].homeRoutes;
+    if (document.getElementById("homeProfile")) {
+      document.getElementById("homeProfile").textContent =
+        data[language].homeProfile;
+    }
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
   }
-  if (document.getElementById("profileLanguage")) {
-    document.getElementById("profileLanguage").textContent =
-      data[language].profileLanguage;
-    document.getElementById("enProfile").textContent = data[language].enProfile;
-    document.getElementById("esProfile").textContent = data[language].esProfile;
-    document.getElementById("prProfile").textContent = data[language].prProfile;
-    document.getElementById("profileSesion").textContent =
-      data[language].profileSesion;
-    document.getElementById("profileLogin").textContent =
-      data[language].profileLogin;
-    document.getElementById("profileRegister").textContent =
-      data[language].profileRegister;
-    document.getElementById("porfileName").textContent =
-      data[language].porfileName;
-    document.getElementById("profileTextEmail").textContent =
-      data[language].profileTextEmail;
-    document.getElementById("profileTextPassword").textContent =
-      data[language].profileTextPassword;
-    document.getElementById("profilePassword").placeholder =
-      data[language].profilePassword;
-    document.getElementById("buttonProfile").textContent =
-      data[language].buttonProfile;
-    document.getElementById("profileHome").textContent =
-      data[language].profileHome;
-    document.getElementById("profileTravels").textContent =
-      data[language].profileTravels;
-    document.getElementById("profileRoutes").textContent =
-      data[language].profileRoutes;
-    document.getElementById("profileProfile").textContent =
-      data[language].profileProfile;
-    document.getElementById("profileAbout").textContent =
-      data[language].profileAbout;
-    document.getElementById("profileService").textContent =
-      data[language].profileService;
-    document.getElementById("profileContact").textContent =
-      data[language].profileContact;
+
+    if (document.getElementById("homeLanguage")) {
+      document.getElementById("homeLanguage").textContent =
+        data[language].homeLanguage;
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("aboutTitle")) {
+      document.getElementById("aboutTitle").textContent =
+        data[language].aboutTitle;
+      document.getElementById("aboutFtext").textContent =
+        data[language].aboutFtext;
+      document.getElementById("aboutStext").textContent =
+        data[language].aboutStext;
+      document.getElementById("aboutConfort").textContent =
+        data[language].aboutConfort;
+      document.getElementById("aboutBus").textContent = data[language].aboutBus;
+      document.getElementById("aboutBustxt").textContent =
+        data[language].aboutBustxt;
+      document.getElementById("aboutSecurity").textContent =
+        data[language].aboutSecurity;
+      document.getElementById("aboutSecuritytxt").textContent =
+        data[language].aboutSecuritytxt;
+      document.getElementById("aboutConforttitle").textContent =
+        data[language].aboutConforttitle;
+      document.getElementById("aboutConforttxt").textContent =
+        data[language].aboutConforttxt;
+    }
+
+    if (document.getElementById("textAbout")) {
+      document.getElementById("textAbout").textContent =
+        data[language].textAbout;
+      document.getElementById("navigateFooter").textContent =
+        data[language].navigateFooter;
+      document.getElementById("socialFooter").textContent =
+        data[language].socialFooter;
+      document.getElementById("footerHome").textContent =
+        data[language].homeStart;
+      document.getElementById("footerRoutes").textContent =
+        data[language].homeRoutes;
+      document.getElementById("footerAbout").textContent =
+        data[language].homeAbout;
+      document.getElementById("footerService").textContent =
+        data[language].homeService;
+      document.getElementById("footerContact").textContent =
+        data[language].homeContact;
+      document.getElementById("homeStart").textContent =
+        data[language].homeStart;
+      document.getElementById("homeRoutes").textContent =
+        data[language].homeRoutes;
+    }
+    if (document.getElementById("homeProfile")) {
+      document.getElementById("homeProfile").textContent =
+        data[language].homeProfile;
+    }
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
   }
-  if (document.getElementById("aboutLanguage")) {
-    document.getElementById("aboutLanguage").textContent =
-      data[language].aboutLanguage;
-    document.getElementById("enAbout").textContent = data[language].enAbout;
-    document.getElementById("esAbout").textContent = data[language].esAbout;
-    document.getElementById("prAbout").textContent = data[language].prAbout;
-    document.getElementById("aboutSesion").textContent =
-      data[language].aboutSesion;
-    document.getElementById("aboutLogin").textContent =
-      data[language].aboutLogin;
-    document.getElementById("aboutRegister").textContent =
-      data[language].aboutRegister;
-    document.getElementById("aboutTitle").textContent =
-      data[language].aboutTitle;
-    document.getElementById("aboutFtext").textContent =
-      data[language].aboutFtext;
-    document.getElementById("aboutStext").textContent =
-      data[language].aboutStext;
-    document.getElementById("aboutConfort").textContent =
-      data[language].aboutConfort;
-    document.getElementById("aboutBus").textContent = data[language].aboutBus;
-    document.getElementById("aboutBustxt").textContent =
-      data[language].aboutBustxt;
-    document.getElementById("aboutSecurity").textContent =
-      data[language].aboutSecurity;
-    document.getElementById("aboutSecuritytxt").textContent =
-      data[language].aboutSecuritytxt;
-    document.getElementById("aboutConforttitle").textContent =
-      data[language].aboutConforttitle;
-    document.getElementById("aboutConforttxt").textContent =
-      data[language].aboutConforttxt;
-    document.getElementById("aboutCopy").textContent = data[language].aboutCopy;
-    document.getElementById("aboutHome").textContent = data[language].aboutHome;
-    document.getElementById("aboutTravels").textContent =
-      data[language].aboutTravels;
-    document.getElementById("aboutRoutes").textContent =
-      data[language].aboutRoutes;
-    document.getElementById("aboutPorfile").textContent =
-      data[language].aboutPorfile;
-    document.getElementById("aboutAbout").textContent =
-      data[language].aboutAbout;
-    document.getElementById("aboutServices").textContent =
-      data[language].aboutServices;
-    document.getElementById("aboutContact").textContent =
-      data[language].aboutContact;
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("contactForm")) {
+      document.getElementById("contactForm").innerHTML =
+        data[language].contactForm + ' <span id="contactFormSpan"> </span>';
+      document.getElementById("contactFormSpan").textContent =
+        data[language].contactFormSpan;
+      document.getElementById("contactFormttx").textContent =
+        data[language].contactFormttx;
+      document.getElementById("contactName").placeholder =
+        data[language].contactName;
+      document.getElementById("contactSubject").placeholder =
+        data[language].contactSubject;
+      document.getElementById("contactMessage").placeholder =
+        data[language].contactMessage;
+      document.getElementById("contactButton").textContent =
+        data[language].contactButton;
+    }
+
+    if (document.getElementById("textAbout")) {
+      document.getElementById("textAbout").textContent =
+        data[language].textAbout;
+      document.getElementById("navigateFooter").textContent =
+        data[language].navigateFooter;
+      document.getElementById("socialFooter").textContent =
+        data[language].socialFooter;
+      document.getElementById("footerHome").textContent =
+        data[language].homeStart;
+      document.getElementById("footerRoutes").textContent =
+        data[language].homeRoutes;
+      document.getElementById("footerAbout").textContent =
+        data[language].homeAbout;
+      document.getElementById("footerService").textContent =
+        data[language].homeService;
+      document.getElementById("footerContact").textContent =
+        data[language].homeContact;
+        document.getElementById("aboutFooter").textContent =
+        data[language].homeAbout;
+    }
+
+    document.getElementById("homeStart").textContent = data[language].homeStart;
+    document.getElementById("homeRoutes").textContent =
+      data[language].homeRoutes;
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
   }
-  if (document.getElementById("contactLanguage")) {
-    document.getElementById("contactLanguage").textContent =
-      data[language].contactLanguage;
-    document.getElementById("enContact").textContent = data[language].enContact;
-    document.getElementById("esContact").textContent = data[language].esContact;
-    document.getElementById("prContact").textContent = data[language].prContact;
-    document.getElementById("contactSesion").textContent =
-      data[language].contactSesion;
-    document.getElementById("contactLogin").textContent =
-      data[language].contactLogin;
-    document.getElementById("contactRegister").textContent =
-      data[language].contactRegister;
-    document.getElementById("contactForm").innerHTML =
-      data[language].contactForm + ' <span id="contactFormSpan"> </span>';
-    document.getElementById("contactFormSpan").textContent =
-      data[language].contactFormSpan;
-    document.getElementById("contactFormttx").textContent =
-      data[language].contactFormttx;
-    document.getElementById("contactName").placeholder =
-      data[language].contactName;
-    document.getElementById("contactSubject").placeholder =
-      data[language].contactSubject;
-    document.getElementById("contactMessage").placeholder =
-      data[language].contactMessage;
-    document.getElementById("contactButton").textContent =
-      data[language].contactButton;
-    document.getElementById("contactCopy").textContent =
-      data[language].contactCopy;
-    document.getElementById("contactHome").textContent =
-      data[language].contactHome;
-    document.getElementById("contactTravel").textContent =
-      data[language].contactTravel;
-    document.getElementById("contactRoutes").textContent =
-      data[language].contactRoutes;
-    document.getElementById("contactPorfile").textContent =
-      data[language].contactPorfile;
-    document.getElementById("contactAbout").textContent =
-      data[language].contactAbout;
-    document.getElementById("contactService").textContent =
-      data[language].contactService;
-    document.getElementById("contactContact").textContent =
-      data[language].contactContact;
+  if (document.getElementById("homeProfile")) {
+    document.getElementById("homeProfile").textContent =
+      data[language].homeProfile;
   }
-  if (document.getElementById("servicesLanguage")) {
-    document.getElementById("servicesLanguage").textContent =
-      data[language].servicesLanguage;
-    document.getElementById("enServices").textContent =
-      data[language].enServices;
-    document.getElementById("esServices").textContent =
-      data[language].esServices;
-    document.getElementById("prServices").textContent =
-      data[language].prServices;
-    document.getElementById("servicesSesion").textContent =
-      data[language].servicesSesion;
-    document.getElementById("servicesLogin").textContent =
-      data[language].servicesLogin;
-    document.getElementById("servicesRegister").textContent =
-      data[language].servicesRegister;
-    document.getElementById("servicesRent").innerHTML =
-      data[language].servicesRent + ' <span id="servicesRentspan"> </span>';
-    document.getElementById("servicesRentspan").textContent =
-      data[language].servicesRentspan;
-    document.getElementById("servicesRentText").textContent =
-      data[language].servicesRentText;
-    document.getElementById("servicesLines").innerHTML =
-      data[language].servicesLines + ' <span id="servicesLinesspan"> </span>';
-    document.getElementById("servicesLinesspan").textContent =
-      data[language].servicesLinesspan;
-    document.getElementById("servicesLinesText").textContent =
-      data[language].servicesLinesText;
-    document.getElementById("servicesTourism").innerHTML =
-      data[language].servicesTourism +
-      ' <span id="servicesTourismSpan"> </span>';
-    document.getElementById("servicesTourismSpan").textContent =
-      data[language].servicesTourismSpan;
-    document.getElementById("servicesTourismText").textContent =
-      data[language].servicesTourismText;
-    document.getElementById("serviceExecutive").innerHTML =
-      data[language].serviceExecutive +
-      ' <span id="serviceExecutiveSpan"> </span>';
-    document.getElementById("serviceExecutiveSpan").textContent =
-      data[language].serviceExecutiveSpan;
-    document.getElementById("serviceExecutiveText").textContent =
-      data[language].serviceExecutiveText;
-    document.getElementById("serviceTransport").innerHTML =
-      data[language].serviceTransport +
-      ' <span id="serviceTransportSpan"> </span>';
-    document.getElementById("serviceTransportSpan").textContent =
-      data[language].serviceTransportSpan;
-    document.getElementById("serviceTransporttext").textContent =
-      data[language].serviceTransporttext;
-    document.getElementById("servicesShipment").innerHTML =
-      data[language].servicesShipment +
-      ' <span id="servicesShipmentSpan"> </span>';
-    document.getElementById("servicesShipmentSpan").textContent =
-      data[language].servicesShipmentSpan;
-    document.getElementById("servicesShipmentText").textContent =
-      data[language].servicesShipmentText;
-    document.getElementById("serviceCustomer").innerHTML =
-      data[language].serviceCustomer +
-      ' <span id="serviceCustomerSpan"> </span>';
-    document.getElementById("serviceCustomerSpan").textContent =
-      data[language].serviceCustomerSpan;
-    document.getElementById("serviceCustomerText").textContent =
-      data[language].serviceCustomerText;
-    document.getElementById("serviceCopy").textContent =
-      data[language].serviceCopy;
-    document.getElementById("serviceHome").textContent =
-      data[language].serviceHome;
-    document.getElementById("serviceTravel").textContent =
-      data[language].serviceTravel;
-    document.getElementById("serviceRoutes").textContent =
-      data[language].serviceRoutes;
-    document.getElementById("servicePorfile").textContent =
-      data[language].servicePorfile;
-    document.getElementById("serviceAbout").textContent =
-      data[language].serviceAbout;
-    document.getElementById("serviceService").textContent =
-      data[language].serviceService;
-    document.getElementById("serviceContact").textContent =
-      data[language].serviceContact;
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("servicesRent")) {
+      document.getElementById("servicesRent").innerHTML =
+        data[language].servicesRent + ' <span id="servicesRentspan"> </span>';
+      document.getElementById("servicesRentspan").textContent =
+        data[language].servicesRentspan;
+      document.getElementById("servicesRentText").textContent =
+        data[language].servicesRentText;
+      document.getElementById("servicesLines").innerHTML =
+        data[language].servicesLines + ' <span id="servicesLinesspan"> </span>';
+      document.getElementById("servicesLinesspan").textContent =
+        data[language].servicesLinesspan;
+      document.getElementById("servicesLinesText").textContent =
+        data[language].servicesLinesText;
+      document.getElementById("servicesTourism").innerHTML =
+        data[language].servicesTourism +
+        ' <span id="servicesTourismSpan"> </span>';
+      document.getElementById("servicesTourismSpan").textContent =
+        data[language].servicesTourismSpan;
+      document.getElementById("servicesTourismText").textContent =
+        data[language].servicesTourismText;
+      document.getElementById("serviceExecutive").innerHTML =
+        data[language].serviceExecutive +
+        ' <span id="serviceExecutiveSpan"> </span>';
+      document.getElementById("serviceExecutiveSpan").textContent =
+        data[language].serviceExecutiveSpan;
+      document.getElementById("serviceExecutiveText").textContent =
+        data[language].serviceExecutiveText;
+      document.getElementById("serviceTransport").innerHTML =
+        data[language].serviceTransport +
+        ' <span id="serviceTransportSpan"> </span>';
+      document.getElementById("serviceTransportSpan").textContent =
+        data[language].serviceTransportSpan;
+      document.getElementById("serviceTransporttext").textContent =
+        data[language].serviceTransporttext;
+      document.getElementById("servicesShipment").innerHTML =
+        data[language].servicesShipment +
+        ' <span id="servicesShipmentSpan"> </span>';
+      document.getElementById("servicesShipmentSpan").textContent =
+        data[language].servicesShipmentSpan;
+      document.getElementById("servicesShipmentText").textContent =
+        data[language].servicesShipmentText;
+      document.getElementById("serviceCustomer").innerHTML =
+        data[language].serviceCustomer +
+        ' <span id="serviceCustomerSpan"> </span>';
+      document.getElementById("serviceCustomerSpan").textContent =
+        data[language].serviceCustomerSpan;
+      document.getElementById("serviceCustomerText").textContent =
+        data[language].serviceCustomerText;
+    }
+
+    if (document.getElementById("textAbout")) {
+      document.getElementById("textAbout").textContent =
+        data[language].textAbout;
+      document.getElementById("navigateFooter").textContent =
+        data[language].navigateFooter;
+      document.getElementById("socialFooter").textContent =
+        data[language].socialFooter;
+      document.getElementById("footerHome").textContent =
+        data[language].homeStart;
+      document.getElementById("footerRoutes").textContent =
+        data[language].homeRoutes;
+      document.getElementById("footerAbout").textContent =
+        data[language].homeAbout;
+      document.getElementById("footerService").textContent =
+        data[language].homeService;
+      document.getElementById("footerContact").textContent =
+        data[language].homeContact;
+        document.getElementById("aboutFooter").textContent =
+        data[language].homeAbout;
+    }
+
+    document.getElementById("homeStart").textContent = data[language].homeStart;
+    document.getElementById("homeRoutes").textContent =
+      data[language].homeRoutes;
+    if (document.getElementById("homeProfile")) {
+      document.getElementById("homeProfile").textContent =
+        data[language].homeProfile;
+    }
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
+  }
+
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("seattxt")) {
+      document.getElementById("seattxt").textContent = data[language].seattxt;
+      document.getElementById("seatbutton").value = data[language].seatbutton;
+    }
+
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
+  }
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
+
+    if (document.getElementById("homeSesion")) {
+      document.getElementById("homeSesion").textContent =
+        data[language].homeSesion;
+    }
+    if (document.getElementById("homeLogin")) {
+      document.getElementById("homeLogin").textContent =
+        data[language].homeLogin;
+      document.getElementById("homeRegister").textContent =
+        data[language].homeRegister;
+    } else {
+      document.getElementById("closeSesion").textContent =
+        data[language].closeSesion;
+    }
+    if (document.getElementById("confirmTitle")) {
+      document.getElementById("confirmTitle").textContent =
+        data[language].confirmTitle;
+      document.getElementById("confirmOrigin").textContent =
+        data[language].confirmOrigin;
+      document.getElementById("confirmDestination").textContent =
+        data[language].confirmDestination;
+      document.getElementById("confimSeat").textContent =
+        data[language].confimSeat;
+      document.getElementById("hourStart").textContent =
+        data[language].hourStart;
+      document.getElementById("hourArraival").textContent =
+        data[language].hourArraival;
+      document.getElementById("confirmCaracteristics").textContent =
+        data[language].confirmCaracteristics;
+      document.getElementById("confirmPrice").textContent =
+        data[language].confirmPrice;
+      document.getElementById("confirmDate").textContent =
+        data[language].confirmDate;
+      document.getElementById("comfimPayment").textContent =
+        data[language].comfimPayment;
+      document.getElementById("creditPayment").textContent =
+        data[language].creditPayment;
+      document.getElementById("debitPayment").textContent =
+        data[language].debitPayment;
+      document.getElementById("cashPayment").textContent =
+        data[language].cashPayment;
+      document.getElementById("booking").value = data[language].booking;
+      document.getElementById("confirmBuy").value = data[language].confirmBuy;
+    }
+    document.getElementById("homeAbout").textContent = data[language].homeAbout;
+    document.getElementById("homeService").textContent =
+      data[language].homeService;
+    document.getElementById("homeContact").textContent =
+      data[language].homeContact;
   }
 };
 export default translate;

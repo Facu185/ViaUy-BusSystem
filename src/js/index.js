@@ -1,6 +1,8 @@
 /* import login from "./modules/login.js";
 login(); */
 import translate from "./modules/translations.js";
+
+
 if (!localStorage.getItem("lang")) {
   localStorage.setItem("lang", "ES");
   translate("ES");
@@ -16,7 +18,6 @@ if (document.getElementById("enHome")) {
     localStorage.setItem("lang", "EN");
     location.reload();
   });
-  
 }
 if (document.getElementById("enTravel")) {
   document.getElementById("enTravel").addEventListener("click", (e) => {
@@ -24,7 +25,6 @@ if (document.getElementById("enTravel")) {
     localStorage.setItem("lang", "EN");
     location.reload();
   });
-  
 }
 if (document.getElementById("enProfile")) {
   document.getElementById("enProfile").addEventListener("click", (e) => {
@@ -32,23 +32,22 @@ if (document.getElementById("enProfile")) {
     localStorage.setItem("lang", "EN");
     location.reload();
   });
-  
 }
-if(document.getElementById("enAbout") ){
+if (document.getElementById("enAbout")) {
   document.getElementById("enAbout").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "EN");
     location.reload();
   });
 }
-if(document.getElementById("enServices") ){
+if (document.getElementById("enServices")) {
   document.getElementById("enServices").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "EN");
     location.reload();
   });
 }
-if(document.getElementById("enContact") ){
+if (document.getElementById("enContact")) {
   document.getElementById("enContact").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "EN");
@@ -56,42 +55,42 @@ if(document.getElementById("enContact") ){
   });
 }
 
-if (document.getElementById("esHome") ) {
+if (document.getElementById("esHome")) {
   document.getElementById("esHome").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
     location.reload();
   });
 }
-if (document.getElementById("esTravel") ) {
+if (document.getElementById("esTravel")) {
   document.getElementById("esTravel").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
     location.reload();
   });
 }
-if (document.getElementById("esProfile") ) {
+if (document.getElementById("esProfile")) {
   document.getElementById("esProfile").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
     location.reload();
   });
 }
-if(document.getElementById("esAbout")){
+if (document.getElementById("esAbout")) {
   document.getElementById("esAbout").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
     location.reload();
   });
 }
-if(document.getElementById("esServices")){
+if (document.getElementById("esServices")) {
   document.getElementById("esServices").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
     location.reload();
   });
 }
-if(document.getElementById("esContact")){
+if (document.getElementById("esContact")) {
   document.getElementById("esContact").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "ES");
@@ -99,46 +98,52 @@ if(document.getElementById("esContact")){
   });
 }
 
-
-if (document.getElementById("prHome") ) {
+if (document.getElementById("prHome")) {
   document.getElementById("prHome").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
-if (document.getElementById("prTravel") ) {
+if (document.getElementById("prTravel")) {
   document.getElementById("prTravel").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
-if (document.getElementById("prProfile") ) {
+if (document.getElementById("prProfile")) {
   document.getElementById("prProfile").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
-if(document.getElementById("prAbout")){
+if (document.getElementById("prAbout")) {
   document.getElementById("prAbout").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
-if(document.getElementById("prServices")){
+if (document.getElementById("prServices")) {
   document.getElementById("prServices").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
-if(document.getElementById("prContact")){
+if (document.getElementById("prContact")) {
   document.getElementById("prContact").addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("lang", "PR");
     location.reload();
   });
 }
+
+
+
+
+
+
+

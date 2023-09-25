@@ -10,6 +10,7 @@ include "./controlers/signin.php"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ViaUy - Login</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -21,13 +22,13 @@ include "./controlers/signin.php"
             <p class="menu__text" id="loginMessage"></p>
             <div class="login__form">
                 <form method="post">
-                    <input type="email" id="loginEmail" name="email" placeholder="Email" value='f@f.com'>
-                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña" value='123456789'>
+                    <input type="email" id="loginEmail" name="email" placeholder="Email">
+                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña">
                     <input type="submit" class="button--primary" id="loginButton" name="loginButton"
                         value="Ingresar"></input>
                 </form>
-                <p class="login__register" id="loginNoAccount"><a href="./pages/register.php" id="loginGoRegister"></a>
-                </p>
+                <p class="login__register" id="loginNoAccount"><a href="./register" id="loginGoRegister"></a></p>
+                
             </div>
             <p class="login__conditions" id="loginTerms"><span id="loginConditions"></span> </p>
 
