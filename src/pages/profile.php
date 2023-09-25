@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+if (!empty($_SESSION["login"])) {
+    $login = $_SESSION["login"];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,103 +14,127 @@ session_start();
     <title>Porfile</title>
     <link rel="stylesheet" href="../styles/main.css">
     <script src="https://kit.fontawesome.com/2940ba2046.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
     <main class="profile">
-        <header class="header--login">
-            <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
-            <div class="dropdowns">
-                <div class="dropdown">
-                    <button type="button" class="dropbtn" id="profileLanguage"></button>
-                    <div class="dropdown-content">
-                        <button type='button' id="enProfile"></button>
-                        <button type='button' id="esProfile"></button>
-                        <button type='button' id="prProfile"></button>
+        <?php include('./components/menu.php'); ?>
+        <div class="container__profile">
+            <div class="iphone">
+                <div class="header__profile">
+                    <div class="header-summary">
+                        <div class="summary-text">
+                            <h1 id="profileWelcome"></h1>
+                        </div>
+                        <div class="summary-balance">
+                            <h2>
+                                <?php echo $_SESSION["login"]["nombre"] ?>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <button type="button" class="dropbtn" id="profileSesion"></button>
-                    <div class="dropdown-content">
-                        <a type='button' id="profileLogin" href="./login.php"></a>
-                        <a type='button' id="profileRegister" href="./register.php"></a>
+                <div class="content__profile">
+                    <div class="card__profile">
+                        <h2 id="profileData" class="about__user"></h2>
+                        <div class="upper-row">
+                            <div class="card-item">
+                                <h2 id="profileName"></h2>
+                                <p>
+                                    <?php echo $_SESSION["login"]["nombre"] ?>
+                                </p>
+                            </div>
+                            <div class="card-item">
+                                <h2 id="profileSurname"></h2>
+                                <p>
+                                    <?php echo $_SESSION["login"]["apellido"] ?>
+                                </p>
+                            </div>
+                            <div class="card-item">
+                                <h2 id="profilePhone"></h2>
+                                <p>
+                                    <?php echo $_SESSION["login"]["celular"] ?>
+                                </p>
+                            </div>
+                            <div class="card-item">
+                                <h2 id="profileMail"></h2>
+                                <p>
+                                    <?php echo $_SESSION["login"]["email"] ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lower-row">
+                            <div class="icon-item">
+                                <div class="icon"><i class="fa-solid fa-gear"></i></div>
+                                <div class="icon-text">
+                                    <p id="profileSettings"></p>
+                                </div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon"><i class="fa-solid fa-route"></i></div>
+                                <div class="icon-text">
+                                    <p id="profileTravels"></p>
+                                </div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                                <div class="icon-text">
+                                    <p id="profileModify"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transactions"><span class="t-desc">
+                            <h2 id="mineTravels"></h2>
+                        </span>
+                        <div class="transaction">
+                            <div class="t-icon-container">
+                                <i class="fa-solid fa-bus"></i>
+                            </div>
+                            <div class="t-details">
+                                <div class="t-title">
+                                    <p>Origen: Pando</p>
+                                    <p>Destino: Salinas</p>
+                                </div>
+                                <div class="t-time">
+                                    <p>03.45PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transaction">
+                            <div class="t-icon-container"><i class="fa-solid fa-bus"></i></div>
+                            <div class="t-details">
+                                <div class="t-title">
+                                    <p>Origen: Pando</p>
+                                    <p>Destino: Salinas</p>
+                                </div>
+                                <div class="t-time">
+                                    <p>03.45 AM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transaction">
+                            <div class="t-icon-container">
+                                <i class="fa-solid fa-bus"></i>
+                            </div>
+                            <div class="t-details">
+                                <div class="t-title">
+                                    <p>Origen: Pando</p>
+                                    <p>Destino: Salinas</p>
+                                </div>
+                                <div class="t-time">
+                                    <p>08.00PM</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <div class="profile__header">
-            <img src="../assets/profile-avatar.png" alt="">
-            <h2 id="porfileName"></h2>
         </div>
-        <div class="profile__main">
-            <form action="" class="profile__form">
-                <label for="" id="profileTextEmail"></label>
-                <input type="email" name="" id="" placeholder="Email">
-                <label for="" id="profileTextPassword"></label>
-                <input type="password" name="" id="profilePassword" placeholder="Contraseña">
-                <button class="button--primary" id="buttonProfile"></button>
-            </form>
-        </div>
-    </main>
-    <nav class="nav__bar">
-        <div class="home">
-            <a href="./home.php">
-                <i class="fa-solid fa-house-user"></i>
-                <div class="home__text">
-                    <p id="profileHome" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="travels">
-            <a href="./travels.php">
-                <i class="fa-solid fa-bus"></i>
-                <div class="travels__text">
-                    <p id="profileTravels" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="routes">
-            <a href="">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <div class="routes__text">
-                    <p id="profileRoutes" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="porfile">
-            <a href="./profile.php">
-                <i class="fa-regular fa-user"></i>
-                <div class="porfile__text">
-                    <p id="profileProfile" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="about__us">
-            <a href="./aboutUs.php">
-                <i class="fa-solid fa-users"></i>
-                <div class="about__us__text">
-                    <p id="profileAbout" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="services">
-            <a href="./services.php">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                <div class="services__text">
-                    <p id="profileService" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-        <div class="contact">
-            <a href="./contact.php">
-                <i class="fa-solid fa-comments"></i>
-                <div class="contact__text">
-                    <p id="profileContact" class="nav__bar__text"></p>
-                </div>
-            </a>
-        </div>
-    </nav>
-    <script src="../js/index.js" type="module"></script>
+        <?php include('./components/navbar.php'); ?>
+        <script src="../js/index.js" type="module"></script>
 </body>
 
 

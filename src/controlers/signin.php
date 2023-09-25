@@ -28,14 +28,13 @@ function sign_In()
 
                 $_SESSION["login"] = array();
                 $_SESSION["login"] = $loginData;
-                /* print_r($_SESSION['login']); */
                 header("location:./home");
             }
 
         }
 
     } catch (Exception $error) {
-        echo ($error->getMessage());
+        echo '<script>alert("' . $error->getMessage() . '"); </script>';
     }
 }
 sign_In();

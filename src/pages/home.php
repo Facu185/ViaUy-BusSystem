@@ -1,7 +1,10 @@
 <?php
-print_r($_SESSION['login']);
-    ?>
 
+if (!empty($_SESSION["login"])) {
+    $login = $_SESSION["login"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,31 +14,15 @@ print_r($_SESSION['login']);
     <link rel="stylesheet" href="../styles/main.css">
     <title>Welcome</title>
     <script src="https://kit.fontawesome.com/2940ba2046.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
     <main class="main">
         <section class="main__welcome">
-            <header class="header--login">
-                <h1 class='logoHead'>Via<span class='logoColor'>UY</span></h1>
-                <div class="dropdowns">
-                    <div class="dropdown">
-                        <button type="button" class="dropbtn" id="homeLanguage"></button>
-                        <div class="dropdown-content">
-                            <button type='button' id="enHome"></button>
-                            <button type='button' id="esHome"></button>
-                            <button type='button' id="prHome"></button>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button type="button" class="dropbtn" id="homeSesion"></button>
-                        <div class="dropdown-content">
-                            <a type='button' id="homeLogin" href="./login.php"></a>
-                            <a type='button' id="homeRegister" href="./register.php"></a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <?php include('./components/menu.php'); ?>
             <div class="welcome__text">
                 <h2 class="main__text" id="homeWelcome"></h2>
                 <p id="homeMessage"></p>
@@ -45,9 +32,15 @@ print_r($_SESSION['login']);
         <div class="container">
             <section class="main__selector">
                 <form method="POST" action="./travels">
-                    <input type="text" placeholder="Origen" id="homeOrigin" name="origen">
-                    <i class="fa-solid fa-arrows-up-down"></i>
-                    <input type="text" placeholder="Destino" id="homeDestination" name="destino">
+                    <select name="origen" id="homeOrigin">
+
+                        <option value="origen" selected>Origen</option>
+
+                    </select>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <select name="destino" id="homeDestination">
+                        <option value="Destino" selected>Destino</option>
+                    </select>
                     <input id="input__date" type="date" name="date">
                     <input class="button--primary" id="homeButton" type="submit" value="Buscar">
                 </form>
@@ -56,7 +49,7 @@ print_r($_SESSION['login']);
         <section class="main__travels">
             <h2 class="main__text" id="homeTravels"></h2>
             <div class="travels__list">
-                <div class="travel__card">
+                <div class="travel__card" data-aos="fade-right">
                     <div class="card__header">
                         <div class="header__text">
                             <i class="fa-solid fa-bus"></i>
@@ -65,7 +58,6 @@ print_r($_SESSION['login']);
                                 <p>2x1(30)sleeper</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="card__row">
                         <div class="card__info">
@@ -96,7 +88,7 @@ print_r($_SESSION['login']);
                         </div>
                     </div>
                 </div>
-                <div class="travel__card">
+                <div class="travel__card" data-aos="fade-left">
                     <div class="card__header">
                         <div class="header__text">
                             <i class="fa-solid fa-bus"></i>
@@ -105,7 +97,6 @@ print_r($_SESSION['login']);
                                 <p>2x1(30)sleeper</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="card__row">
                         <div class="card__info">
@@ -138,116 +129,37 @@ print_r($_SESSION['login']);
                 </div>
             </div>
         </section>
-
         <section class="ad">
             <h3 id="adHome"></h3>
         </section>
         <section class="benefits">
-            <div class="benefits__item">
+            <div class="benefits__item" data-aos="fade-down">
                 <i class="fa-regular fa-thumbs-up"></i>
                 <p id="likeHome"></p>
                 <p id="likeHometxt"> </p>
             </div>
-            <div class="benefits__item">
+            <div class="benefits__item" data-aos="fade-down">
                 <i class="fa-regular fa-clock"></i>
                 <p id="frecuencyHome"></p>
                 <p id="frecuencyHometxt"> </p>
             </div>
-            <div class="benefits__item">
+
+            <div class="benefits__item" data-aos="fade-down">
                 <i class="fa-solid fa-ticket"></i>
                 <p id="pricesHome"></p>
                 <p id="pricesHometxt"></p>
             </div>
-        </section>
-        <footer class="footer">
-            <h3>Via<span>UY</span></h3>
-            <div class="footer__bottom">
-                <div class="footer__column1">
-                    <p id="copyHome"> </p>
-                    <span>ViaUY</span>
-                </div>
-                <div>
-                    <div class="footer__row">
-                        <i class="fa-solid fa-phone"></i>
-                        <p>+599 123 456</p>
-                    </div>
-                    <div class="footer__row">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                        <p>viauy@gmail.com</p>
-                    </div>
-                    <div class="footer__row">
-                        <i class="fa-sharp fa-solid fa-location-pin"></i>
-                        <p>Montevideo, Uruguay</p>
-                    </div>
-                </div>
-                <div class="footer__column3">
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-tiktok"></i>
-                </div>
-            </div>
-        </footer>
 
-        <nav class="nav__bar">
-            <div class="home">
-                <a href="./home.php">
-                    <i class="fa-solid fa-house-user"></i>
-                    <div class="home__text">
-                        <p id="homeStart" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="travels">
-                <a href="./travels.php">
-                    <i class="fa-solid fa-bus"></i>
-                    <div class="travels__text">
-                        <p id="homeTravelsGo" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="routes">
-                <a href="./routes.php">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    <div class="routes__text">
-                        <p id="homeRoutes" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="porfile">
-                <a href="./profile.php">
-                    <i class="fa-regular fa-user"></i>
-                    <div class="porfile__text">
-                        <p id="homeProfile" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="about__us">
-                <a href="./aboutUs.php">
-                    <i class="fa-solid fa-users"></i>
-                    <div class="about__us__text">
-                        <p id="homeAbout" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="services">
-                <a href="./services.php">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <div class="services__text">
-                        <p id="homeService" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-            <div class="contact">
-                <a href="./contact.php">
-                    <i class="fa-solid fa-comments"></i>
-                    <div class="contact__text">
-                        <p id="homeContact" class="nav__bar__text"></p>
-                    </div>
-                </a>
-            </div>
-        </nav>
+        </section>
+        <?php include('./components/footer.php'); ?>
+        <?php include('./components/navbar.php'); ?>
     </main>
     <script src="../js/index.js" type="module"></script>
+    <script src="../js/modules/localizaciones.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

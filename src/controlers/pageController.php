@@ -4,7 +4,7 @@
             include_once("./pages/home.php");
         }
         public function aboutUs(){
-            echo('llegamos');
+          
             include_once("./pages/aboutUs.php");
         }
         public function contact(){
@@ -28,5 +28,18 @@
         public function travels(){
             include_once("./pages/travels.php");
         } 
+        public function logout(){
+            include_once("./controlers/logout.php");
+        }
+        public function comprar(){
+            include_once("./pages/buyTicket.php");
+        }
+        public function confirmarViaje(){
+            include_once("./pages/confirmTravel.php");
+        }
+        public function seat(){
+            include_once("./controlers/verifySeat.php");
+        }
+
     }
 ?>
