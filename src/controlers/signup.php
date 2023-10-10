@@ -33,11 +33,11 @@ try {
             throw new Exception("Email invalido", 400);
         $password = $_POST["registerPassword"];
         if (strlen($password) < 8)
-<<<<<<< HEAD
+
             throw new Exception("La contraseÃ±a debe contener minimo 8 carcteres", 400);
-=======
+
             throw new Exception("La contraseña debe contener minimo 8 carcteres", 400);
->>>>>>> 6638d65bc9ee7e1d66a35ed3d440bc4e12948979
+
         $passwordCifrada = password_hash($password, PASSWORD_DEFAULT);
         $checkEmail = "SELECT email FROM usuario WHERE email = :email";
         $checkEmail = $conn->prepare($checkEmail);
@@ -61,9 +61,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 6638d65bc9ee7e1d66a35ed3d440bc4e12948979
 ?>
