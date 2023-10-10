@@ -4,6 +4,10 @@
             include_once("./pages/home.php");
         }
         public function aboutUs(){
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 6638d65bc9ee7e1d66a35ed3d440bc4e12948979
             include_once("./pages/aboutUs.php");
         }
         public function contact(){
@@ -39,9 +43,12 @@
         public function seat(){
             include_once("./controlers/verifySeat.php");
         }
+<<<<<<< HEAD
         public function signup(){
             include_once("./controlers/signup.php");
         }
+=======
+>>>>>>> 6638d65bc9ee7e1d66a35ed3d440bc4e12948979
 
     }
 ?>

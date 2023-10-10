@@ -15,7 +15,11 @@
             <h2 class="register__welcome" id="registerWelcome"></h2>
             <p class="register__text" id="registerMessage"></p>
             <div class="register__form">
+<<<<<<< HEAD
                 <form method="post" action="./signup">
+=======
+                <form method="post">
+>>>>>>> 6638d65bc9ee7e1d66a35ed3d440bc4e12948979
                     <label for="registerName" id="registerTextName"> </label>
                     <input type="text" id="registerName" name="registerName" placeholder="Nombre">
                     <label for="registerLastName" id="registerTextLastName"> </label>
