@@ -28,8 +28,7 @@
                         <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
                         <label for="registerPassword" id="registerTextPassword"> </label>
                         <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
-                        <input class="button--primary" id="registerButton" type="submit" name="registerButton"
-                            value="Registrarse">
+                        <input class="button--primary" id="registerButton" type="submit" name="registerButton"value="Registrarse">
                     </form>
             </div>
         </section>

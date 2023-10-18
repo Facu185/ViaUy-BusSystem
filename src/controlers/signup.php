@@ -36,8 +36,6 @@ try {
 
             throw new Exception("La contraseÃ±a debe contener minimo 8 carcteres", 400);
 
-            throw new Exception("La contraseña debe contener minimo 8 carcteres", 400);
-
         $passwordCifrada = password_hash($password, PASSWORD_DEFAULT);
         $checkEmail = "SELECT email FROM usuario WHERE email = :email";
         $checkEmail = $conn->prepare($checkEmail);
