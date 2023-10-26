@@ -28,7 +28,7 @@
             include_once("./pages/travels.php");
         } 
         public function logout(){
-            include_once("./controlers/logout.php");
+            include_once("./controllers/logout.php");
         }
         public function comprar(){
             include_once("./pages/buyTicket.php");
@@ -37,10 +37,10 @@
             include_once("./pages/confirmTravel.php");
         }
         public function seat(){
-            include_once("./controlers/verifySeat.php");
+            include_once("./controllers/verifySeat.php");
         }
         public function signup(){
-            include_once("./controlers/signup.php");
+            include_once("./controllers/signup.php");
         }
 
     }

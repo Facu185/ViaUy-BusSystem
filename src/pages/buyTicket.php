@@ -2,7 +2,7 @@
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
-include_once './controlers/buyTicket.php';
+include_once './controllers/buyTicket.php';
 
 
 ?>

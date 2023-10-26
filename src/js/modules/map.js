@@ -65,7 +65,7 @@ function mostrarBotonesYLocalizacion(punto) {
 
 // Realiza una solicitud AJAX para obtener los puntos desde PHP
 $.ajax({
-  url: "../controlers/findmap.php", 
+  url: "../controllers/findmap.php", 
   method: "GET",
   dataType: "json",
   success: function (data) {

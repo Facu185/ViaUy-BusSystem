@@ -1,4 +1,4 @@
-fetch("../controlers/originDestination.php")
+fetch("../controllers/originDestination.php")
   .then((response) => response.json())
   .then((opciones) => {
     const opcionesSelect1 = document.getElementById("homeOrigin");

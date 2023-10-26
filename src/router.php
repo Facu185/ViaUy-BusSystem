@@ -16,7 +16,7 @@ class Router
             $this->controller = !empty($url[1]) ? $url[1] : "pages";
             $this->method = !empty($url[2]) ? $url[2] : "home";
             $this->controller = $this->controller . "Controller";
-            require_once(__DIR__ . "\controlers/" . $this->controller . ".php");
+            require_once(__DIR__ . "\controllers/" . $this->controller . ".php");
         } catch (Exception $error) {
             print_r($error);
         }
@@ -29,7 +29,7 @@ class Router
             $controller = new $this->controller();
             $method = $this->method;
             if ($method !== 'login') {
-                include_once('./controlers/signin.php');
+                include_once('./controllers/signin.php');
                 if (empty($_SESSION['login']) && $method === "profile" ) {
                     include_once('./pages/401error.php');
                     return;

@@ -56,7 +56,7 @@ if (!empty($_SESSION["login"]) && isset($_SESSION['infolinea'])) {
         <p>
             <?php echo ($infolinea["fechaViaje"]); ?>
         </p>
-        <form method='POST' action='../controlers/passage.php'>
+        <form method='POST' action='../controllers/passage.php'>
             <input type="hidden" name="viaje" value='<?php echo json_encode($infolinea); ?>'>
             <h3 id="comfimPayment"></h3>
             <select name="forma_pago" id="forma_pago">

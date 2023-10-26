@@ -1,5 +1,4 @@
 <?php
-
 function findBus()
 {
     require "./database/db.php";

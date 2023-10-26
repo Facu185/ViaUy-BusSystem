@@ -81,6 +81,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script>window.location.href = "../page/home";</script>';
        
     }
-
 }
 ?>

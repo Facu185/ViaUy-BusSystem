@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include './controlers/travels.php';
+    include './controllers/travels.php';
     $search = true;
 } else {
     $search = false;
