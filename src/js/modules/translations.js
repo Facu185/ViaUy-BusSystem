@@ -81,7 +81,8 @@ const translate = async (language) => {
         data[language].homeDestination;
       document.getElementById("homeButton").textContent =
         data[language].homeButton;
-      document.getElementById("homeTravels").textContent =
+      if (document.getElementById("homeTravels")) {
+        document.getElementById("homeTravels").textContent =
         data[language].homeTravels;
       document.getElementById("homeStartingPoint").textContent =
         data[language].homeStartingPoint;
@@ -91,6 +92,7 @@ const translate = async (language) => {
         data[language].homeStartingPoint1;
       document.getElementById("homeArrivalPoint1").textContent =
         data[language].homeArrivalPoint1;
+      }
       document.getElementById("adHome").textContent = data[language].adHome;
       document.getElementById("likeHome").textContent = data[language].likeHome;
       document.getElementById("likeHometxt").textContent =
@@ -128,7 +130,7 @@ const translate = async (language) => {
       if (document.getElementById("homeProfile")) {
         document.getElementById("homeProfile").textContent =
           data[language].homeProfile;
-          document.getElementById("aboutFooter").textContent =
+        document.getElementById("aboutFooter").textContent =
           data[language].homeAbout;
       }
       document.getElementById("homeAbout").textContent =
@@ -218,7 +220,7 @@ const translate = async (language) => {
         data[language].profileWelcome;
       document.getElementById("profileData").textContent =
         data[language].profileData;
-        document.getElementById("profileName").textContent =
+      document.getElementById("profileName").textContent =
         data[language].profileName;
       document.getElementById("profileSurname").textContent =
         data[language].profileSurname;
@@ -250,9 +252,9 @@ const translate = async (language) => {
       data[language].homeContact;
   }
 
-    if (document.getElementById("homeLanguage")) {
-      document.getElementById("homeLanguage").textContent =
-        data[language].homeLanguage;
+  if (document.getElementById("homeLanguage")) {
+    document.getElementById("homeLanguage").textContent =
+      data[language].homeLanguage;
 
     if (document.getElementById("homeLogin")) {
       document.getElementById("homeLogin").textContent =
@@ -364,7 +366,7 @@ const translate = async (language) => {
         data[language].homeService;
       document.getElementById("footerContact").textContent =
         data[language].homeContact;
-        document.getElementById("aboutFooter").textContent =
+      document.getElementById("aboutFooter").textContent =
         data[language].homeAbout;
     }
 
@@ -468,7 +470,7 @@ const translate = async (language) => {
         data[language].homeService;
       document.getElementById("footerContact").textContent =
         data[language].homeContact;
-        document.getElementById("aboutFooter").textContent =
+      document.getElementById("aboutFooter").textContent =
         data[language].homeAbout;
     }
 

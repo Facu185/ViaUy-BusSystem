@@ -105,7 +105,7 @@ function findBus()
                     // Si no tenemos registros para esta línea, simplemente agregamos el id_tramo
                     $filteredData[$id_linea] = [
                         'id_tramos' => [$id_tramo],
-                        'id_linea' => $id_linea 
+                        'id_linea' => $id_linea
                     ];
                 }
             }
@@ -297,16 +297,50 @@ function findBus()
                             $sql = $conn->prepare($query);
                             $sql->execute();
                             $info_asientos = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
+                            $id_horario = $row["ID_horario"];
+                            $query = "SELECT id_unidad, numero_asiento, disponibilidad_asiento 
+                            FROM horario_asiento 
+                            WHERE id_unidad in (:unidad) AND ID_horario IN (:id_horario) 
+                            AND fecha_viaje IN (:fecha) 
+                            AND disponibilidad_asiento IN (0);";
+                            $sql = $conn->prepare($query);
+                            $sql->bindParam(':id_horario', $id_horario);
+                            $sql->bindParam(':unidad', $unidad);
+                            $sql->bindParam(':fecha', $fecha);
+                            $sql->execute();
+                            $info_asientos_establece = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
                             $asientos_disponibles = 0;
+                            $asientos_ocupados = array();
                             foreach ($info_asientos as $info_asiento) {
-                                if ($info_asiento['disponibilidad'] === 1) {
-                                    $asientos_disponibles++;
+                                $asientos_disponibles++;
+                                foreach ($info_asientos_establece as $establece) {
+                                    if ($info_asiento['Numero_asiento'] == $establece['numero_asiento'] && $establece['disponibilidad_asiento'] == 0) {
+                                        $asientos_disponibles--;
+                                        array_push($asientos_ocupados, $info_asiento['Numero_asiento']);
+                                    }
+                                }
+                            }
+
+
+
+                            $new_info_asientos = $info_asientos;
+                            $count = count($new_info_asientos);
+                            for ($i = 0; $i < $count; $i++) {
+                                if (in_array($new_info_asientos[$i]['Numero_asiento'], $asientos_ocupados)) {
+                                    $new_info_asientos[$i]['disponibilidad'] = 0;
+                                } else {
+                                    $new_info_asientos[$i]['disponibilidad'] = 1;
                                 }
                             }
 
                             $info_linea[$clave][$row['ID_unidad']]['asientos_libres'] = $asientos_disponibles;
-                            $info_linea[$clave][$row['ID_unidad']]['info_asientos'] = $info_asientos;
-                            
+                            $info_linea[$clave][$row['ID_unidad']]['info_asientos'] = $new_info_asientos;
+
+
                             $query = "SELECT *
                             FROM caracteristicas
                             WHERE id_unidad in ($unidad)";
@@ -361,9 +395,9 @@ function findBus()
                 $info_linea[$clave]['precio_total'] = $precio_total;
                 $info_lineas[] = $info_linea;
                 $info_linea[$clave]["fecha_viaje"] = $fecha;
-                $info_linea[$clave]["parada_origen"]=$numero_parada_1;
-                $info_linea[$clave]["parada_destino"]=$numero_parada_2;
-                $info_linea[$clave]["id_linea"]=$clave;
+                $info_linea[$clave]["parada_origen"] = $numero_parada_1;
+                $info_linea[$clave]["parada_destino"] = $numero_parada_2;
+                $info_linea[$clave]["id_linea"] = $clave;
 
             }
             $precio_total = 0;

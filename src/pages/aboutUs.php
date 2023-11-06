@@ -2,6 +2,9 @@
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@ if (!empty($_SESSION["login"])) {
     <main class="about">
         <?php include('./components/menu.php'); ?>
         <section class="about__banner" data-aos="fade-right">
-            <img src="../assets/nosotros" alt="nosotros" class="img1" />
+            <img src="../assets/nosotros.webp" alt="nosotros" class="img1" />
             <div class="banner__text">
                 <h2 id="aboutTitle"></h2>
                 <p id="aboutFtext"></p>
@@ -36,10 +39,10 @@ if (!empty($_SESSION["login"])) {
                 <p id="aboutConfort"> </p>
                 <i class="fa-sharp fa-solid fa-quote-right"></i>
             </div>
-            <img src="../assets/aboutus2.png" alt="travelBus" />
+            <img src="../assets/aboutus2.webp" alt="travelBus" />
         </section>
         <section class="about__banner" data-aos="zoom-in-down">
-            <img src="../assets/nuestras unidades" alt="nuestras unidades" class="img1" />
+            <img src="../assets/nuestras unidades.webp" alt="nuestras unidades" class="img1" />
             <div class="banner__text">
                 <h2 id="aboutBus"></h2>
                 <p id="aboutBustxt"> </p>
@@ -50,10 +53,10 @@ if (!empty($_SESSION["login"])) {
                 <h2 id="aboutSecurity"></h2>
                 <p id="aboutSecuritytxt"></p>
             </div>
-            <img src="../assets/seguridad.png" alt="seguridad" />
+            <img src="../assets/seguridad.webp" alt="seguridad" />
         </section>
         <section class="about__banner" data-aos="zoom-in-down">
-            <img src="../assets/comodidad" alt="comodidad" class="img1" />
+            <img src="../assets/comodidad.webp" alt="comodidad" class="img1" />
             <div class="banner__text">
                 <h2 id="aboutConforttitle"></h2>
                 <p id="aboutConforttxt"></p>

@@ -2,7 +2,6 @@
 login(); */
 import translate from "./modules/translations.js";
 
-
 if (!localStorage.getItem("lang")) {
   localStorage.setItem("lang", "ES");
   translate("ES");

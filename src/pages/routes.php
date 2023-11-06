@@ -3,7 +3,9 @@
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
-
+if (!empty($_SESSION["rol"])) {
+  header('location: ./dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html>

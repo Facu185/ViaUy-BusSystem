@@ -1,11 +1,12 @@
 <?php
-
+include "./controllers/verifySeat.php";
 if (!empty($_SESSION["login"]) && isset($_SESSION['infolinea'])) {
     $login = $_SESSION["login"];
     $infolinea = $_SESSION['infolinea'];
-} else {
 }
-
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +64,10 @@ if (!empty($_SESSION["login"]) && isset($_SESSION['infolinea'])) {
                 <option id="creditPayment" value="Pagar con tarjeta de crédito"></option>
                 <option id="debitPayment" value="Pagar con tarjeta de débito"></option>
                 <option id="cashPayment" value="Pagar en efectivo"></option>
+            </select>
+            <select name="tipo_viaje" id="tipo_viaje">
+                <option id="ida" value="Ida">Ida</option>
+                <option id="ida_vuelta" value="Ida y vuelta">Ida y vuelta</option>
             </select>
             <input id="booking" type='submit' class='button--primary' name='confirmar_reserva' value='Confirmar reserva'>
             <input id="confirmBuy" type='submit' class='button--primary' name='confirmar_compra' value='Confirmar compra'>

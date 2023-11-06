@@ -3,7 +3,9 @@
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
-
+if (!empty($_SESSION["rol"])) {
+  header('location: ./dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,12 +31,12 @@ if (!empty($_SESSION["login"])) {
         </p>
       </div>
       <div class="card__img">
-        <img src="../assets/transporte interdepartamental" alt="transporte interdepartamental" />
+        <img src="../assets/transporte interdepartamental.webp" alt="transporte interdepartamental" />
       </div>
     </div>
-    <div class="services__card" data-aos="fade-right" id="secondary--card">
+    <div class="services__card" data-aos="zoom-in-down" id="secondary--card">
       <div class="card__img">
-        <img src="../assets/express.png" alt="express" />
+        <img src="../assets/express.webp" alt="express" />
       </div>
       <div class="card__text">
         <h2 id="servicesLines"><span id="servicesLinesspan"></span> </h2>
@@ -42,19 +44,19 @@ if (!empty($_SESSION["login"])) {
         </p>
       </div>
     </div>
-    <div class="services__card" data-aos="fade-left">
+    <div class="services__card" data-aos="zoom-in-down">
       <div class="card__text">
         <h2 id="servicesTourism"> <span id="servicesTourismSpan"></span></h2>
         <p id="servicesTourismText">
         </p>
       </div>
       <div class="card__img">
-        <img src="../assets/turistico.jpg" alt="" />
+        <img src="../assets/turistico.webp" alt="" />
       </div>
     </div>
-    <div class="services__card" data-aos="fade-right" id="secondary--card">
+    <div class="services__card" data-aos="zoom-in-down" id="secondary--card">
       <div class="card__img">
-        <img src="../assets/ejecutivo.jpg" alt="ejecutivo" />
+        <img src="../assets/ejecutivo.webp" alt="ejecutivo" />
       </div>
       <div class="card__text">
         <h2 id="serviceExecutive"><span id="serviceExecutiveSpan"> </span></h2>
@@ -62,19 +64,19 @@ if (!empty($_SESSION["login"])) {
         </p>
       </div>
     </div>
-    <div class="services__card" data-aos="fade-left">
+    <div class="services__card" data-aos="zoom-in-down">
       <div class="card__text">
         <h2 id="serviceTransport"> <span id="serviceTransportSpan"> </span></h2>
         <p id="serviceTransporttext">
         </p>
       </div>
       <div class="card__img">
-        <img src="../assets/alquiler.png" alt="alquiler" />
+        <img src="../assets/alquiler.webp" alt="alquiler" />
       </div>
     </div>
-    <div class="services__card" data-aos="fade-right" id="secondary--card">
+    <div class="services__card" data-aos="zoom-in-down" id="secondary--card">
       <div class="card__img">
-        <img src="../assets/encomiendas.jpg" alt="encomiendas" />
+        <img src="../assets/encomiendas.webp" alt="encomiendas" />
       </div>
       <div class="card__text">
         <h2 id="servicesShipment"><span id="servicesShipmentSpan"> </span> </h2>
@@ -82,14 +84,14 @@ if (!empty($_SESSION["login"])) {
         </p>
       </div>
     </div>
-    <div class="services__card" data-aos="fade-left">
+    <div class="services__card" data-aos="zoom-in-down">
       <div class="card__text">
         <h2 id="serviceCustomer"><span id="serviceCustomerSpan"> </span></h2>
         <p id="serviceCustomerText">
         </p>
       </div>
       <div class="card__img">
-        <img src="../assets/servicio tecnico" alt="servicio tecnico" />
+        <img src="../assets/servicio tecnico.webp" alt="servicio tecnico" />
       </div>
     </div>
   </main>

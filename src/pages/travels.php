@@ -9,7 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
-
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@ if (!empty($_SESSION["login"])) {
                     <?php echo ($info_linea['destino_tramo']) ?>
                 </p>
             </div>
-            <img src="../assets/travels-bus.png" alt="bus">
+            <img src="../assets/travels-bus.webp" alt="bus">
         </section>
     </main>
     <section class="travel__cards">

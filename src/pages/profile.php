@@ -1,9 +1,12 @@
 <?php
+include "./controllers/userTravels.php";
 $pasaje_usuario = $_SESSION['pasajes']; 
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
-
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +90,7 @@ if (!empty($_SESSION["login"])) {
                     <div class="transactions"><span class="t-desc">
                             <h2 id="mineTravels"></h2>
                         </span>
+                        <?php if (!empty($pasaje_usuario[0])): ?>
                         <div class="transaction">
                             <div class="t-icon-container">
                                 <i class="fa-solid fa-bus"></i>
@@ -108,7 +112,8 @@ if (!empty($_SESSION["login"])) {
                                 </div>
                             </div>
                         </div>
-
+                        <?php endif; ?>
+                        <?php if (!empty($pasaje_usuario[1])): ?>
                         <div class="transaction">
                             <div class="t-icon-container"><i class="fa-solid fa-bus"></i></div>
                             <div class="t-details">
@@ -128,7 +133,8 @@ if (!empty($_SESSION["login"])) {
                                 </div>
                             </div>
                         </div>
-
+                        <?php endif; ?>
+                        <?php if (!empty($pasaje_usuario[2])): ?>
                         <div class="transaction">
                             <div class="t-icon-container">
                                 <i class="fa-solid fa-bus"></i>
@@ -150,6 +156,7 @@ if (!empty($_SESSION["login"])) {
                                 </div>
                             </div>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -157,6 +164,4 @@ if (!empty($_SESSION["login"])) {
         <?php include('./components/navbar.php'); ?>
         <script src="../js/index.js" type="module"></script>
 </body>
-
-
 </html>

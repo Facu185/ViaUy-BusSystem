@@ -1,8 +1,14 @@
 <?php
-$proximasSalidas = $_SESSION['proximasSalidas'];
+if (!empty($_SESSION['proximasSalidas'])) {
+    $proximasSalidas = $_SESSION['proximasSalidas'];
+}
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +32,7 @@ if (!empty($_SESSION["login"])) {
                 <h2 class="main__text" id="homeWelcome"></h2>
                 <p id="homeMessage"></p>
             </div>
-            <img src="../assets/home-bus.png" alt="bus">
+            <img src="../assets/home-bus.webp" alt="bus">
         </section>
         <div class="container">
             <p id="horaActual" styles="display: none;"></p>
@@ -48,10 +54,11 @@ if (!empty($_SESSION["login"])) {
         </div>
         <section class="main__travels">
 
-            <h2 class="main__text" id="homeTravels"></h2>
-            <div class="travels__list">
-                <div class="travel__card" data-aos="fade-right">
-                  
+            <?php if (!empty($proximasSalidas)): ?>
+                <h2 class="main__text" id="homeTravels"></h2>
+                <div class="travels__list">
+                    <div class="travel__card" data-aos="fade-right">
+
                         <div class="card__header">
                             <div class="header__text">
                                 <i class="fa-solid fa-bus"></i>
@@ -110,69 +117,69 @@ if (!empty($_SESSION["login"])) {
                                 </p>
                             </div>
                         </div>
-                   
-                </div>
-                <div class="travel__card" data-aos="fade-left">
-                    <div class="card__header">
-                        <div class="header__text">
-                            <i class="fa-solid fa-bus"></i>
-                            <div>
-                                <p>
-                                    <?php echo ($proximasSalidas[1]["nombre_linea"]); ?>
-                                </p>
-                                <p>
-                                    <?php echo ($proximasSalidas[1]["caracteristicas"]); ?>
-                                </p>
+
+                    </div>
+                    <div class="travel__card" data-aos="fade-left">
+                        <div class="card__header">
+                            <div class="header__text">
+                                <i class="fa-solid fa-bus"></i>
+                                <div>
+                                    <p>
+                                        <?php echo ($proximasSalidas[1]["nombre_linea"]); ?>
+                                    </p>
+                                    <p>
+                                        <?php echo ($proximasSalidas[1]["caracteristicas"]); ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card__row">
-                        <div class="card__info">
-                            <i class="fa-solid fa-circle-arrow-right"></i>
-                            <div>
-                                <p id="homeStartingPoint"></p>
+                        <div class="card__row">
+                            <div class="card__info">
+                                <i class="fa-solid fa-circle-arrow-right"></i>
+                                <div>
+                                    <p id="homeStartingPoint"></p>
+                                    <p>
+                                        <?php echo ($proximasSalidas[1]["origen_linea"]); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card__date">
                                 <p>
                                     <?php echo ($proximasSalidas[1]["origen_linea"]); ?>
                                 </p>
-                            </div>
-                        </div>
-                        <div class="card__date">
-                            <p>
-                                <?php echo ($proximasSalidas[1]["origen_linea"]); ?>
-                            </p>
-                            <p>
-                                <?php echo ($proximasSalidas[1]["hora_salida"]); ?>
-                            </p>
-                            <p>
-                                <?php echo ($proximasSalidas[1]["diaActual"]); ?>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card__row">
-                        <div class="card__info">
-                            <i class="fa-solid fa-circle-arrow-left"></i>
-                            <div>
-                                <p id="homeArrivalPoint"></p>
                                 <p>
-                                    <?php echo ($proximasSalidas[1]["destino_linea"]); ?>
+                                    <?php echo ($proximasSalidas[1]["hora_salida"]); ?>
+                                </p>
+                                <p>
+                                    <?php echo ($proximasSalidas[1]["diaActual"]); ?>
                                 </p>
                             </div>
                         </div>
-                        <div class="card__date">
-                            <p>
-                                <?php echo ($proximasSalidas[1]["destino_linea"]); ?>
-                            </p>
-                            <p>
-                                <?php echo ($proximasSalidas[1]["hora_llegada"]); ?>
-                            </p>
-                            <p>
-                                <?php echo ($proximasSalidas[1]["diaActual"]); ?>
-                            </p>
+                        <div class="card__row">
+                            <div class="card__info">
+                                <i class="fa-solid fa-circle-arrow-left"></i>
+                                <div>
+                                    <p id="homeArrivalPoint"></p>
+                                    <p>
+                                        <?php echo ($proximasSalidas[1]["destino_linea"]); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card__date">
+                                <p>
+                                    <?php echo ($proximasSalidas[1]["destino_linea"]); ?>
+                                </p>
+                                <p>
+                                    <?php echo ($proximasSalidas[1]["hora_llegada"]); ?>
+                                </p>
+                                <p>
+                                    <?php echo ($proximasSalidas[1]["diaActual"]); ?>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            <?php endif; ?>
         </section>
         <section class="ad">
             <h3 id="adHome"></h3>

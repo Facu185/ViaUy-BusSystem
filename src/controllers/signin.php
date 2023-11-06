@@ -25,10 +25,27 @@ function sign_In()
                 if (!password_verify($password, $data["passwd"]))
                     throw new Exception("Alguno de los campos es invalido", 403);
                 $loginData = $data;
+                $ID_usuario = $data["ID_usuario"];
 
-                $_SESSION["login"] = array();
-                $_SESSION["login"] = $loginData;
-                header("location:./home");
+                $query = "SELECT ID_rol FROM usuario_rol WHERE ID_usuario = :ID_usuario";
+                $sql = $conn->prepare($query);
+                $sql->bindParam(":ID_usuario", $ID_usuario);
+                $sql->execute();
+                $rol = $sql->fetch(PDO::FETCH_ASSOC);
+                $id_rol = $rol["ID_rol"];
+
+                if ($id_rol === 3 && $data["activo"]==0) {
+                    $_SESSION["login"] = array();
+                    $_SESSION["login"] = $loginData;
+                    header("location:./home");
+                }elseif($id_rol === 2 || $id_rol === 1 && $data["activo"]==0){
+                    $_SESSION["login"] = array();
+                    $_SESSION["login"] = $loginData;
+                    $_SESSION["rol"] =  $id_rol;
+                    header("location:./dashboard");
+                }else{
+                    echo '<script>alert("No se pudo iniciar sesion"); window.location.href = "./login"; </script>';
+                }
             }
 
         }

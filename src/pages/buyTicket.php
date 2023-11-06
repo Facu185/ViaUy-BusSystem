@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_SESSION["login"])) {
     $login = $_SESSION["login"];
 }
@@ -26,7 +27,7 @@ include_once './controllers/buyTicket.php';
             <p id="seattxt"></p>
             <div>
                 <p>
-                    <?php 
+                    <?php
                     echo ($info_linea['origen_tramo']) ?>
                 </p>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -34,10 +35,10 @@ include_once './controllers/buyTicket.php';
                     <?php echo ($info_linea['destino_tramo']) ?>
                 </p>
             </div>
-            <img src="../assets/travels-bus.png" alt="bus">
+            <img src="../assets/travels-bus.webp" alt="bus">
         </section>
         <section class='travel__seats'>
-            <p id="seatSelected" class="select__title" ></p>
+            <p id="seatSelected" class="select__title"></p>
             <div class="seats__container">
                 <?php foreach ($info_linea['asientos'] as $asiento): ?>
                     <div class="seats__seat <?php if ($asiento->disponibilidad == 1) {
@@ -54,7 +55,7 @@ include_once './controllers/buyTicket.php';
             <form method="POST" action="./seat">
                 <select id="asiento" name="asientoSeleccionado" type='text'>
                     <?php foreach ($info_linea['asientos'] as $disponible): ?>
-                        <?php if ($disponible->disponibilidad == 1): ?>
+                        <?php if ($disponible->disponibilidad == 1):?>
                             <option selected>
                                 <?php echo ($disponible->Numero_asiento); ?>
                             </option>
@@ -63,7 +64,7 @@ include_once './controllers/buyTicket.php';
                 <?php endif ?>
             </select>
             <input type="hidden" name="linea" value='<?php echo json_encode($info_linea); ?>'>
-            <input id="seatbutton" class="button--primary" id="homeButton" type="submit" >
+            <input id="seatbutton" class="button--primary" id="homeButton" type="submit">
         </form>
     </section>
 </main>

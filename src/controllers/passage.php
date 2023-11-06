@@ -8,6 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passage = json_decode($_POST['viaje']);
     $metodoPago = $_POST["forma_pago"];
     $id_usuario = $_SESSION["login"]["ID_usuario"];
+    $email = $_SESSION["login"]["email"];
+    $nombre = $_SESSION["login"]["nombre"];
+    $apellido = $_SESSION["login"]["apellido"];
     $id_linea = $passage->idLinea;
     $hora_salida = $passage->hora_salida;
     $hora_llegada = $passage->hora_llegada;
@@ -18,7 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha_viaje = $passage->fechaViaje;
     $asientos_seleccionado = $passage->asientos_seleccionado;
     $fecha_actual = date('Y-m-d');
- 
+    $forma_viaje = $_POST["tipo_viaje"];
+    $origen = $passage->origen_tramo;
+    $destino = $passage->destino_tramo;
+    if ($forma_viaje == "Ida y vuelta") {
+        $precio = $precio * 2;
+    }
+
+
     $metodoPago = $_POST["forma_pago"];
     $query = "SELECT ID_medio_pago FROM medio_de_pago WHERE tipo_medio_pago=:metodoPago";
     $sql = $conn->prepare($query);
@@ -35,13 +45,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql->bindParam(':hora_llegada', $hora_llegada);
     $sql->execute();
     $id_horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
-  
     $id_horario = $id_horarios[0]["ID_horario"];
 
-    $query = "UPDATE asiento SET disponibilidad=0 WHERE ID_unidad=:id_unidad AND Numero_asiento=:asientos_seleccionado";
+    $query = "INSERT INTO horario_asiento (ID_horario, ID_linea, ID_unidad, Numero_asiento, fecha_viaje, disponibilidad_asiento) VALUES (:id_horario, :id_linea, :id_unidad, :asientos_seleccionado, :fecha_viaje, 0)";
     $sql = $conn->prepare($query);
+    $sql->bindParam(":id_horario", $id_horario);
     $sql->bindParam(":id_unidad", $id_unidad);
+    $sql->bindParam(":id_linea", $id_linea);
     $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
+    $sql->bindParam(":fecha_viaje", $fecha_viaje);
     $sql->execute();
 
     if (isset($_POST['confirmar_reserva'])) {
@@ -59,9 +71,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql->bindParam(":fecha_viaje", $fecha_viaje);
         $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
         $sql->execute();
-        echo '<script>alert("Reserva realizada con exito");</script>';
-        echo '<script>window.location.href = "../page/home";</script>';
-       
+
+        $query = "SELECT ID_pasaje FROM pasaje WHERE ID_horario=:id_horario AND ID_medio_de_pago=:id_pago AND ID_usuario=:id_usuario AND ID_linea=:id_linea AND ID_unidad=:id_unidad AND precio=:precio AND fecha_compra=:fecha_actual AND numero_parada_origen=:parada_origen AND numero_parada_destino=:parada_destino AND fecha_viaje=:fecha_viaje AND asiento_seleccionado=:asientos_seleccionado;";
+        $sql = $conn->prepare($query);
+        $sql->bindParam('id_horario', $id_horario);
+        $sql->bindParam('id_pago', $id_pago);
+        $sql->bindParam('id_usuario', $id_usuario);
+        $sql->bindParam('id_linea', $id_linea);
+        $sql->bindParam('id_unidad', $id_unidad);
+        $sql->bindParam('precio', $precio);
+        $sql->bindParam('fecha_actual', $fecha_actual);
+        $sql->bindParam('parada_origen', $parada_origen);
+        $sql->bindParam('parada_destino', $parada_destino);
+        $sql->bindParam('fecha_viaje', $fecha_viaje);
+        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado);
+        $sql->execute();
+        $id_paseje_reserva = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $detalleViaje = array(
+            'Numero de Pasaje' => $id_paseje_reserva[0]["ID_pasaje"],
+            'Método de Pago' => $metodoPago,
+            'Hora de Salida' => $hora_salida,
+            'Hora de Llegada' => $hora_llegada,
+            'Precio' => $precio,
+            'Origen' => $origen,
+            'Destino' => $destino,
+            'Parada de Origen' => $parada_origen,
+            'Parada de Destino' => $parada_destino,
+            'Fecha del Viaje' => $fecha_viaje,
+            'Asiento Seleccionado' => $asientos_seleccionado,
+            'Fecha compra' => $fecha_actual,
+            'Tipo de Viaje' => $forma_viaje
+        );
+
+        $_SESSION['detalleViaje'] = $detalleViaje;
+        echo '<script>alert("Reserva realizada con éxito");</script>';
+        echo '<script>setTimeout(function() {window.location.href = "../page/pdf";}, 1);</script>';
+        echo '<script>setTimeout(function() {window.location.href = "../page/home";}, 200);</script>';
+
+
+
+        /* $destinatario = "$email";
+        $asunto = "Información del Viaje ViaUy";
+        $mensaje = "Hola " . $nombre . " " . $apellido . ", muchas gracias por su compra. Esperamos que disfrute de su viaje.\n";
+        $mensaje = "Detalles de la Reserva:\n\n";
+        $mensaje .= "Numero de Pasaje: " . $id_paseje_reserva[0]["ID_pasaje"] . "\n";
+        $mensaje .= "Método de Pago: " . $metodoPago . "\n";
+        $mensaje .= "Hora de Salida: " . $hora_salida . "\n";
+        $mensaje .= "Hora de Llegada: " . $hora_llegada . "\n";
+        $mensaje .= "Precio: " . $precio . "\n";
+        $mensaje .= "Origen: " . $origen . "\n";
+        $mensaje .= "Destino: " . $destino . "\n";
+        $mensaje .= "Parada de Origen: " . $parada_origen . "\n";
+        $mensaje .= "Parada de Destino: " . $parada_destino . "\n";
+        $mensaje .= "Fecha del Viaje: " . $fecha_viaje . "\n";
+        $mensaje .= "Asientos Seleccionados: " . $asientos_seleccionado . "\n";
+        $mensaje .= "Fecha compra: " . $fecha_actual . "\n";
+        $mensaje .= "Tipo de Viaje: " . $forma_viaje;
+
+        // Cabeceras del correo
+        $headers = "From: viauy@example.com\r\n";
+        $headers .= "Reply-To: viauy@example.com\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion();
+
+        @mail($destinatario, $asunto, $mensaje, $headers); */
+
+
     } elseif (isset($_POST['confirmar_compra'])) {
         $query = "INSERT INTO pasaje(ID_horario, ID_medio_de_pago, ID_usuario, ID_linea, ID_unidad, precio, estado, fecha_compra, numero_parada_origen, numero_parada_destino, fecha_viaje, asiento_seleccionado) VALUES (:id_horario, :id_pago, :id_usuario, :id_linea, :id_unidad, :precio, 'Comprado', :fecha_actual, :parada_origen, :parada_destino, :fecha_viaje, :asientos_seleccionado );";
         $sql = $conn->prepare($query);
@@ -77,9 +152,69 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql->bindParam(":fecha_viaje", $fecha_viaje);
         $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
         $sql->execute();
-        echo '<script>alert("Compra realizada con exito");</script>';
-        echo '<script>window.location.href = "../page/home";</script>';
-       
+
+        $query = "SELECT ID_pasaje FROM pasaje WHERE ID_horario=:id_horario AND ID_medio_de_pago=:id_pago AND ID_usuario=:id_usuario AND ID_linea=:id_linea AND ID_unidad=:id_unidad AND precio=:precio AND fecha_compra=:fecha_actual AND numero_parada_origen=:parada_origen AND numero_parada_destino=:parada_destino AND fecha_viaje=:fecha_viaje AND asiento_seleccionado=:asientos_seleccionado;";
+        $sql = $conn->prepare($query);
+        $sql->bindParam('id_horario', $id_horario);
+        $sql->bindParam('id_pago', $id_pago);
+        $sql->bindParam('id_usuario', $id_usuario);
+        $sql->bindParam('id_linea', $id_linea);
+        $sql->bindParam('id_unidad', $id_unidad);
+        $sql->bindParam('precio', $precio);
+        $sql->bindParam('fecha_actual', $fecha_actual);
+        $sql->bindParam('parada_origen', $parada_origen);
+        $sql->bindParam('parada_destino', $parada_destino);
+        $sql->bindParam('fecha_viaje', $fecha_viaje);
+        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado);
+        $sql->execute();
+        $id_paseje_compra = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $detalleViaje = array(
+            'Numero de Pasaje' => $id_paseje_compra[0]["ID_pasaje"],
+            'Método de Pago' => $metodoPago,
+            'Hora de Salida' => $hora_salida,
+            'Hora de Llegada' => $hora_llegada,
+            'Precio' => $precio,
+            'Origen' => $origen,
+            'Destino' => $destino,
+            'Parada de Origen' => $parada_origen,
+            'Parada de Destino' => $parada_destino,
+            'Fecha del Viaje' => $fecha_viaje,
+            'Asiento Seleccionado' => $asientos_seleccionado,
+            'Fecha compra' => $fecha_actual,
+            'Tipo de Viaje' => $forma_viaje
+        );
+
+        $_SESSION['detalleViaje'] = $detalleViaje;
+        echo '<script>alert("Compra realizada con éxito");</script>';
+        echo '<script>setTimeout(function() {window.location.href = "../page/pdf";}, 1);</script>';
+        echo '<script>setTimeout(function() {window.location.href = "../page/home";}, 200);</script>';
+
+        /* $destinatario = "$email";
+        $asunto = "Información del Viaje ViaUy";
+        $mensaje = "Hola " . $nombre . " " . $apellido . ", muchas gracias por su compra. Esperamos que disfrute de su viaje.\n";
+        $mensaje = "Detalles de la Reserva:\n\n";
+        $mensaje .= "Numero de Pasaje: " . $id_paseje_reserva[0]["ID_pasaje"] . "\n";
+        $mensaje .= "Método de Pago: " . $metodoPago . "\n";
+        $mensaje .= "Hora de Salida: " . $hora_salida . "\n";
+        $mensaje .= "Hora de Llegada: " . $hora_llegada . "\n";
+        $mensaje .= "Precio: " . $precio . "\n";
+        $mensaje .= "Origen: " . $origen . "\n";
+        $mensaje .= "Destino: " . $destino . "\n";
+        $mensaje .= "Parada de Origen: " . $parada_origen . "\n";
+        $mensaje .= "Parada de Destino: " . $parada_destino . "\n";
+        $mensaje .= "Fecha del Viaje: " . $fecha_viaje . "\n";
+        $mensaje .= "Asientos Seleccionados: " . $asientos_seleccionado . "\n";
+        $mensaje .= "Fecha compra: " . $fecha_actual . "\n";
+        $mensaje .= "Tipo de Viaje: " . $forma_viaje;
+
+        // Cabeceras del correo
+        $headers = "From: viauy@example.com\r\n";
+        $headers .= "Reply-To: viauy@example.com.com\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion();
+
+        @mail($destinatario, $asunto, $mensaje, $headers); */
+
     }
 }
 ?>

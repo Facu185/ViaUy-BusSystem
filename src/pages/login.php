@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "./controllers/signin.php"
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +15,7 @@ include "./controllers/signin.php"
 
 <body>
     <main class="login">
-        <img src="../assets/login-img.png" alt="omnibus" class="login__image">
+        <img src="../assets/login-img.webp" alt="omnibus" class="login__image">
 
         <section class="login__menu">
             <h2 class="menu__welcome" id="loginWelcome"></h2>

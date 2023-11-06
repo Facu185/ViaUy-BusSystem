@@ -1,3 +1,8 @@
+<?php 
+if (!empty($_SESSION["rol"])) {
+    header('location: ./dashboard');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

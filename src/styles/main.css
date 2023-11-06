@@ -194,9 +194,9 @@
   width: 100%;
   cursor: pointer;
 }
-.button--primary:hover{
+.button--primary:hover {
   transition: 250ms;
-  background-color: #0084B4;
+  background-color: #0084b4;
 }
 .login__register {
   font-weight: lighter;
@@ -220,7 +220,6 @@
   align-items: center;
   height: 100vh;
   font-family: "Ubuntu", sans-serif;
-  
 }
 .register__menu {
   display: flex;
@@ -230,7 +229,6 @@
   gap: 0.5rem;
   padding-top: 2rem;
   text-align: center;
-  
 }
 .register__form {
   width: 100%;
@@ -246,8 +244,8 @@
 }
 .register__form form > input {
   padding: 0.8rem 3rem;
-  border:none; 
-  border-radius: .5rem;
+  border: none;
+  border-radius: 0.5rem;
   width: 100%;
   text-align: center;
 }
@@ -284,7 +282,7 @@
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  background: url("../assets/bg.png") fixed no-repeat center;
+  background: url("../assets/bg.webp") fixed no-repeat center;
   background-size: cover;
   padding: 5rem;
   position: relative;
@@ -341,7 +339,7 @@
   border-radius: none;
 }
 .register {
-  background: url("../assets/bg.png") no-repeat fixed center;
+  background: url("../assets/bg.webp") no-repeat fixed center;
   background-size: cover;
 }
 .register > h1 {
@@ -414,14 +412,14 @@
 .nav__bar a i {
   color: #0084b4;
 }
-.nav__bar a i:hover{
-  color: #F8F8F8;
+.nav__bar a i:hover {
+  color: #f8f8f8;
 }
 .nav__bar a p {
   color: #0084b4;
 }
-.nav__bar a p:hover{
-  color: #F8F8F8;
+.nav__bar a p:hover {
+  color: #f8f8f8;
 }
 .nav__bar > div {
   text-align: center;
@@ -442,7 +440,7 @@
 
 .main--travel {
   padding: 5rem 1rem;
-  background: url("../assets/bg.png") no-repeat center fixed;
+  background: url("../assets/bg.webp") no-repeat center fixed;
   background-size: cover;
   display: grid;
   place-items: center;
@@ -521,8 +519,8 @@
   padding: 0.5rem;
   cursor: pointer;
 }
-.dropbtn:hover{
-  color: #0084B4;
+.dropbtn:hover {
+  color: #0084b4;
 }
 
 .active__seat {
@@ -539,7 +537,7 @@
   width: 100%;
   justify-content: space-between;
   gap: 0.5rem;
-  background: url("../assets/bg.png") no-repeat center fixed;
+  background: url("../assets/bg.webp") no-repeat center fixed;
   background-size: cover;
 }
 .dropdowns {
@@ -557,24 +555,24 @@
   z-index: 1;
   gap: 1rem;
   padding: 0.5rem;
-  background: url("../assets/bg.png") no-repeat center fixed;
+  background: url("../assets/bg.webp") no-repeat center fixed;
   background-size: cover;
   font-family: "Noto Sans", sans-serif;
 }
-.dropdown-content a:hover{
-  color:#0084B4;
+.dropdown-content a:hover {
+  color: #0084b4;
 }
 
 .enHome {
-  background: url("../assets/en.png") no-repeat center;
+  background: url("../assets/en.webp") no-repeat center;
   background-size: cover;
 }
 .esHome {
-  background: url("../assets/es.png") no-repeat center;
+  background: url("../assets/es.webp") no-repeat center;
   background-size: cover;
 }
 .prHome {
-  background: url("../assets/pr.png") no-repeat center;
+  background: url("../assets/pr.webp") no-repeat center;
   background-size: cover;
 }
 
@@ -697,7 +695,7 @@
   align-items: center;
   text-align: center;
   margin: 1rem 0 0 0;
-  background: url("../assets/ruta.png") fixed no-repeat center;
+  background: url("../assets/ruta.webp") fixed no-repeat center;
   background-size: cover;
   color: white;
   padding: 5rem;
@@ -713,8 +711,8 @@
 .logoColor {
   color: #ffcc00;
 }
-.about{
-  background: url("../assets/bg.png") fixed no-repeat center;
+.about {
+  background: url("../assets/bg.webp") fixed no-repeat center;
   background-size: cover;
   color: white;
 }
@@ -751,7 +749,8 @@
 
 .about__quote {
   background-color: #8ed9ff5b;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -874,9 +873,9 @@
   font-family: "Noto Sans", sans-serif;
   color: white;
 }
-.contact__form button:hover{
+.contact__form button:hover {
   transition: 250ms;
-  background-color: #0084B4;
+  background-color: #0084b4;
 }
 
 .contact__form input {
@@ -901,6 +900,7 @@
   flex-direction: column;
   justify-content: center;
   flex: 1.5;
+  margin-top: 4rem;
 }
 
 .services__card .card__text p {
@@ -980,11 +980,11 @@
   color: #bdbdbd;
   width: fit-content;
 }
-.footer__social a:hover{
-  color: #FFCC00;
+.footer__social a:hover {
+  color: #ffcc00;
 }
-.footer__pages a:hover{
-  color: #FFCC00;
+.footer__pages a:hover {
+  color: #ffcc00;
 }
 #textAbout {
   white-space: pre-line;
@@ -1012,7 +1012,7 @@
 }
 
 .header__profile {
-  background: url(../assets/bg.png) no-repeat center fixed;
+  background: url(../assets/bg.webp) no-repeat center fixed;
   background-size: cover;
   display: flex;
   justify-content: space-around;
@@ -1056,7 +1056,7 @@
   display: flex;
   flex-direction: column;
 }
-.card__profile h2{
+.card__profile h2 {
   margin-top: 1rem;
   text-align: center;
   font-family: "Noto Sans", sans-serif;
@@ -1067,13 +1067,12 @@
   padding: 2rem 0.5rem;
   text-align: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
-
 
 .card-item {
   font-family: "Noto Sans", sans-serif;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -1100,11 +1099,11 @@
   cursor: pointer;
 }
 
-.icon-item i:hover{
-  color: #8ED9FF;
+.icon-item i:hover {
+  color: #8ed9ff;
 }
-.icon-item p:hover{
-  color: #8ED9FF;
+.icon-item p:hover {
+  color: #8ed9ff;
 }
 
 .icon {
@@ -1112,7 +1111,6 @@
   border-radius: 5px;
   margin-bottom: 5px;
 }
-
 
 .icon-text {
   font-family: "Noto Sans", sans-serif;
@@ -1195,7 +1193,7 @@
     padding: 2rem;
     font-size: 1.5rem;
   }
-  .card__profile h2{
+  .card__profile h2 {
     margin-top: 2rem;
     font-size: 2.5rem;
   }
@@ -1203,20 +1201,20 @@
     padding: 1rem;
     font-size: 1.5rem;
   }
-  .t-desc{
+  .t-desc {
     margin: 2rem;
     font-size: 2rem;
   }
-  .transaction{
+  .transaction {
     padding: 1rem 17rem;
     font-size: 1.5rem;
   }
-  .upper-row{
+  .upper-row {
     display: flex;
     flex-direction: row;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
   }
-  .about__user{
+  .about__user {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -1496,4 +1494,38 @@
     padding: 1rem;
     width: 80%;
   }
+}
+
+
+
+.admin__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+.admin__main table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align: left;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+table th {
+  background-color: #00ccff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
 }
