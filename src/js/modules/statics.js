@@ -1,6 +1,6 @@
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "../controllers/statistics.php", true);
+xhr.open("GET", "../controllers/statics.php", true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
         var statistics = JSON.parse(xhr.responseText);

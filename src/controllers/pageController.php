@@ -84,9 +84,6 @@
         public function statics(){
             include_once("./controllers/statics.php");
         }
-        public function delete(){
-            include_once("./pages/delete.php");
-        }
         public function deleteBus(){
             include_once("./controllers/deleteBus.php");
         }
@@ -99,8 +96,8 @@
         public function  deleteSection(){
             include_once("./controllers/deleteSection.php");
         }
-        public function modify(){
-            include_once("./pages/modify.php");
+        public function modifyRoutePage(){
+            include_once("./pages/modifyRoute.php");
         }
         public function  updateBus(){
             include_once("./controllers/updateBus.php");
@@ -110,6 +107,48 @@
         }
         public function  modifySection(){
             include_once("./controllers/modifySection.php");
+        }
+        public function  modifyRoute(){
+            include_once("./controllers/modifyRoute.php");
+        }
+        public function  modifyLine(){
+            include_once("./controllers/modifyLine.php");
+        }
+        public function addBusStopPage(){
+            include_once("./pages/addBusStop.php");
+        }
+        public function addBusSection(){
+            include_once("./pages/addSection.php");
+        }
+        public function addRoutes(){
+            include_once("./pages/addRoutes.php");
+        }
+        public function deleteBusPage(){
+            include_once("./pages/deleteBus.php");
+        }
+        public function deleteBusStopPage(){
+            include_once("./pages/deleteBusStop.php");
+        }
+        public function deleteLinePage(){
+            include_once("./pages/deleteLine.php");
+        }
+        public function deleteSectionPage(){
+            include_once("./pages/deleteSection.php");
+        }
+        public function modifyBus(){
+            include_once("./pages/modifyBus.php");
+        }
+        public function modifyBusStop(){
+            include_once("./pages/modifyBusStop.php");
+        }
+        public function modifySectionPage(){
+            include_once("./pages/modifySection.php");
+        }
+        public function modifyLinePage(){
+            include_once("./pages/modifyLine.php");
+        }
+        public function manageReservations(){
+            include_once("./pages/manageReservations.php");
         }
     }
 ?>

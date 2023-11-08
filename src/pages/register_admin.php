@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- <?php include_once "./components/AdminSidebar.php"; ?> -->
     <main class="register">
         <h1>Via<span>UY</span></h1>
         <section class="register__menu">
@@ -33,6 +34,7 @@
             </div>
         </section>
     </main>
+    <script src="../js/modules/sideBar.js" type='module'></script>
     <script src="../js/index.js" type="module"></script>
 </body>
 

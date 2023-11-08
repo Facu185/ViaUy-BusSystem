@@ -61,7 +61,7 @@ try {
             $sql->bindParam(":contador2", $contador2);
             $sql->execute();
         }
-        echo '<script>alert("Tramo añadido con exito"); window.location.href = "./addBus"; </script>';
+        echo '<script>alert("Recoorrido añadido con exito"); window.location.href = "./addBus"; </script>';
 
     }
 } catch (Exception $error) {

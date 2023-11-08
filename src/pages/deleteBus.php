@@ -12,13 +12,10 @@
     <main class="admin__main">
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
-            <h3>Agregar unidad</h3>
-            <form method="post" action="./add_Bus">
+            <h3>Eliminar unidad</h3>
+            <form method="post" action="./deleteBus">
                 <input type="text" name="matricula" placeholder="Matricula de la unidad">
-                <input type="text" name="cantAsientos" placeholder="Cantidad de asientos">
-                <input type="text" name="tipoAsientos" placeholder="Tipo de asientos">
-                <input type="text" name="caracteristicas" placeholder="Caracteristicas de la unidad">
-                <input class="button--primary" type="submit" name="addBusButton" value="Agregar unidad">
+                <input class="button--primary" type="submit" name="deleteBus" value="Eliminar unidad">
             </form>
         </section>
     </main>

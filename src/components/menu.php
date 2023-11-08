@@ -1,5 +1,5 @@
 <header class="header--login">
-    <h1 class='logoHead animate__animated  animate__flipInY' >Via<span class='logoColor animate__animated  animate__flipInY'>UY</span></h1>
+    <h1 class='logoHead animate__animated' >Via<span class='logoColor animate__animated'>UY</span></h1>
     <div class="dropdowns">
         <div class="dropdown">
             <button type="button" class="dropbtn" id="homeLanguage"></button>
