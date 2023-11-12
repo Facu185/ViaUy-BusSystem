@@ -9,10 +9,10 @@ try {
     ORDER BY fecha_compra DESC
     LIMIT 3;";
     $sql = $conn->prepare($query);
-    $sql->bindParam(':id_usuario', $id_usuario);
+    $sql->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
     $sql->execute();
     $pasajes = $sql->fetchAll(PDO::FETCH_ASSOC);
-    /* print_r($pasajes); */
+
     foreach ($pasajes as $pasaje) {
         $id_horario = $pasaje["ID_horario"];
         $id_medio_pago = $pasaje["ID_medio_de_pago"];
@@ -28,16 +28,15 @@ try {
         FROM horario
         WHERE ID_horario = :id_horario;";
         $sql = $conn->prepare($query);
-        $sql->bindParam(':id_horario', $id_horario);
+        $sql->bindParam(':id_horario', $id_horario, PDO::PARAM_INT);
         $sql->execute();
         $horario = $sql->fetchAll(PDO::FETCH_ASSOC);
-        /* print_r($horario); */
 
         $query = "SELECT tipo_medio_pago
         FROM medio_de_pago
         WHERE ID_medio_pago= :id_medio_pago;";
         $sql = $conn->prepare($query);
-        $sql->bindParam(':id_medio_pago', $id_medio_pago);
+        $sql->bindParam(':id_medio_pago', $id_medio_pago, PDO::PARAM_INT);
         $sql->execute();
         $pago = $sql->fetchAll(PDO::FETCH_ASSOC);
        
@@ -46,8 +45,8 @@ try {
         FROM parada
         WHERE numero_parada = :numero_parada_origen or numero_parada = :numero_parada_destino;";
         $sql = $conn->prepare($query);
-        $sql->bindParam(':numero_parada_origen', $numero_parada_origen);
-        $sql->bindParam(':numero_parada_destino', $numero_parada_destino);
+        $sql->bindParam(':numero_parada_origen', $numero_parada_origen, PDO::PARAM_INT);
+        $sql->bindParam(':numero_parada_destino', $numero_parada_destino, PDO::PARAM_INT);
         $sql->execute();
         $localizacion = $sql->fetchAll(PDO::FETCH_ASSOC);
         $origen = $localizacion[0]["localizacion"];
@@ -69,4 +68,5 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+$conn = null;
 ?>

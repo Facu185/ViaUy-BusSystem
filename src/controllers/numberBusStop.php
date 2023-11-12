@@ -13,4 +13,5 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 
 echo json_encode($opciones);
+$conn = null;
 ?>

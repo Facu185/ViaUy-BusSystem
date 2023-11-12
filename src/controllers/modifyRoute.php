@@ -12,8 +12,8 @@ try {
         }
         $query = "SELECT ID_tramo FROM recorre WHERE ID_linea=:id_linea AND ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_tramo", $id_tramo);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
         $sql->execute();
         $verificar = $sql->fetch(PDO::FETCH_ASSOC);
         if(empty($verificar)){
@@ -21,10 +21,10 @@ try {
         }
         $query = "UPDATE recorre SET origen_tramo=:origen_tramo, destino_tramo=:destino_tramo WHERE ID_linea=:id_linea AND ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_tramo", $id_tramo);
-        $sql->bindParam(":origen_tramo", $origen_tramo);
-        $sql->bindParam(":destino_tramo", $destino_tramo);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
+        $sql->bindParam(":origen_tramo", $origen_tramo, PDO::PARAM_STR);
+        $sql->bindParam(":destino_tramo", $destino_tramo, PDO::PARAM_STR);
         $sql->execute();
         echo '<script>alert("Recorrido editado con exito"); window.location.href = "./modifyRoutePage"; </script>';
     }
@@ -36,8 +36,8 @@ try {
         }
         $query = "SELECT ID_tramo FROM recorre WHERE ID_linea=:id_linea AND ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_tramo", $id_tramo);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
         $sql->execute();
         $verificar = $sql->fetch(PDO::FETCH_ASSOC);
         if(empty($verificar)){
@@ -45,8 +45,8 @@ try {
         }
         $query = "DELETE FROM recorre WHERE ID_linea=:id_linea AND ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_tramo", $id_tramo);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
         $sql->execute();
         echo '<script>alert("Recorrido eliminado con exito"); window.location.href = "./modifyRoutePage"; </script>';
     }
@@ -54,5 +54,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
-
+$conn = null;
 ?>

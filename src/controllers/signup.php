@@ -46,23 +46,23 @@ try {
         }
         $query = "INSERT IGNORE INTO usuario (nombre, apellido, email, passwd, celular) VALUES (:nombre, :apellido, :email, :passwd, :celular)";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":nombre", $nombre);
-        $sql->bindParam(":apellido", $apellido);
-        $sql->bindParam(":email", $email);
-        $sql->bindParam(":passwd", $passwordCifrada);
-        $sql->bindParam(":celular", $telefono);
+        $sql->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $sql->bindParam(":apellido", $apellido, PDO::PARAM_STR);
+        $sql->bindParam(":email", $email, PDO::PARAM_STR);
+        $sql->bindParam(":passwd", $passwordCifrada, PDO::PARAM_STR);
+        $sql->bindParam(":celular", $telefono, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "SELECT ID_usuario FROM usuario WHERE email = :email";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":email", $email);
+        $sql->bindParam(":email", $email, PDO::PARAM_STR);
         $sql->execute();
         $id = $sql->fetch(PDO::FETCH_ASSOC);
         $id_usuario=$id["ID_usuario"];
 
         $query = "INSERT INTO usuario_rol (id_rol, id_usuario) VALUES (3, :id_usuario)";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_usuario", $id_usuario);
+        $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
         $sql->execute();
 
         header("location:./login");
@@ -71,5 +71,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); window.location.href = "./register";; </script>';
 }
-
+$conn = null;
 ?>

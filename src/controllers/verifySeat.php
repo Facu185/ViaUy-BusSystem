@@ -9,24 +9,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_linea=$linea->idLinea;
     $asiento_selecionado = $_POST["asientoSeleccionado"];
     $fechaViaje = $linea->fechaViaje;
-   
 
     $query = "SELECT ID_horario FROM horario WHERE ID_linea=:id_linea AND ID_unidad=:id_unidad;";
     $sql = $conn->prepare($query);
-    $sql->bindParam(":id_linea", $id_linea);
-    $sql->bindParam(":id_unidad", $id_unidad);
+    $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+    $sql->bindParam(":id_unidad", $id_unidad, PDO::PARAM_INT);
     $sql->execute();
     $horario = $sql->fetch(PDO::FETCH_ASSOC);
     $id_horario = $horario["ID_horario"];
-   /*  print_r($id_horario); */
    
     $query = "SELECT disponibilidad_asiento FROM horario_asiento WHERE Numero_asiento=:asiento_selecionado AND fecha_viaje =:fechaViaje AND ID_horario=:id_horario AND ID_linea=:id_linea AND ID_unidad=:id_unidad;";
     $sql = $conn->prepare($query);
-    $sql->bindParam(":id_linea", $id_linea);
-    $sql->bindParam(":asiento_selecionado", $asiento_selecionado);
-    $sql->bindParam(":fechaViaje", $fechaViaje);
-    $sql->bindParam(":id_unidad", $id_unidad);
-    $sql->bindParam(":id_horario", $id_horario);
+    $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+    $sql->bindParam(":asiento_selecionado", $asiento_selecionado, PDO::PARAM_INT);
+    $sql->bindParam(":fechaViaje", $fechaViaje, PDO::PARAM_STR);
+    $sql->bindParam(":id_unidad", $id_unidad, PDO::PARAM_INT);
+    $sql->bindParam(":id_horario", $id_horario, PDO::PARAM_INT);
     $sql->execute();
     $asientos_ocupados = $sql->fetch(PDO::FETCH_ASSOC);
     
@@ -56,5 +54,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
-
+$conn = null;
 ?>

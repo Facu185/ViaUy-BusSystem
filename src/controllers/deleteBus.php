@@ -10,12 +10,12 @@ try {
         
         $query = "DELETE FROM caracteristicas WHERE ID_unidad=:matricula";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
         $sql->execute();
 
         $query = "SELECT ID_linea FROM horario WHERE ID_unidad=:matricula";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
         $sql->execute();
         $id = $sql->fetch(PDO::FETCH_ASSOC);
         $id_linea = $id["ID_linea"];
@@ -23,28 +23,29 @@ try {
 
         $query = "DELETE FROM horario WHERE ID_unidad=:matricula AND ID_linea=:id_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
-        $sql->bindParam(":id_linea", $id_linea);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "DELETE FROM horario_asiento WHERE ID_unidad=:matricula AND ID_linea=:id_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
-        $sql->bindParam(":id_linea", $id_linea);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "DELETE FROM asiento WHERE ID_unidad=:matricula";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
         $sql->execute();
 
         $query = "DELETE FROM unidad WHERE ID_unidad=:matricula";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":matricula", $matricula);
+        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
         $sql->execute();
         echo '<script>alert("Unidad eliminada con exito"); window.location.href = "./delete"; </script>';
     }
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

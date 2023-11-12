@@ -1,124 +1,91 @@
-/* $(document).ready(function () {
-    $('#staticsForm').submit(function (event) {
-        event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+document.getElementById("staticsForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+    var fecha1 = document.getElementById("fDate").value;
+    var fecha2 = document.getElementById("sDate").value;
 
-        // Obtén los datos desde PHP
-        $.ajax({
-            url: '../controllers/statics.php',
-            method: 'POST',
-            data: {
-                showstatics: true,
-                fDate: $('input[name=fDate]').val(),
-                sDate: $('input[name=sDate]').val()
-            },
-            dataType: 'json',
-            success: function (response) {
-                // Procesa los datos para el gráfico de barras
-                var labels = [];
-                var sumaPrecios = [];
-                var compras = [];
-
-                response.forEach(function (data) {
-                    labels.push(data.Mes);
-                    sumaPrecios.push(data.SumaPrecios);
-                    compras.push(data.Compras);
-                });
-
-                // Crea el gráfico de barras en el contenedor con ID 'chartContainer'
-                var ctx = document.getElementById('barChart').getContext('2d');
-                var barChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Suma de Precios',
-                                data: sumaPrecios,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Número de Compras',
-                                data: compras,
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            },
-            error: function (error) {
-                console.log('Error en la solicitud AJAX: ', error);
-            }
+    if (fecha1 == "" || fecha2 == "") {
+        alert("Falta completar campos");
+        return;
+    }
+    
+    let meses = [];
+    let precios = [];
+    let compras = [];
+    
+    $.ajax  ({
+        url: '../controllers/statics.php',
+        method: 'POST',
+        data: {
+            fDate:fecha1,
+            sDate:fecha2,
+        }
+    }).done(function (response) {
+        var datos = JSON.parse(response);
+        datos.forEach(element => {
+            meses.push(element["Mes"]);
+            precios.push(element["SumaPrecios"]);
+            compras.push(element["Compras"]);
         });
-    });
-}); */
 
+        const graph = document.getElementById("barChart");
 
-
-/* const labels = ['Enero', 'Febrero', 'Marzo', 'Abril'];
-const colors = ['rgb(69,177,223)', 'rgb(99,201,122)', 'rgb(203,82,82)', 'rgb(229,224,88)'];
-
-const graph = document.getElementById("barChart");
-
-// Realiza una solicitud AJAX para obtener los datos desde PHP
-const xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        const datos = JSON.parse(xhr.responseText);
-
-        // Crea la configuración de la gráfica con los datos obtenidos
         const data = {
-            labels: labels,
+            labels: meses,
             datasets: [{
-                data: datos,
-                backgroundColor: colors
+                label: "Total de precios por mes",
+                data: precios,
+                backgroundColor: 'rgb(69,177,223)',
             }]
         };
-
+        
         const config = {
             type: 'bar',
             data: data,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
         };
+        
+         new Chart(graph, config); 
 
-        // Crea la gráfica con Chart.js
-        new Chart(graph, config);
-    }
-};
+        const graph2 = document.getElementById("barChart2");
+        
+        const data2 = {
+            labels: meses,
+            datasets: [{
+                label: "Compras por mes",
+                data: compras,
+                backgroundColor: 'rgb(99,201,122)',
+            }]
+        };
+        
+        const config2 = {
+            type: 'bar',
+            data: data2,
 
-// Especifica la URL del archivo PHP que proporciona los datos
-xhr.open("GET", "../controllers/statics.php", true);
-xhr.send(); */
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        };
+        
+        new Chart(graph2, config2); 
+
+
+                })
+            });
 
 
 
 
-/* const labels = ['Enero', 'Febrero', 'Marzo', 'Abril']
-const colors = ['rgb(69,177,223)', 'rgb(99,201,122)', 'rgb(203,82,82)', 'rgb(229,224,88)'];
- 
-const graph = document.getElementById("barChart");
- 
-const data = {
-    labels: labels,
-    datasets: [{
-        data: [1, 2, 3, 4],
-        backgroundColor: colors
-    }]
-};
- 
-const config = {
-    type: 'bar',
-    data: data,
-};
- 
-new Chart(graph, config);
- */

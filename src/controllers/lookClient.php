@@ -11,7 +11,7 @@ try {
 
         $query = "SELECT * FROM usuario WHERE email =:email";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":email", $email);
+        $sql->bindParam(":email", $email, PDO::PARAM_STR);
         $sql->execute();
         $usuario = $sql->fetch(PDO::FETCH_ASSOC);
         if(empty($usuario)){
@@ -26,5 +26,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
-
+$conn = null;
 ?>

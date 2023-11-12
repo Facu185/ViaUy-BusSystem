@@ -10,7 +10,7 @@ try {
         }
         $query = "SELECT estado FROM pasaje WHERE ID_pasaje =:id_pasaje";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_pasaje", $id_pasaje);
+        $sql->bindParam(":id_pasaje", $id_pasaje, PDO::PARAM_INT);
         $sql->execute();
         $estados = $sql->fetch(PDO::FETCH_ASSOC);
         $estado = $estados["estado"];
@@ -20,7 +20,7 @@ try {
         } else {
             $query = "UPDATE pasaje SET estado = 'Cancelado' WHERE ID_pasaje =:id_pasaje";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":id_pasaje", $id_pasaje);
+            $sql->bindParam(":id_pasaje", $id_pasaje, PDO::PARAM_INT);
             $sql->execute();
             echo '<script>alert("Pasaje cancelado con exito"); window.location.href = "./manageReservations"; </script>';
         }
@@ -35,7 +35,7 @@ try {
         }
         $query = "SELECT estado FROM pasaje WHERE ID_pasaje =:id_pasaje";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_pasaje", $id_pasaje);
+        $sql->bindParam(":id_pasaje", $id_pasaje, PDO::PARAM_INT);
         $sql->execute();
         $estados = $sql->fetch(PDO::FETCH_ASSOC);
         $estado = $estados["estado"];
@@ -44,7 +44,7 @@ try {
         } else {
             $query = "UPDATE pasaje SET estado = 'Reservado-Comprado' WHERE ID_pasaje =:id_pasaje";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":id_pasaje", $id_pasaje);
+            $sql->bindParam(":id_pasaje", $id_pasaje, PDO::PARAM_INT);
             $sql->execute();
             echo '<script>alert("Pasaje comprado con exito"); window.location.href = "./manageReservations"; </script>';
         }
@@ -53,4 +53,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

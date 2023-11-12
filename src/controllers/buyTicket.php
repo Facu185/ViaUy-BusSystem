@@ -16,5 +16,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "parada_destino"=> $_POST["parada_destino"],
     );
 }
-
 ?>

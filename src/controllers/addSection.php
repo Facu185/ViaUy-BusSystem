@@ -35,8 +35,8 @@ try {
 
             $query = "SELECT numero_parada_1, numero_parada_2 FROM tramo WHERE numero_parada_1 = :parada_origen AND numero_parada_2 = :parada_destino";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":parada_origen", $parada_origen);
-            $sql->bindParam(":parada_destino", $parada_destino);
+            $sql->bindParam(":parada_origen", $parada_origen, PDO::PARAM_INT);
+            $sql->bindParam(":parada_destino", $parada_destino, PDO::PARAM_INT);
             $sql->execute();
             $paradas = $sql->fetch(PDO::FETCH_ASSOC);
             if (!empty($paradas)) {
@@ -45,13 +45,13 @@ try {
 
             $query = "INSERT INTO tramo (numero_parada_1, numero_parada_2, tipo_tramo, distancia, calles, rutas, tiempo) VALUES (:parada_origen, :parada_destino, :tipo_tramo, :distancia, :calles, :rutas, :tiempo_viaje)";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":parada_origen", $parada_origen);
-            $sql->bindParam(":parada_destino", $parada_destino);
-            $sql->bindParam(":tipo_tramo", $tipo_tramo);
-            $sql->bindParam(":distancia", $distancia);
-            $sql->bindParam(":calles", $calles);
-            $sql->bindParam(":rutas", $rutas);
-            $sql->bindParam(":tiempo_viaje", $tiempo_viaje);
+            $sql->bindParam(":parada_origen", $parada_origen, PDO::PARAM_INT);
+            $sql->bindParam(":parada_destino", $parada_destino, PDO::PARAM_INT);
+            $sql->bindParam(":tipo_tramo", $tipo_tramo, PDO::PARAM_INT);
+            $sql->bindParam(":distancia", $distancia, PDO::PARAM_INT);
+            $sql->bindParam(":calles", $calles, PDO::PARAM_STR);
+            $sql->bindParam(":rutas", $rutas, PDO::PARAM_STR);
+            $sql->bindParam(":tiempo_viaje", $tiempo_viaje, PDO::PARAM_STR);
             $sql->execute();
 
             echo '<script>alert("Tramo añadido con exito"); window.location.href = "./addBusSection"; </script>';
@@ -61,4 +61,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

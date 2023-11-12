@@ -14,7 +14,7 @@ try {
 
         $query = "SELECT nombre_linea FROM linea WHERE nombre_linea =:nombre_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":nombre_linea", $nombre_linea);
+        $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
         $sql->execute();
         $linea = $sql->fetch(PDO::FETCH_ASSOC);
         $nombre = $linea["nombre_linea"];
@@ -24,10 +24,10 @@ try {
         if (!empty($nombre_linea) && !empty($origen_linea) && !empty($destino_linea)) {
             $query = "UPDATE linea SET nombre_linea=:nombre_linea, origen_linea=:origen_linea, destino_linea=:destino_linea WHERE Id_linea=:id_linea";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":nombre_linea", $nombre_linea);
-            $sql->bindParam(":origen_linea", $origen_linea);
-            $sql->bindParam(":destino_linea", $destino_linea);
-            $sql->bindParam(":id_linea", $id_linea);
+            $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
+            $sql->bindParam(":origen_linea", $origen_linea, PDO::PARAM_STR);
+            $sql->bindParam(":destino_linea", $destino_linea, PDO::PARAM_STR);
+            $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
             $sql->execute();
 
             echo '<script>alert("Linea modificada con exito"); window.location.href = "./modifyLinePage"; </script>';
@@ -35,8 +35,8 @@ try {
         if (!empty($nombre_linea)) {
             $query = "UPDATE linea SET nombre_linea=:nombre_linea WHERE Id_linea=:id_linea";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":nombre_linea", $nombre_linea);
-            $sql->bindParam(":id_linea", $id_linea);
+            $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
+            $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
             $sql->execute();
 
             echo '<script>alert("Linea modificada con exito"); window.location.href = "./modifyLinePage"; </script>';
@@ -44,8 +44,8 @@ try {
         if (!empty($origen_linea)) {
             $query = "UPDATE linea SET origen_linea=:origen_linea WHERE Id_linea=:id_linea";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":origen_linea", $origen_linea);
-            $sql->bindParam(":id_linea", $id_linea);
+            $sql->bindParam(":origen_linea", $origen_linea, PDO::PARAM_STR);
+            $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
             $sql->execute();
 
             echo '<script>alert("Linea modificada con exito"); window.location.href = "./modifyLinePage"; </script>';
@@ -53,8 +53,8 @@ try {
         if (!empty($origen_linea)) {
             $query = "UPDATE linea SET destino_linea=:destino_linea WHERE Id_linea=:id_linea";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":destino_linea", $destino_linea);
-            $sql->bindParam(":id_linea", $id_linea);
+            $sql->bindParam(":destino_linea", $destino_linea, PDO::PARAM_STR);
+            $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
             $sql->execute();
 
             echo '<script>alert("Linea modificada con exito"); window.location.href = "./modifyLinePage"; </script>';
@@ -63,5 +63,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
-
+$conn = null;
 ?>

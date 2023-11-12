@@ -7,20 +7,20 @@ try {
         $id_usuario = $_SESSION["usuario"]["ID_usuario"];
         $query = "SELECT ID_rol FROM usuario_rol WHERE ID_usuario =:id_usuario";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_usuario", $id_usuario);
+        $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
         $sql->execute();
         $rol = $sql->fetch(PDO::FETCH_ASSOC);
         $id_rol = $rol["ID_rol"];
         if ($id_rol == 3) {
             $query = "UPDATE usuario SET activo = 1 WHERE email =:email";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":email", $email);
+            $sql->bindParam(":email", $email, PDO::PARAM_STR);
             $sql->execute();
             unset($_SESSION["usuario"]);
         } elseif ($id_rol == 2 && $_SESSION["rol"] == 1) {
             $query = "UPDATE usuario SET activo = 1 WHERE email =:email";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":email", $email);
+            $sql->bindParam(":email", $email, PDO::PARAM_STR);
             $sql->execute();
             unset($_SESSION["usuario"]);
         }else{
@@ -34,7 +34,7 @@ try {
         $id_usuario = $_SESSION["usuario"]["ID_usuario"];
         $query = "SELECT ID_rol FROM usuario_rol WHERE ID_usuario =:id_usuario";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_usuario", $id_usuario);
+        $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
         $sql->execute();
         $rol = $sql->fetch(PDO::FETCH_ASSOC);
     
@@ -42,13 +42,13 @@ try {
         if ($id_rol == 3) {
             $query = "UPDATE usuario SET activo = 0 WHERE email =:email";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":email", $email);
+            $sql->bindParam(":email", $email, PDO::PARAM_STR);
             $sql->execute();
             unset($_SESSION["usuario"]);
         } elseif ($id_rol == 2 && $_SESSION["rol"] == 1) {
             $query = "UPDATE usuario SET activo = 0 WHERE email =:email";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":email", $email);
+            $sql->bindParam(":email", $email, PDO::PARAM_STR);
             $sql->execute();
             unset($_SESSION["usuario"]);
         }
@@ -57,4 +57,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

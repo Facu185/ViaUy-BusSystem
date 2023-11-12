@@ -1558,6 +1558,10 @@
   background-color: #00bbff;
   color: white;
 }
+#barChart, #barChart2{
+  max-height: 60%;
+  max-width: 80%;
+}
 @media screen and (max-width: 480px) {
   .admin__sidebar {
     width: fit-content;
@@ -1618,6 +1622,11 @@
     display: flex;
     flex-direction: column;
   }
+  #barChart, #barChart2{
+    max-height: 200px;
+    max-width: 170px;
+  }
+  
 
   .main__welcome img {
     width: 50%;

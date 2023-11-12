@@ -5,7 +5,6 @@ ORDER BY Localizacion ASC;";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 
-// Obtener resultados y almacenar en $opciones
 $opciones = array();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $opciones[] = $row["Localizacion"];
@@ -14,5 +13,5 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 
 echo json_encode($opciones);
-
+$conn = null;
 ?>

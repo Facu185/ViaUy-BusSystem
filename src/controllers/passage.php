@@ -32,59 +32,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $metodoPago = $_POST["forma_pago"];
     $query = "SELECT ID_medio_pago FROM medio_de_pago WHERE tipo_medio_pago=:metodoPago";
     $sql = $conn->prepare($query);
-    $sql->bindParam(':metodoPago', $metodoPago);
+    $sql->bindParam(':metodoPago', $metodoPago, PDO::PARAM_STR);
     $sql->execute();
     $id_medio_pago = $sql->fetchAll(PDO::FETCH_ASSOC);
     $id_pago = $id_medio_pago[0]["ID_medio_pago"];
 
     $query = "SELECT ID_horario FROM horario WHERE ID_linea=:id_linea AND ID_unidad=:id_unidad AND hora_salida=:hora_salida AND hora_llegada=:hora_llegada ;";
     $sql = $conn->prepare($query);
-    $sql->bindParam(':id_linea', $id_linea);
-    $sql->bindParam(':id_unidad', $id_unidad);
-    $sql->bindParam(':hora_salida', $hora_salida);
-    $sql->bindParam(':hora_llegada', $hora_llegada);
+    $sql->bindParam(':id_linea', $id_linea, PDO::PARAM_INT);
+    $sql->bindParam(':id_unidad', $id_unidad, PDO::PARAM_INT);
+    $sql->bindParam(':hora_salida', $hora_salida, PDO::PARAM_STR);
+    $sql->bindParam(':hora_llegada', $hora_llegada, PDO::PARAM_STR);
     $sql->execute();
     $id_horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
     $id_horario = $id_horarios[0]["ID_horario"];
 
     $query = "INSERT INTO horario_asiento (ID_horario, ID_linea, ID_unidad, Numero_asiento, fecha_viaje, disponibilidad_asiento) VALUES (:id_horario, :id_linea, :id_unidad, :asientos_seleccionado, :fecha_viaje, 0)";
     $sql = $conn->prepare($query);
-    $sql->bindParam(":id_horario", $id_horario);
-    $sql->bindParam(":id_unidad", $id_unidad);
-    $sql->bindParam(":id_linea", $id_linea);
-    $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
-    $sql->bindParam(":fecha_viaje", $fecha_viaje);
+    $sql->bindParam(":id_horario", $id_horario, PDO::PARAM_INT);
+    $sql->bindParam(":id_unidad", $id_unidad, PDO::PARAM_INT);
+    $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+    $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado, PDO::PARAM_INT);
+    $sql->bindParam(":fecha_viaje", $fecha_viaje, PDO::PARAM_STR);
     $sql->execute();
 
     if (isset($_POST['confirmar_reserva'])) {
         $query = "INSERT INTO pasaje(ID_horario, ID_medio_de_pago, ID_usuario, ID_linea, ID_unidad, precio, estado, fecha_compra, numero_parada_origen, numero_parada_destino, fecha_viaje, asiento_seleccionado) VALUES (:id_horario, :id_pago, :id_usuario, :id_linea, :id_unidad, :precio, 'Reservado', :fecha_actual, :parada_origen, :parada_destino, :fecha_viaje, :asientos_seleccionado );";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_horario", $id_horario);
-        $sql->bindParam(":id_pago", $id_pago);
-        $sql->bindParam(":id_usuario", $id_usuario);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_unidad", $id_unidad);
-        $sql->bindParam(":precio", $precio);
-        $sql->bindParam(":fecha_actual", $fecha_actual);
-        $sql->bindParam(":parada_origen", $parada_origen);
-        $sql->bindParam(":parada_destino", $parada_destino);
-        $sql->bindParam(":fecha_viaje", $fecha_viaje);
-        $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
+        $sql->bindParam(":id_horario", $id_horario, PDO::PARAM_INT);
+        $sql->bindParam(":id_pago", $id_pago, PDO::PARAM_INT);
+        $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_unidad", $id_unidad, PDO::PARAM_INT);
+        $sql->bindParam(":precio", $precio, PDO::PARAM_INT);
+        $sql->bindParam(":fecha_actual", $fecha_actual, PDO::PARAM_STR);
+        $sql->bindParam(":parada_origen", $parada_origen, PDO::PARAM_INT);
+        $sql->bindParam(":parada_destino", $parada_destino, PDO::PARAM_INT);
+        $sql->bindParam(":fecha_viaje", $fecha_viaje, PDO::PARAM_STR);
+        $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "SELECT ID_pasaje FROM pasaje WHERE ID_horario=:id_horario AND ID_medio_de_pago=:id_pago AND ID_usuario=:id_usuario AND ID_linea=:id_linea AND ID_unidad=:id_unidad AND precio=:precio AND fecha_compra=:fecha_actual AND numero_parada_origen=:parada_origen AND numero_parada_destino=:parada_destino AND fecha_viaje=:fecha_viaje AND asiento_seleccionado=:asientos_seleccionado;";
         $sql = $conn->prepare($query);
-        $sql->bindParam('id_horario', $id_horario);
-        $sql->bindParam('id_pago', $id_pago);
-        $sql->bindParam('id_usuario', $id_usuario);
-        $sql->bindParam('id_linea', $id_linea);
-        $sql->bindParam('id_unidad', $id_unidad);
-        $sql->bindParam('precio', $precio);
-        $sql->bindParam('fecha_actual', $fecha_actual);
-        $sql->bindParam('parada_origen', $parada_origen);
-        $sql->bindParam('parada_destino', $parada_destino);
-        $sql->bindParam('fecha_viaje', $fecha_viaje);
-        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado);
+        $sql->bindParam('id_horario', $id_horario, PDO::PARAM_INT);
+        $sql->bindParam('id_pago', $id_pago, PDO::PARAM_INT);
+        $sql->bindParam('id_usuario', $id_usuario, PDO::PARAM_INT);
+        $sql->bindParam('id_linea', $id_linea, PDO::PARAM_INT);
+        $sql->bindParam('id_unidad', $id_unidad, PDO::PARAM_INT);
+        $sql->bindParam('precio', $precio, PDO::PARAM_INT);
+        $sql->bindParam('fecha_actual', $fecha_actual, PDO::PARAM_STR);
+        $sql->bindParam('parada_origen', $parada_origen, PDO::PARAM_INT);
+        $sql->bindParam('parada_destino', $parada_destino, PDO::PARAM_INT);
+        $sql->bindParam('fecha_viaje', $fecha_viaje, PDO::PARAM_STR);
+        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado, PDO::PARAM_INT);
         $sql->execute();
         $id_paseje_reserva = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -140,32 +140,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (isset($_POST['confirmar_compra'])) {
         $query = "INSERT INTO pasaje(ID_horario, ID_medio_de_pago, ID_usuario, ID_linea, ID_unidad, precio, estado, fecha_compra, numero_parada_origen, numero_parada_destino, fecha_viaje, asiento_seleccionado) VALUES (:id_horario, :id_pago, :id_usuario, :id_linea, :id_unidad, :precio, 'Comprado', :fecha_actual, :parada_origen, :parada_destino, :fecha_viaje, :asientos_seleccionado );";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_horario", $id_horario);
-        $sql->bindParam(":id_pago", $id_pago);
-        $sql->bindParam(":id_usuario", $id_usuario);
-        $sql->bindParam(":id_linea", $id_linea);
-        $sql->bindParam(":id_unidad", $id_unidad);
-        $sql->bindParam(":precio", $precio);
-        $sql->bindParam(":fecha_actual", $fecha_actual);
-        $sql->bindParam(":parada_origen", $parada_origen);
-        $sql->bindParam(":parada_destino", $parada_destino);
-        $sql->bindParam(":fecha_viaje", $fecha_viaje);
-        $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado);
+        $sql->bindParam(":id_horario", $id_horario, PDO::PARAM_INT);
+        $sql->bindParam(":id_pago", $id_pago, PDO::PARAM_INT);
+        $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+        $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+        $sql->bindParam(":id_unidad", $id_unidad, PDO::PARAM_INT);
+        $sql->bindParam(":precio", $precio, PDO::PARAM_INT);
+        $sql->bindParam(":fecha_actual", $fecha_actual, PDO::PARAM_STR);
+        $sql->bindParam(":parada_origen", $parada_origen, PDO::PARAM_INT);
+        $sql->bindParam(":parada_destino", $parada_destino, PDO::PARAM_INT);
+        $sql->bindParam(":fecha_viaje", $fecha_viaje, PDO::PARAM_STR);
+        $sql->bindParam(":asientos_seleccionado", $asientos_seleccionado, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "SELECT ID_pasaje FROM pasaje WHERE ID_horario=:id_horario AND ID_medio_de_pago=:id_pago AND ID_usuario=:id_usuario AND ID_linea=:id_linea AND ID_unidad=:id_unidad AND precio=:precio AND fecha_compra=:fecha_actual AND numero_parada_origen=:parada_origen AND numero_parada_destino=:parada_destino AND fecha_viaje=:fecha_viaje AND asiento_seleccionado=:asientos_seleccionado;";
         $sql = $conn->prepare($query);
-        $sql->bindParam('id_horario', $id_horario);
-        $sql->bindParam('id_pago', $id_pago);
-        $sql->bindParam('id_usuario', $id_usuario);
-        $sql->bindParam('id_linea', $id_linea);
-        $sql->bindParam('id_unidad', $id_unidad);
-        $sql->bindParam('precio', $precio);
-        $sql->bindParam('fecha_actual', $fecha_actual);
-        $sql->bindParam('parada_origen', $parada_origen);
-        $sql->bindParam('parada_destino', $parada_destino);
-        $sql->bindParam('fecha_viaje', $fecha_viaje);
-        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado);
+        $sql->bindParam('id_horario', $id_horario, PDO::PARAM_INT);
+        $sql->bindParam('id_pago', $id_pago, PDO::PARAM_INT);
+        $sql->bindParam('id_usuario', $id_usuario, PDO::PARAM_INT);
+        $sql->bindParam('id_linea', $id_linea, PDO::PARAM_INT);
+        $sql->bindParam('id_unidad', $id_unidad, PDO::PARAM_INT);
+        $sql->bindParam('precio', $precio, PDO::PARAM_INT);
+        $sql->bindParam('fecha_actual', $fecha_actual, PDO::PARAM_STR);
+        $sql->bindParam('parada_origen', $parada_origen, PDO::PARAM_INT);
+        $sql->bindParam('parada_destino', $parada_destino, PDO::PARAM_INT);
+        $sql->bindParam('fecha_viaje', $fecha_viaje, PDO::PARAM_STR);
+        $sql->bindParam('asientos_seleccionado', $asientos_seleccionado, PDO::PARAM_INT);
         $sql->execute();
         $id_paseje_compra = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -217,4 +217,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 }
+$conn = null;
 ?>

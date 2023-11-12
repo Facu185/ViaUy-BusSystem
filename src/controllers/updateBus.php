@@ -14,23 +14,23 @@ try {
             if (!empty($tipo_asientos)) {
                 $query = "SELECT total_de_asientos FROM unidad WHERE ID_unidad = :matricula";
                 $sql = $conn->prepare($query);
-                $sql->bindParam(":matricula", $matricula);
+                $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
                 $sql->execute();
                 $total_de_asientos = $sql->fetch(PDO::FETCH_ASSOC);
                 $asientos = $total_de_asientos["total_de_asientos"];
                 if ($cantidad_asientos > $asientos) {
                     $query = "UPDATE unidad SET total_de_asientos=:cantidad_asientos WHERE ID_unidad = :matricula";
                     $sql = $conn->prepare($query);
-                    $sql->bindParam(":matricula", $matricula);
+                    $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
                     $sql->bindParam(":cantidad_asientos", $cantidad_asientos);
                     $sql->execute();
 
                     for ($i = $asientos + 1; $i <= $cantidad_asientos; $i++) {
                         $query = "INSERT INTO asiento (Numero_asiento, ID_unidad, tipo_asiento) VALUES (:i, :matricula, :tipo_asientos)";
                         $sql = $conn->prepare($query);
-                        $sql->bindParam(":matricula", $matricula);
-                        $sql->bindParam(":i", $i);
-                        $sql->bindParam(":tipo_asientos", $tipo_asientos);
+                        $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+                        $sql->bindParam(":i", $i, PDO::PARAM_INT);
+                        $sql->bindParam(":tipo_asientos", $tipo_asientos, PDO::PARAM_STR);
                         $sql->execute();
                     }
                     echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
@@ -38,15 +38,15 @@ try {
             } elseif ($cantidad_asientos < $asientos) {
                 $query = "UPDATE unidad SET total_de_asientos=:cantidad_asientos WHERE ID_unidad = :matricula";
                 $sql = $conn->prepare($query);
-                $sql->bindParam(":matricula", $matricula);
-                $sql->bindParam(":cantidad_asientos", $cantidad_asientos);
+                $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+                $sql->bindParam(":cantidad_asientos", $cantidad_asientos, PDO::PARAM_INT);
                 $sql->execute();
 
                 for ($i = $asientos; $i >= $cantidad_asientos + 1; $i--) {
                     $query = "DELETE FROM asiento WHERE ID_unidad = :matricula AND Numero_asiento = :i";
                     $sql = $conn->prepare($query);
-                    $sql->bindParam(":matricula", $matricula);
-                    $sql->bindParam(":i", $i);
+                    $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+                    $sql->bindParam(":i", $i, PDO::PARAM_INT);
                     $sql->execute();
                 }
                 echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
@@ -59,16 +59,16 @@ try {
         if (!empty($tipo_asientos)) {
             $query = "UPDATE asiento SET tipo_asiento=:tipo_asientos WHERE ID_unidad = :matricula";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":matricula", $matricula);
-            $sql->bindParam(":tipo_asientos", $tipo_asientos);
+            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+            $sql->bindParam(":tipo_asientos", $tipo_asientos, PDO::PARAM_STR);
             $sql->execute();
             echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
         }
         if (!empty($caracteristicas)) {
             $query = "UPDATE caracteristicas SET tipo=:caracteristicas WHERE ID_unidad = :matricula";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":matricula", $matricula);
-            $sql->bindParam(":caracteristicas", $caracteristicas);
+            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+            $sql->bindParam(":caracteristicas", $caracteristicas, PDO::PARAM_STR);
             $sql->execute();
             echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
         }
@@ -76,4 +76,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

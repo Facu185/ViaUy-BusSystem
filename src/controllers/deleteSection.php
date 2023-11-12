@@ -13,19 +13,19 @@ try {
         WHERE numero_parada_1 IN (:parada_origen)
         OR numero_parada_2 IN (:parada_destino)";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":parada_origen", $parada_origen);
-        $sql->bindParam(":parada_destino", $parada_destino);
+        $sql->bindParam(":parada_origen", $parada_origen, PDO::PARAM_INT);
+        $sql->bindParam(":parada_destino", $parada_destino, PDO::PARAM_INT);
         $sql->execute();
         $id = $sql->fetchAll(PDO::FETCH_ASSOC);
         $id_tramo = $id[0]["ID_tramo"];
         $query = "DELETE FROM recorre WHERE ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_tramo", $id_tramo);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
         $sql->execute();
 
         $query = "DELETE FROM tramo WHERE ID_tramo=:id_tramo";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":id_tramo", $id_tramo);
+        $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
         $sql->execute();
 
         echo '<script>alert("El tramo ah sido eliminado con exito"); window.location.href = "./deleteSectionPage"; </script>';
@@ -33,4 +33,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
+$conn = null;
 ?>

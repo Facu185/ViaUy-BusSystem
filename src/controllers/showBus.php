@@ -4,12 +4,12 @@ $query = "SELECT ID_unidad FROM unidad;";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 
-// Obtener resultados y almacenar en $opciones
-$resultados = array(); // Crear un array para almacenar los resultados
+$resultados = array();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $resultados[] = $row; // Agregar cada fila al array de resultados
+    $resultados[] = $row;
 }
 
 echo json_encode($resultados);
+$conn = null;
 ?>

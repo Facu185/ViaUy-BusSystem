@@ -12,7 +12,7 @@ try {
         }
         $query = "SELECT nombre_linea FROM linea WHERE nombre_linea =:nombre_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":nombre_linea", $nombre_linea);
+        $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
         $sql->execute();
         $linea = $sql->fetch(PDO::FETCH_ASSOC);
         if (!empty($linea)) {
@@ -22,14 +22,14 @@ try {
       
         $query = "INSERT INTO linea (nombre_linea, origen_linea, destino_linea) VALUES (:nombre_linea, :origen_linea, :destino_linea)";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":nombre_linea", $nombre_linea);
-        $sql->bindParam(":origen_linea", $origen_linea);
-        $sql->bindParam(":destino_linea", $destino_linea);
+        $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
+        $sql->bindParam(":origen_linea", $origen_linea, PDO::PARAM_STR);
+        $sql->bindParam(":destino_linea", $destino_linea, PDO::PARAM_STR);
         $sql->execute();
 
         $query = "SELECT ID_linea FROM linea WHERE nombre_linea =:nombre_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(":nombre_linea", $nombre_linea);
+        $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
         $sql->execute();
         $id = $sql->fetch(PDO::FETCH_ASSOC);
         $id_linea = $id["ID_linea"];
@@ -62,11 +62,11 @@ try {
             $contador2++;
             $query = "INSERT INTO recorre (ID_linea, ID_tramo, origen_tramo, destino_tramo, orden_tramos) VALUES (:id_linea, :id_tramo, :origen_tramo, :destino_tramo, :contador2)";
             $sql = $conn->prepare($query);
-            $sql->bindParam(":id_linea", $id_linea);
-            $sql->bindParam(":id_tramo", $id_tramo);
-            $sql->bindParam(":origen_tramo", $origen_tramo);
-            $sql->bindParam(":destino_tramo", $destino_tramo);
-            $sql->bindParam(":contador2", $contador2);
+            $sql->bindParam(":id_linea", $id_linea, PDO::PARAM_INT);
+            $sql->bindParam(":id_tramo", $id_tramo, PDO::PARAM_INT);
+            $sql->bindParam(":origen_tramo", $origen_tramo, PDO::PARAM_STR);
+            $sql->bindParam(":destino_tramo", $destino_tramo, PDO::PARAM_STR);
+            $sql->bindParam(":contador2", $contador2, PDO::PARAM_INT);
             $sql->execute();
         }
         echo '<script>alert("Recoorrido añadido con exito"); window.location.href = "./addRoutes"; </script>';
@@ -75,5 +75,5 @@ try {
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
-
+$conn = null;
 ?>

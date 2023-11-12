@@ -17,8 +17,8 @@ function findBus()
             $query = "SELECT numero_parada, localizacion FROM parada 
             WHERE localizacion=:origen OR localizacion=:destino;";
             $sql = $conn->prepare($query);
-            $sql->bindParam(':origen', $origen);
-            $sql->bindParam(':destino', $destino);
+            $sql->bindParam(':origen', $origen, PDO::PARAM_STR);
+            $sql->bindParam(':destino', $destino, PDO::PARAM_STR);
             $sql->execute();
             $data1 = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,8 +34,8 @@ function findBus()
 
             $query = "SELECT ID_tramo,numero_parada_1,numero_parada_2 FROM tramo WHERE numero_parada_1=:numero_parada_1 OR numero_parada_2=:numero_parada_2";
             $sql = $conn->prepare($query);
-            $sql->bindParam(':numero_parada_1', $numero_parada_1);
-            $sql->bindParam(':numero_parada_2', $numero_parada_2);
+            $sql->bindParam(':numero_parada_1', $numero_parada_1, PDO::PARAM_INT);
+            $sql->bindParam(':numero_parada_2', $numero_parada_2, PDO::PARAM_INT);
             $sql->execute();
             $data2 = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -97,40 +97,32 @@ function findBus()
                 $id_tramo = $row['id_tramo'];
 
                 if (isset($filteredData[$id_linea])) {
-                    // Verificamos si el id_tramo ya existe en los registros de esta línea
                     if (!in_array($id_tramo, $filteredData[$id_linea]['id_tramos'])) {
                         $filteredData[$id_linea]['id_tramos'][] = $id_tramo;
                     }
                 } else {
-                    // Si no tenemos registros para esta línea, simplemente agregamos el id_tramo
                     $filteredData[$id_linea] = [
                         'id_tramos' => [$id_tramo],
                         'id_linea' => $id_linea
                     ];
                 }
             }
-
-
             $lineas_utiles = array();
 
             foreach ($filteredData as $id_linea => $tramosData) {
                 foreach ($tramosData['id_tramos'] as $id_tramo) {
                     if (in_array($id_tramo, $tramosUnicos)) {
-                        // Si el id_tramo coincide con los valores en el otro array
                         array_push($lineas_utiles, $id_linea);
                     }
                 }
             }
             foreach ($filteredData as $key => $value) {
                 if (!in_array($value['id_tramos'], $lineas_utiles)) {
-                    // Si no existe, agregarlo al array
                     if (count($value['id_tramos']) > 1) {
                         array_push($lineas_utiles, $value['id_linea']);
                     }
                 }
             }
-
-
 
             $id_tramo = [];
 
@@ -143,7 +135,6 @@ function findBus()
             $fecha = $_POST["date"];
             $fechaObj = new DateTime($fecha);
 
-            // Array asociativo con las traducciones de los días de la semana
             $diasEnIngles = array(
                 'Monday' => 'Lunes',
                 'Tuesday' => 'Martes',
@@ -164,7 +155,7 @@ function findBus()
                   JOIN dia d 
                   WHERE (r.ID_tramo IN ($tramo) AND d.dia=:nombreDiaEnEspanol AND d.habilitacion=1  AND r.ID_linea IN ($linea))";
             $sql = $conn->prepare($query);
-            $sql->bindParam(':nombreDiaEnEspanol', $nombreDiaEnEspanol);
+            $sql->bindParam(':nombreDiaEnEspanol', $nombreDiaEnEspanol, PDO::PARAM_STR);
             $sql->execute();
             $data4 = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -227,7 +218,7 @@ function findBus()
 
                 $query = "SELECT * FROM linea   WHERE id_linea =:ulinea";
                 $sql = $conn->prepare($query);
-                $sql->bindParam(':ulinea', $ulinea);
+                $sql->bindParam(':ulinea', $ulinea, PDO::PARAM_INT);
                 $sql->execute();
                 $data6 = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -235,7 +226,7 @@ function findBus()
 
                 $query = "SELECT * FROM horario WHERE id_linea =:ulinea";
                 $sql = $conn->prepare($query);
-                $sql->bindParam(':ulinea', $ulinea);
+                $sql->bindParam(':ulinea', $ulinea, PDO::PARAM_INT);
                 $sql->execute();
                 $horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -306,9 +297,9 @@ function findBus()
                             AND fecha_viaje IN (:fecha) 
                             AND disponibilidad_asiento IN (0);";
                             $sql = $conn->prepare($query);
-                            $sql->bindParam(':id_horario', $id_horario);
-                            $sql->bindParam(':unidad', $unidad);
-                            $sql->bindParam(':fecha', $fecha);
+                            $sql->bindParam(':id_horario', $id_horario, PDO::PARAM_INT);
+                            $sql->bindParam(':unidad', $unidad, PDO::PARAM_INT);
+                            $sql->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                             $sql->execute();
                             $info_asientos_establece = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -384,7 +375,6 @@ function findBus()
                 $precio_total = 0;
 
                 foreach ($sumas_por_tipo as $rutaID => $distancia) {
-                    // Verifica si el ID de la ruta existe en el arreglo de valores
                     if (isset($precioKm[$rutaID])) {
                         $valorRuta = $precioKm[$rutaID]['precio'];
                         $precio_total += ($valorRuta * $distancia);
@@ -414,4 +404,5 @@ if (empty($info_linea)) {
     echo '<script>window.location.href = "../page/home";</script>';
     exit;
 }
+$conn = null;
 ?>

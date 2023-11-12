@@ -20,7 +20,7 @@ try {
     ORDER BY ABS(TIMEDIFF(hora_salida, :hora_actual))
     LIMIT 2;";
     $sql = $conn->prepare($query);
-    $sql->bindParam(':hora_actual', $hora_actual);
+    $sql->bindParam(':hora_actual', $hora_actual, PDO::PARAM_STR);
     $sql->execute();
     $horarios = $sql->fetchAll(PDO::FETCH_ASSOC);
     foreach ($horarios as $horario) {
@@ -31,13 +31,13 @@ try {
       
         $query = "SELECT tipo FROM caracteristicas WHERE ID_unidad=:id_unidad";
         $sql = $conn->prepare($query);
-        $sql->bindParam(':id_unidad', $id_unidad);
+        $sql->bindParam(':id_unidad', $id_unidad, PDO::PARAM_INT);
         $sql->execute();
         $caracteristicas = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         $query = "SELECT nombre_linea, origen_linea, destino_linea FROM linea WHERE ID_linea=:id_linea";
         $sql = $conn->prepare($query);
-        $sql->bindParam(':id_linea', $id_linea);
+        $sql->bindParam(':id_linea', $id_linea, PDO::PARAM_INT);
         $sql->execute();
         $lineas = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -55,5 +55,5 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
+$conn = null;
 ?>
