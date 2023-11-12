@@ -9,6 +9,9 @@ try {
         $tiempo_viaje = $_POST["tiempoViaje"];
         $calles = $_POST["calles"];
         $rutas = $_POST["rutas"];
+        if(!is_int($id_tramo) || !is_int($tipo_tramo)){
+            echo '<script>alert("Faltan completar datos"); window.location.href = "./modifySectionPage"; </script>';
+        }
         if (!empty($tipo_tramo) && !empty($distancia) && !empty($tiempo_viaje) && !empty($calles) && !empty($rutas)) {
             $query = "UPDATE tramo SET tipo_tramo=:tipo_tramo, distancia=:distancia, calles=:calles, rutas=:rutas, tiempo=:tiempo_viaje WHERE ID_tramo = :id_tramo";
             $sql = $conn->prepare($query);
@@ -19,7 +22,7 @@ try {
             $sql->bindParam(":tiempo_viaje", $tiempo_viaje);
             $sql->bindParam(":id_tramo", $id_tramo);
             $sql->execute();
-            echo '<script>alert("Tramo editado con exito"); window.location.href = "./modify"; </script>';
+            echo '<script>alert("Tramo editado con exito"); window.location.href = "./modifySectionPage"; </script>';
         } else {
             if (!empty($tipo_tramo)) {
                 $query = "UPDATE tramo SET tipo_tramo=:tipo_tramo WHERE ID_tramo = :id_tramo";
@@ -27,7 +30,7 @@ try {
                 $sql->bindParam(":tipo_tramo", $tipo_tramo);
                 $sql->bindParam(":id_tramo", $id_tramo);
                 $sql->execute();
-                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modifySectionPage"; </script>';
             }
             if (!empty($distancia)) {
                 $query = "UPDATE tramo SET distancia=:distancia WHERE ID_tramo = :id_tramo";
@@ -35,7 +38,7 @@ try {
                 $sql->bindParam(":distancia", $distancia);
                 $sql->bindParam(":id_tramo", $id_tramo);
                 $sql->execute();
-                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modifySectionPage"; </script>';
             }
             if (!empty($tiempo_viaje)) {
                 $query = "UPDATE tramo SET tiempo=:tiempo_viaje WHERE ID_tramo = :id_tramo";
@@ -43,7 +46,7 @@ try {
                 $sql->bindParam(":tiempo_viaje", $tiempo_viaje);
                 $sql->bindParam(":id_tramo", $id_tramo);
                 $sql->execute();
-                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modifySectionPage"; </script>';
             }
             if (!empty($calles)) {
                 $query = "UPDATE tramo SET calles=:calles WHERE ID_tramo = :id_tramo";
@@ -58,10 +61,10 @@ try {
                 $sql->bindParam(":rutas", $rutas);
                 $sql->bindParam(":id_tramo", $id_tramo);
                 $sql->execute();
-                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Tramo editado con exito"); window.location.href = "./modifySectionPage"; </script>';
             }
         }
-        echo '<script>alert("Debe completar alguno de los campos"); window.location.href = "./modify"; </script>';
+       
 
 
     }

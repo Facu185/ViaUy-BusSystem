@@ -14,12 +14,15 @@
         <section class="main__main">
             <h3>Eliminar unidad</h3>
             <form method="post" action="./deleteBus">
-                <input type="text" name="matricula" placeholder="Matricula de la unidad">
+                <select name="matricula" id="matricula">
+                    <option value="Matricula de la unidad" selected>Matricula de la unidad</option>
+                </select>
                 <input class="button--primary" type="submit" name="deleteBus" value="Eliminar unidad">
             </form>
         </section>
     </main>
     <script src="../js/modules/sideBar.js" type='module'></script>
+    <script src="../js/modules/showBus.js" type='module'></script>
 </body>
 
 </html>

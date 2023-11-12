@@ -1,6 +1,4 @@
 <?php
-
-
 require "./database/db.php";
 try {
     function validarEmail($email)
@@ -24,7 +22,7 @@ try {
         $nombre = $_POST["registerName"];
         $apellido = $_POST["registerLastName"];
         if (!validarSinNumeros($nombre) || !validarSinNumeros($apellido))
-            throw new Exception("El nombre o apellido no deben contener caracteres espeiales", 400);
+            throw new Exception("El nombre o apellido no deben contener caracteres especiales", 400);
         $telefono = $_POST["registerPhone"];
         if (strlen($telefono) !== 9)
             throw new Exception("El telefono debe contener 9 numeros", 400);
@@ -34,7 +32,7 @@ try {
         $password = $_POST["registerPassword"];
         if (strlen($password) < 8)
 
-            throw new Exception("La contraseÃ±a debe contener minimo 8 carcteres", 400);
+            throw new Exception("La contraseña debe contener minimo 8 carcteres", 400);
 
         $passwordCifrada = password_hash($password, PASSWORD_DEFAULT);
         $checkEmail = "SELECT email FROM usuario WHERE email = :email";
@@ -45,7 +43,7 @@ try {
         if ($checkEmail->rowCount() !== 0) {
             throw new Exception("El email que introdujo ya se encuentra registrado.", 409);
         }
-        $query = "INSERT IGNORE INTO usuario (nombre, apellido, email, passwd, celular, activo) VALUES (:nombre, :apellido, :email, :passwd, :celular)";
+        $query = "INSERT IGNORE INTO usuario (nombre, apellido, email, passwd, celular) VALUES (:nombre, :apellido, :email, :passwd, :celular)";
         $sql = $conn->prepare($query);
         $sql->bindParam(":nombre", $nombre);
         $sql->bindParam(":apellido", $apellido);
@@ -66,11 +64,11 @@ try {
         $sql->bindParam(":id_usuario", $id_usuario);
         $sql->execute();
 
-        header("location:./dashboard");
+        header("location:./login");
 
     }
 } catch (Exception $error) {
-    echo '<script>alert("' . $error->getMessage() . '"); </script>';
+    echo '<script>alert("' . $error->getMessage() . '"); window.location.href = "./registerAdmin"; </script>';
 }
 
 ?>

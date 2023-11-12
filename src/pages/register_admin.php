@@ -10,27 +10,25 @@
 </head>
 
 <body>
-    <!-- <?php include_once "./components/AdminSidebar.php"; ?> -->
-    <main class="register">
-        <h1>Via<span>UY</span></h1>
-        <section class="register__menu">
-            <h2 class="register__welcome" id="registerWelcome"></h2>
-            <p class="register__text" id="registerMessage"></p>
-            <div class="register__form">
+    <main class="admin__main">
+        <?php include_once "./components/AdminSidebar.php"; ?>
+        <section class="main__main">
+            <h3>Registrar un administrador</h3>
+            <div class="register__admin">
                 <form method="post" action="./singupAdmin">
-                    <form method="post">
-                        <label for="registerName" id="registerTextName"> </label>
-                        <input type="text" id="registerName" name="registerName" placeholder="Nombre">
-                        <label for="registerLastName" id="registerTextLastName"> </label>
-                        <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido">
-                        <label for="registerPhone" id="registerTextPhone"> </label>
-                        <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
-                        <label for="registerEmail" id="registerTextEmail"> </label>
-                        <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
-                        <label for="registerPassword" id="registerTextPassword"> </label>
-                        <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
-                        <input class="button--primary" id="registerButton" type="submit" name="registerButton"value="Registrarse">
-                    </form>
+                    <p>Nombre:</p>
+                    <input type="text" id="registerName" name="registerName" placeholder="Nombre">
+                    <p>Apellido:</p>
+                    <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido">
+                    <p>Telefono:</p>
+                    <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
+                    <p>Email:</p>
+                    <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
+                    <p>Contraseña:</p>
+                    <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
+                    <p></p>
+                    <input type="submit" name="registerButton" value="Registrar">
+                </form>
             </div>
         </section>
     </main>

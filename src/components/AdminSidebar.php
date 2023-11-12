@@ -8,10 +8,12 @@
 
     </div>
     <div>
-        <a href="./dashboard" id="dashboard"><i class="fa-solid fa-house"></i> Panel</a>
+        <ul>
+           <a href="./dashboard" id="dashboard"><i class="fa-solid fa-house"></i> Panel</a>
+        </ul>
     </div>
     <div id="users"><i class="fa-solid fa-user"></i> Usuarios</div>
-    <div> 
+    <div>
         <ul id="usersList">
 
         </ul>

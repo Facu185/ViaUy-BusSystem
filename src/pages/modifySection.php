@@ -24,7 +24,7 @@
                     <option value="3">3</option>
                 </select>
                 <input type="number" name="distancia" placeholder="Distancia">
-                <input type="number" name="tiempoViaje" placeholder="Tiempo de viaje del tramo">
+                <input type="time" name="tiempoViaje" placeholder="Tiempo de viaje del tramo">
                 <input type="text" name="calles" placeholder="Calles">
                 <input type="text" name="rutas" placeholder="Rutas">
                 <input type="submit" name="modifySection" value="Modificar tramo">

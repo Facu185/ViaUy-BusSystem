@@ -38,7 +38,7 @@ if (!empty($_SESSION["rol"])) {
                     <input type="email" name="email" placeholder="Email" />
                     <input type="text" name="subjet" id="contactSubject" placeholder="Asunto" />
                     <textarea name="message" rows="10" id="contactMessage" placeholder="Mensaje "></textarea>
-                    <button type="submit" class="button--secondary" id="contactButton"></button>
+                    <button type="button" class="button--secondary" id="contactButton"></button>
                 </form>
             </div>
         </section>

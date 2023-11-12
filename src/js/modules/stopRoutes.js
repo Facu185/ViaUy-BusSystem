@@ -4,7 +4,6 @@ export async function fetchData() {
       const data = await response.json(); // Obtén el conjunto de resultados completo
 
       const opcionesSelect1 = document.getElementById("numeroParadaOrigenTramo");
-      
 
       data.forEach((row) => {
         const option1 = document.createElement("option");
@@ -13,6 +12,16 @@ export async function fetchData() {
         opcionesSelect1.appendChild(option1);
 
       });
+      if(document.getElementById("numeroParadaOrigenTramo2")){
+        const opcionesSelect2 = document.getElementById("numeroParadaOrigenTramo2");
+        data.forEach((row) => {
+          const option2 = document.createElement("option");
+          option2.value = row["ID_tramo"];
+          option2.textContent = row["Numero_parada_1"]+" - "+row["Numero_parada_2"];
+          opcionesSelect2.appendChild(option2);
+  
+        });
+      }
     } catch (error) {
       console.error("Error al obtener datos:", error);
     }

@@ -25,9 +25,12 @@ try {
                 $tiempo_viaje = $arr_forms["tiempoViaje" . $contador2];
                 $calles = $arr_forms["calles" . $contador2];
                 $rutas = $arr_forms["rutas" . $contador2];
+             print_r($parada_origen);   
                 $contador++;
             }
-            
+            if(empty($parada_origen) || empty($parada_destino) || empty($tipo_tramo) || empty($distancia) || empty($tiempo_viaje) || empty($calles) || empty($rutas) || !is_numeric($parada_origen) || !is_numeric($parada_destino) || !is_numeric($tipo_tramo)) {
+                echo '<script>alert("Faltan completar datos"); window.location.href = "./addBusSection"; </script>';
+            }
             $contador2++;
 
             $query = "SELECT numero_parada_1, numero_parada_2 FROM tramo WHERE numero_parada_1 = :parada_origen AND numero_parada_2 = :parada_destino";
@@ -36,12 +39,8 @@ try {
             $sql->bindParam(":parada_destino", $parada_destino);
             $sql->execute();
             $paradas = $sql->fetch(PDO::FETCH_ASSOC);
-
-            $numero_parada_1 = $paradas["numero_parada_1"];
-            $numero_parada_2 = $paradas["numero_parada_2"];
-            if ($numero_parada_1 == $parada_origen && $numero_parada_2 == $parada_destino) {
-                echo '<script>alert("Este tramo ya existe"); window.location.href = "./addBus"; </script>';
-                return;
+            if (!empty($paradas)) {
+                echo '<script>alert("Este tramo ya existe"); window.location.href = "./addBusSection"; </script>';
             }
 
             $query = "INSERT INTO tramo (numero_parada_1, numero_parada_2, tipo_tramo, distancia, calles, rutas, tiempo) VALUES (:parada_origen, :parada_destino, :tipo_tramo, :distancia, :calles, :rutas, :tiempo_viaje)";
@@ -55,7 +54,7 @@ try {
             $sql->bindParam(":tiempo_viaje", $tiempo_viaje);
             $sql->execute();
 
-            echo '<script>alert("Tramo añadido con exito"); window.location.href = "./addBus"; </script>';
+            echo '<script>alert("Tramo añadido con exito"); window.location.href = "./addBusSection"; </script>';
         }
     }
 

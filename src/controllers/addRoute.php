@@ -6,17 +6,20 @@ try {
         $nombre_linea = $_POST["nombreLinea"];
         $origen_linea = $_POST["origenLinea"];
         $destino_linea = $_POST["destinoLinea"];
-
+        if (empty($nombre_linea) || empty($origen_linea) || empty($destino_linea)) {
+            echo '<script>alert("Faltan completar datos"); window.location.href = "./addRoutes"; </script>';
+            exit;
+        }
         $query = "SELECT nombre_linea FROM linea WHERE nombre_linea =:nombre_linea";
         $sql = $conn->prepare($query);
         $sql->bindParam(":nombre_linea", $nombre_linea);
         $sql->execute();
         $linea = $sql->fetch(PDO::FETCH_ASSOC);
-        $nombre = $linea["nombre_linea"];
-        if ($nombre == $nombre_linea) {
-            echo '<script>alert("Esta linea ya existe"); window.location.href = "./addBus"; </script>';
+        if (!empty($linea)) {
+            echo '<script>alert("Esta linea ya existe"); window.location.href = "./addRoutes"; </script>';
+            exit;
         }
-
+      
         $query = "INSERT INTO linea (nombre_linea, origen_linea, destino_linea) VALUES (:nombre_linea, :origen_linea, :destino_linea)";
         $sql = $conn->prepare($query);
         $sql->bindParam(":nombre_linea", $nombre_linea);
@@ -50,7 +53,12 @@ try {
                 $origen_tramo = $_POST["origenTramo" . $contador2];
                 $destino_tramo = $_POST["destinoTramo" . $contador2];
                 $contador++;
+                if(empty($nombre_linea) || empty($origen_linea) || empty($destino_linea)|| empty($id_linea) || empty($id_tramo)|| empty($origen_tramo) || empty($destino_tramo) || !is_numeric($id_tramo)){
+                    echo '<script>alert("Faltan completar datos"); window.location.href = "./addRoutes"; </script>';
+                    exit;
+                }
             }
+            
             $contador2++;
             $query = "INSERT INTO recorre (ID_linea, ID_tramo, origen_tramo, destino_tramo, orden_tramos) VALUES (:id_linea, :id_tramo, :origen_tramo, :destino_tramo, :contador2)";
             $sql = $conn->prepare($query);
@@ -61,7 +69,7 @@ try {
             $sql->bindParam(":contador2", $contador2);
             $sql->execute();
         }
-        echo '<script>alert("Recoorrido añadido con exito"); window.location.href = "./addBus"; </script>';
+        echo '<script>alert("Recoorrido añadido con exito"); window.location.href = "./addRoutes"; </script>';
 
     }
 } catch (Exception $error) {

@@ -12,6 +12,7 @@
     <main class="admin__main">
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
+            <h3>Añadir recorrido</h3>
             <form method="post" action="./addRoute">
                 <input type="text" name="nombreLinea" placeholder="Nombre de la linea">
                 <input type="text" name="origenLinea" placeholder="Origen de la linea">
@@ -23,7 +24,7 @@
                 
                 <div id="tramo_original">
                     <select name="numeroParadaOrigen" id="numeroParadaOrigenTramo">
-                        <option value="Seleccione tramo 1" selected>Seleccione la primera parada del recorrido</option>
+                        <option value="Seleccione un tramo para el recorrido" selected>Seleccione un tramo para el recorrido</option>
                     </select>
                     <input type="text" name="origenTramo" placeholder="Origen del tramo">
                     <input type="text" name="destinoTramo" placeholder="Destino del tramo">

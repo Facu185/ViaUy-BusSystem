@@ -9,17 +9,22 @@
 </head>
 
 <body>
-<?php include_once "./components/AdminSidebar.php"; ?>
-    <p>Modificar linea</p>
-    <form method="post" action="./modifyline">
-        <select name="lines" id="lines">
-            <option value="Seleccione la linea a modificar" selected>Seleccione la linea a modificar</option>
-        </select>
-        <input type="text" name="nombreLinea" placeholder="Nombre de la linea">
-        <input type="text" name="origenLinea" placeholder="Origen de la linea">
-        <input type="text" name="destinoLinea" placeholder="Destino de la linea">
-        <input type="submit" name="modifyLine" value="Modificar">
-    </form>
+    <main class="admin__main">
+        <?php include_once "./components/AdminSidebar.php"; ?>
+        <section class="main__main">
+            <h3>Modificar linea</h3>
+            <form method="post" action="./modifyLine">
+                <select name="lines" id="lines">
+                    <option value="Seleccione la linea a modificar" selected>Seleccione la linea a modificar</option>
+                </select>
+                <input type="text" name="nombreLinea" placeholder="Nombre de la linea">
+                <input type="text" name="origenLinea" placeholder="Origen de la linea">
+                <input type="text" name="destinoLinea" placeholder="Destino de la linea">
+                <input type="submit" name="modifyLine" value="Modificar linea">
+            </form>
+        </section>
+    </main>
+    <script src="../js/modules/sideBar.js" type='module'></script>
     <script src="../js/modules/lines.js" type='module'></script>
 </body>
 

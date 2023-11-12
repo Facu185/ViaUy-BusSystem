@@ -150,5 +150,11 @@
         public function manageReservations(){
             include_once("./pages/manageReservations.php");
         }
+        public function  addNewRoute(){
+            include_once("./controllers/addNewRoute.php");
+        }
+        public function  addNewRoutePage(){
+            include_once("./pages/addNewRoute.php");
+        }
     }
 ?>

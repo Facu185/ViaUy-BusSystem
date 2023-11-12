@@ -12,14 +12,14 @@
     <main class="admin__main">
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
-            <h3>Agrgar tramo</h3>
+            <h3>Agregar tramo</h3>
             <form id="formulario" method="post" action="./addSection">
                 <div id="form" class='test'>
                     <select name="numeroParadaOrigen" id="numeroParadaOrigen">
-                        <option value="Parada de origen del tramo" selected>Parada de origen del tramo</option>
+                        <option selected>Parada de origen del tramo</option>
                     </select>
                     <select name="numeroParadaDestino" id="numeroParadaDestino">
-                        <option value="Parada de destino del tramo" selected>Parada de destino del tramo</option>
+                        <option selected>Parada de destino del tramo</option>
                     </select>
                     <select name="tipoTramo">
                         <option value="Tipo de tramo" selected>Tipo de tramo</option>
@@ -28,7 +28,7 @@
                         <option value="3">3</option>
                     </select>
                     <input type="number" name="distancia" placeholder="Distancia">
-                    <input type="number" name="tiempoViaje" placeholder="Tiempo de viaje">
+                    <input type="time" name="tiempoViaje" placeholder="Tiempo de viaje">
                     <input type="text" name="calles" placeholder="Calles">
                     <input type="text" name="rutas" placeholder="Rutas">
 

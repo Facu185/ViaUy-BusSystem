@@ -3,8 +3,11 @@ require "./database/db.php";
 try {
     if (!empty($_POST["deleteBus"])) {
         $matricula = $_POST["matricula"];
+        if (empty($matricula) || $matricula="Matricula de la unidad") {
+            echo '<script>alert("Falatan completar campos"); window.location.href = "./deleteBusPage"; </script>';
+            exit;
+        }
         
-
         $query = "DELETE FROM caracteristicas WHERE ID_unidad=:matricula";
         $sql = $conn->prepare($query);
         $sql->bindParam(":matricula", $matricula);

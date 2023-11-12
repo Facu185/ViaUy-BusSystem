@@ -13,15 +13,17 @@
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
             <h3>Eliminar parada</h3>
-            <form method="post" action="./deleteLine">
+            <form method="post" action="./deleteBusStop">
                 <select name="numeroParadaOrigen" id="numeroParadaOrigen">
-                    <option value="Parada a eliminar" selected>Parada a eliminar</option>
+                    <option value="Seleccione la parada a eliminar" selected>Seleccione la parada a eliminar</option>
                 </select>
+                <select name="numeroParadaDestino" id="numeroParadaDestino" style="display: none;"></select>
                 <input class="button--primary" type="submit" name="deleteBusStop" value="Eliminar parada">
             </form>
         </section>
     </main>
     <script src="../js/modules/sideBar.js" type='module'></script>
+    <script src="../js/modules/numberBusStop.js" type='module'></script>
 </body>
 
 </html>

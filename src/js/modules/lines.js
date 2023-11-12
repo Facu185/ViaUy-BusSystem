@@ -1,7 +1,7 @@
   export async function fetchData() {
     try {
       const response = await fetch("../controllers/showLines.php");
-      const data = await response.json(); // Obtén el conjunto de resultados completo
+      const data = await response.json();
         console.log(data);
       const opcionesSelect1 = document.getElementById("lines");
       

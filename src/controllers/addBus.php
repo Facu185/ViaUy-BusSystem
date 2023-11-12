@@ -6,7 +6,9 @@ try {
         $cantidad_asientos = $_POST["cantAsientos"];
         $tipo_asientos = $_POST["tipoAsientos"];
         $caracteristicas = $_POST["caracteristicas"];
-        
+        if (empty($matricula) || empty($cantidad_asientos) || empty($caracteristicas) || empty($tipo_asientos)) {
+            echo '<script>alert("Faltan completar datos"); window.location.href = "./addBus"; </script>';
+        }
         $query = "SELECT ID_unidad FROM unidad WHERE ID_unidad = :matricula";
         $sql = $conn->prepare($query);
         $sql->bindParam(":matricula", $matricula);

@@ -3,7 +3,10 @@ require "./database/db.php";
 try {
     if (!empty($_POST["deleteBusStop"])) {
         $parada = $_POST["numeroParadaOrigen"];
-
+        if(empty($parada) || !is_numeric($parada)) {
+            echo '<script>alert("Falta completar campos"); window.location.href = "./deleteBusStopPage"; </script>';
+            exit;
+        }
         $query = "SELECT ID_tramo
           FROM tramo
           WHERE numero_parada_1 IN ($parada)
@@ -28,7 +31,7 @@ try {
         $sql = $conn->prepare($query);
         $sql->bindParam(":parada", $parada);
         $sql->execute();
-        echo '<script>alert("La parada ah sido eliminada con exito"); window.location.href = "./delete"; </script>';
+        echo '<script>alert("La parada ah sido eliminada con exito"); window.location.href = "./deleteBusStopPage"; </script>';
     }
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';

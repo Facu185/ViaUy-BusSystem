@@ -14,10 +14,10 @@
         <section class="main__main">
             <h3>Agregar parada</h3>
             <form method="post" action="./addBusStop">
-                <input type="text" name="numeroParada" placeholder="Numero de parada">
+                <input type="number" name="numeroParada" placeholder="Numero de parada">
                 <input type="text" name="localizacion" placeholder="Localizacion">
-                <input type="text" name="latitud" placeholder="Latitud">
-                <input type="text" name="longitud" placeholder="Longitud">
+                <input type="number" name="latitud" placeholder="Latitud">
+                <input type="number" name="longitud" placeholder="Longitud">
                 <input class="button--primary" type="submit" name="addBusStop" value="Agregar parada">
             </form>
         </section>

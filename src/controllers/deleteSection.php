@@ -4,7 +4,10 @@ try {
     if (!empty($_POST["deleteSection"])) {
         $parada_origen = $_POST["numeroParadaOrigen"];
         $parada_destino = $_POST["numeroParadaDestino"];
-
+        if(empty($parada_origen) || empty($parada_destino) || !is_int($parada_origen) || !is_int($parada_destino)){
+            echo '<script>alert("Falta completar datos"); window.location.href = "./deleteSectionPage"; </script>';
+            exit;
+        }
         $query = "SELECT ID_tramo
         FROM tramo
         WHERE numero_parada_1 IN (:parada_origen)
@@ -25,7 +28,7 @@ try {
         $sql->bindParam(":id_tramo", $id_tramo);
         $sql->execute();
 
-        echo '<script>alert("El tramo ah sido eliminado con exito"); window.location.href = "./delete"; </script>';
+        echo '<script>alert("El tramo ah sido eliminado con exito"); window.location.href = "./deleteSectionPage"; </script>';
     }
 } catch (Exception $error) {
     echo '<script>alert("' . $error->getMessage() . '"); </script>';

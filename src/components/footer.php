@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="footer__contact">
-            <h4 class="footer__title" id="footerContact">Contacto</h4>
+            <h4 class="footer__title" id="footerContactTitle"></h4>
             <ul>
                 <li>
                    <p >Atlantida</p> 

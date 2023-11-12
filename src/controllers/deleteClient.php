@@ -10,7 +10,6 @@ try {
         $sql->bindParam(":id_usuario", $id_usuario);
         $sql->execute();
         $rol = $sql->fetch(PDO::FETCH_ASSOC);
-        print_r($rol);
         $id_rol = $rol["ID_rol"];
         if ($id_rol == 3) {
             $query = "UPDATE usuario SET activo = 1 WHERE email =:email";
@@ -38,7 +37,7 @@ try {
         $sql->bindParam(":id_usuario", $id_usuario);
         $sql->execute();
         $rol = $sql->fetch(PDO::FETCH_ASSOC);
-        print_r($rol);
+    
         $id_rol = $rol["ID_rol"];
         if ($id_rol == 3) {
             $query = "UPDATE usuario SET activo = 0 WHERE email =:email";

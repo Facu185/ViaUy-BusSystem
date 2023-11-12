@@ -3,10 +3,13 @@ require "./database/db.php";
 try {
     if (!empty($_POST["updateBus"])) {
         $matricula = $_POST["matricula"];
-
         $cantidad_asientos = $_POST["cantAsientos"];
         $tipo_asientos = $_POST["tipoAsientos"];
         $caracteristicas = $_POST["caracteristicas"];
+        if(empty($matricula) || empty($caracteristicas) || empty($cantidad_asientos) || empty($tipo_asientos) || empty($caracteristicas) || $matricula="Matricula de la unidad"){
+            echo '<script>alert("Faltan completar datos"); window.location.href = "./modifyBus"; </script>';
+            exit;
+        }
         if (!empty($cantidad_asientos)) {
             if (!empty($tipo_asientos)) {
                 $query = "SELECT total_de_asientos FROM unidad WHERE ID_unidad = :matricula";
@@ -30,7 +33,7 @@ try {
                         $sql->bindParam(":tipo_asientos", $tipo_asientos);
                         $sql->execute();
                     }
-                    echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modify"; </script>';
+                    echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
                 }
             } elseif ($cantidad_asientos < $asientos) {
                 $query = "UPDATE unidad SET total_de_asientos=:cantidad_asientos WHERE ID_unidad = :matricula";
@@ -46,11 +49,11 @@ try {
                     $sql->bindParam(":i", $i);
                     $sql->execute();
                 }
-                echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
             } elseif ($cantidad_asientos == $asientos) {
-                echo '<script>alert("La unidad ya tiene esa cantidad de asientos asignados"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("La unidad ya tiene esa cantidad de asientos asignados"); window.location.href = "./modifyBus"; </script>';
             } else {
-                echo '<script>alert("Debe ingresar el tipo de asiento"); window.location.href = "./modify"; </script>';
+                echo '<script>alert("Debe ingresar el tipo de asiento"); window.location.href = "./modifyBus"; </script>';
             }
         }
         if (!empty($tipo_asientos)) {
@@ -59,7 +62,7 @@ try {
             $sql->bindParam(":matricula", $matricula);
             $sql->bindParam(":tipo_asientos", $tipo_asientos);
             $sql->execute();
-            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modify"; </script>';
+            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
         }
         if (!empty($caracteristicas)) {
             $query = "UPDATE caracteristicas SET tipo=:caracteristicas WHERE ID_unidad = :matricula";
@@ -67,7 +70,7 @@ try {
             $sql->bindParam(":matricula", $matricula);
             $sql->bindParam(":caracteristicas", $caracteristicas);
             $sql->execute();
-            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modify"; </script>';
+            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
         }
     }
 } catch (Exception $error) {

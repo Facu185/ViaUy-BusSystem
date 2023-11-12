@@ -23,7 +23,7 @@
             <input type="text" name="origenTramo" placeholder="Origen del tramo">
             <input type="text" name="destinoTramo" placeholder="Destino del tramo">
             <input type="submit" name="modifyRoute" value="Modificar" class='button--tertiary'>
-            <input type="submit" name="deleteRoute" value="Eliminar recorrido" class='button--tertiary'>
+            <input type="submit" name="deleteRoute" value="Eliminar este tramo del recorrido" class='button--tertiary'>
         </form>
        </section>
     </main>

@@ -1,8 +1,6 @@
 <?php
 include "./controllers/upcomingTravels.php";
-if (!empty($_SESSION['proximasSalidas'])) {
-    $proximasSalidas = $_SESSION['proximasSalidas'];
-}
+
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');
 }

@@ -113,6 +113,8 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
+        document.getElementById("footerContactTitle").textContent =
+        data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
       document.getElementById("footerRoutes").textContent =
@@ -294,6 +296,8 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
+        document.getElementById("footerContactTitle").textContent =
+        data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
       document.getElementById("footerRoutes").textContent =
@@ -356,6 +360,8 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
+        document.getElementById("footerContactTitle").textContent =
+        data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
       document.getElementById("footerRoutes").textContent =
@@ -460,6 +466,8 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
+        document.getElementById("footerContactTitle").textContent =
+        data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
       document.getElementById("footerRoutes").textContent =
