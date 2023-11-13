@@ -1,8 +1,8 @@
 <?php
 ob_start();
-if (!empty($_SESSION["login"]) && isset($_SESSION['detalleViaje'])) {
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]]) && isset($_SESSION['detalleViaje'])) {
     $detalleViaje = $_SESSION['detalleViaje'];
-    $login = $_SESSION["login"];
+    $login = $_SESSION[$_COOKIE["login"]];
 }
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');
@@ -14,7 +14,7 @@ if (!empty($_SESSION["rol"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PDF</title>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 
@@ -71,10 +71,6 @@ if (!empty($_SESSION["rol"])) {
             <p>
                 Fecha de compra:
                 <?php echo ($detalleViaje["Fecha compra"]); ?>
-            </p>
-            <p>
-                Tipo de viaje:
-                <?php echo ($detalleViaje["Tipo de Viaje"]); ?>
             </p>
         </div>
     </div>

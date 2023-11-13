@@ -24,15 +24,15 @@ if (!empty($_SESSION["rol"])) {
                 <form method="post" action="./signup">
                     <form method="post">
                         <label for="registerName" id="registerTextName"> </label>
-                        <input type="text" id="registerName" name="registerName" placeholder="Nombre">
+                        <input type="text" id="registerName" name="registerName" placeholder="Nombre" required>
                         <label for="registerLastName" id="registerTextLastName"> </label>
-                        <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido">
+                        <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido" required>
                         <label for="registerPhone" id="registerTextPhone"> </label>
-                        <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
+                        <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono" required>
                         <label for="registerEmail" id="registerTextEmail"> </label>
-                        <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
+                        <input type="email" id="registerEmail" name="registerEmail" placeholder="Email" required>
                         <label for="registerPassword" id="registerTextPassword"> </label>
-                        <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
+                        <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña" onpaste="return false;" required>
                         <input class="button--primary" id="registerButton" type="submit" name="registerButton"value="Registrarse">
                     </form>
             </div>

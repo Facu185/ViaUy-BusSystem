@@ -1,16 +1,43 @@
 <?php
 require "./database/db.php";
-
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["modifySection"])) {
         $id_tramo = $_POST["numeroParadaOrigen"];
+        $patron = "/^[a-zA-Z0-9]+$/";
+        $id_tramo = htmlspecialchars($id_tramo, ENT_QUOTES, 'UTF-8');
         $tipo_tramo = $_POST["tipoTramo"];
+        $tipo_tramo = htmlspecialchars($tipo_tramo, ENT_QUOTES, 'UTF-8');
         $distancia = $_POST["distancia"];
+        $distancia = htmlspecialchars($distancia, ENT_QUOTES, 'UTF-8');
         $tiempo_viaje = $_POST["tiempoViaje"];
         $calles = $_POST["calles"];
+        $calles = htmlspecialchars($calles, ENT_QUOTES, 'UTF-8');
         $rutas = $_POST["rutas"];
-        if(!is_int($id_tramo) || !is_int($tipo_tramo)){
+        $rutas = htmlspecialchars($rutas, ENT_QUOTES, 'UTF-8');
+        if(empty($id_tramo) || empty($tipo_tramo) || empty($distancia) || empty($tiempo_viaje) || empty($calles) || empty($rutas) || $id_tramo == "Seleccione el tramo a modificar" || $tipo_tramo == "Tipo de tramo"){
             echo '<script>alert("Faltan completar datos"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($id_tramo,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("Numero de parada no es valido"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($tipo_tramo,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("El tipo de tramo no es valido"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($distancia,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("La distancia no es valida"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($calles, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("Las calles no son validas"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($rutas, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("Las rutas no son validas"); window.location.href = "./modifySectionPage"; </script>';
+            exit;
         }
         if (!empty($tipo_tramo) && !empty($distancia) && !empty($tiempo_viaje) && !empty($calles) && !empty($rutas)) {
             $query = "UPDATE tramo SET tipo_tramo=:tipo_tramo, distancia=:distancia, calles=:calles, rutas=:rutas, tiempo=:tiempo_viaje WHERE ID_tramo = :id_tramo";
@@ -67,6 +94,7 @@ try {
     }
 
 } catch (Exception $error) {
+    discordErrorLog('Error al modificar tramo'. $id_tramo, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

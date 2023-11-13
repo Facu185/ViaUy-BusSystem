@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Document</title>
+    <title>Add bus stop</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
             <form method="post" action="./addBusStop">
                 <input type="number" name="numeroParada" placeholder="Numero de parada">
                 <input type="text" name="localizacion" placeholder="Localizacion">
-                <input type="number" name="latitud" placeholder="Latitud">
-                <input type="number" name="longitud" placeholder="Longitud">
+                <input type="text" name="latitud" placeholder="Latitud">
+                <input type="text" name="longitud" placeholder="Longitud">
                 <input class="button--primary" type="submit" name="addBusStop" value="Agregar parada">
             </form>
         </section>

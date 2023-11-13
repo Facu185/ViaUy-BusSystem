@@ -1,8 +1,8 @@
 <?php
-$servername = "";
-$username = "";
+$servername = "localhost";
+$username = "root";
 $password = "";
-$dbname = "";
+$dbname = "pe3_urunet";
 /* require_once './vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable("./");

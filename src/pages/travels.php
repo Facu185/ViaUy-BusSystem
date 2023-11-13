@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     $search = false;
 }
-if (!empty($_SESSION["login"])) {
-    $login = $_SESSION["login"];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]])) {
+    $login = $_SESSION[$_COOKIE["login"]];
 }
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');
@@ -84,7 +84,7 @@ if (!empty($_SESSION["rol"])) {
                                 <input type="hidden" name="parada_destino" value="<?php echo ($lineas["parada_destino"]) ?>">
                                 <input type="hidden" name="asientos" value='<?php echo json_encode($valor); ?>'>
                                 <?php if (isset($login)) {
-                                    echo '<input type="submit"  class="button--primary" value="Comprar">';
+                                    echo '<input type="submit"  class="button--primary" value="Buscar asiento">';
                                 } else {
                                     echo '<a href="./login">Loguearse</a>';
                                 } ?>

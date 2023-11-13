@@ -1,8 +1,15 @@
 <?php
 require "./database/db.php";
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["deleteBus"])) {
         $matricula = $_POST["matricula"];
+        $patron = "/^[a-zA-Z0-9]+$/";
+        $matricula = htmlspecialchars($matricula, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($matricula, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("La matricula solo puede contener letras y numeros"); window.location.href = "./deleteBusPage"; </script>';
+            exit;
+        }
         if (empty($matricula) || $matricula="Matricula de la unidad") {
             echo '<script>alert("Falatan completar campos"); window.location.href = "./deleteBusPage"; </script>';
             exit;
@@ -19,7 +26,6 @@ try {
         $sql->execute();
         $id = $sql->fetch(PDO::FETCH_ASSOC);
         $id_linea = $id["ID_linea"];
-        print_r($id_linea);
 
         $query = "DELETE FROM horario WHERE ID_unidad=:matricula AND ID_linea=:id_linea";
         $sql = $conn->prepare($query);
@@ -45,6 +51,7 @@ try {
         echo '<script>alert("Unidad eliminada con exito"); window.location.href = "./delete"; </script>';
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al eliminar unidad' . $matricula, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

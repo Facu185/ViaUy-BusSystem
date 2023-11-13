@@ -9,7 +9,7 @@
     </div>
     <div>
         <ul>
-           <a href="./dashboard" id="dashboard"><i class="fa-solid fa-house"></i> Panel</a>
+           <a href="./dashboard" id="dashboard"><i class="fa-solid fa-chart-column"></i> Estadisticas</a>
         </ul>
     </div>
     <div id="users"><i class="fa-solid fa-user"></i> Usuarios</div>

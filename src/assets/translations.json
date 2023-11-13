@@ -54,6 +54,9 @@
     "homeAbout": "Sobre nosotros",
     "homeService": "Servicios",
     "homeContact": "Contactanos",
+    "origenHome": "Origen",
+    "destinoHome": "Destino",
+    
 
     "travelsSelected": "Viaje seleccionado",
 
@@ -184,6 +187,8 @@
     "homeAbout": "About us",
     "homeService": "Services",
     "homeContact": "Contact us",
+    "origenHome": "Origin",
+    "destinoHome": "Destination",
 
     "travelsSelected": "Selected trip",
 
@@ -314,6 +319,8 @@
     "homeAbout": "Sobre nós",
     "homeService": "Serviços",
     "homeContact": "Contato",
+    "origenHome": "Origem",
+    "destinoHome": "Destino",
 
     "travelsSelected": "Viagem selecionada",
 

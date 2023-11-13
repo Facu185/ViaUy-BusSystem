@@ -1,6 +1,6 @@
 <?php
-if (!empty($_SESSION["login"])) {
-    $login = $_SESSION["login"];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]])) {
+    $login = $_SESSION[$_COOKIE["login"]];
 }
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');

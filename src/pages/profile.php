@@ -1,8 +1,8 @@
 <?php
 include "./controllers/userTravels.php";
-$pasaje_usuario = $_SESSION['pasajes']; 
-if (!empty($_SESSION["login"])) {
-    $login = $_SESSION["login"];
+$pasaje_usuario = $_SESSION['pasajes'];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]])) {
+    $login = $_SESSION[$_COOKIE["login"]];
 }
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');
@@ -32,7 +32,7 @@ if (!empty($_SESSION["rol"])) {
                         </div>
                         <div class="summary-balance">
                             <h2>
-                                <?php echo $_SESSION["login"]["nombre"] ?>
+                                <?php echo $_SESSION[$_COOKIE["login"]]["nombre"] ?>
                             </h2>
                         </div>
                     </div>
@@ -44,25 +44,25 @@ if (!empty($_SESSION["rol"])) {
                             <div class="card-item">
                                 <h2 id="profileName"></h2>
                                 <p>
-                                    <?php echo $_SESSION["login"]["nombre"] ?>
+                                    <?php echo $_SESSION[$_COOKIE["login"]]["nombre"] ?>
                                 </p>
                             </div>
                             <div class="card-item">
                                 <h2 id="profileSurname"></h2>
                                 <p>
-                                    <?php echo $_SESSION["login"]["apellido"] ?>
+                                    <?php echo $_SESSION[$_COOKIE["login"]]["apellido"] ?>
                                 </p>
                             </div>
                             <div class="card-item">
                                 <h2 id="profilePhone"></h2>
                                 <p>
-                                    <?php echo $_SESSION["login"]["celular"] ?>
+                                    <?php echo $_SESSION[$_COOKIE["login"]]["celular"] ?>
                                 </p>
                             </div>
                             <div class="card-item">
                                 <h2 id="profileMail"></h2>
                                 <p>
-                                    <?php echo $_SESSION["login"]["email"] ?>
+                                    <?php echo $_SESSION[$_COOKIE["login"]]["email"] ?>
                                 </p>
                             </div>
                         </div>
@@ -91,71 +91,152 @@ if (!empty($_SESSION["rol"])) {
                             <h2 id="mineTravels"></h2>
                         </span>
                         <?php if (!empty($pasaje_usuario[0])): ?>
-                        <div class="transaction">
-                            <div class="t-icon-container">
-                                <i class="fa-solid fa-bus"></i>
-                            </div>
-                            <div class="t-details">
-                                <div class="t-title">
-                                    <p>Origen: <?php echo $pasaje_usuario[0]["origen"] ?></p>
-                                    <p>Destino: <?php echo $pasaje_usuario[0]["destino"] ?></p>
-                                    <p>$<?php echo $pasaje_usuario[0]["precio"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["estado"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["tipo_medio_pago"] ?></p>
+                            <div class="transaction">
+                                <div class="t-icon-container">
+                                    <i class="fa-solid fa-bus"></i>
+                                </div>
+                                <div class="t-details">
+                                    <div class="t-title">
+                                        <p>Origen:
+                                            <?php echo $pasaje_usuario[0]["origen"] ?>
+                                        </p>
+                                        <p>Destino:
+                                            <?php echo $pasaje_usuario[0]["destino"] ?>
+                                        </p>
+                                        <p> Precio: $
+                                            <?php echo $pasaje_usuario[0]["precio"] ?>
+                                        </p>
+                                        <p>
+                                            Estado:
+                                            <?php echo $pasaje_usuario[0]["estado"] ?>
+                                        </p>
+                                        <p>
+                                            Metodo de pago:
+                                            <?php echo $pasaje_usuario[0]["tipo_medio_pago"] ?>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="t-time">
-                                    <p><?php echo $pasaje_usuario[0]["hora_salida"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["hora_llegada"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["fecha_compra"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["fecha_viaje"] ?></p>
-                                    <p><?php echo $pasaje_usuario[0]["asiento_seleccionado"] ?></p>
+                                    <p>
+                                        Hora de salida:
+                                        <?php echo $pasaje_usuario[0]["hora_salida"] ?>
+                                    </p>
+                                    <p>
+                                        Hora de llegada:
+                                        <?php echo $pasaje_usuario[0]["hora_llegada"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de compra:
+                                        <?php echo $pasaje_usuario[0]["fecha_compra"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de viaje:
+                                        <?php echo $pasaje_usuario[0]["fecha_viaje"] ?>
+                                    </p>
+                                    <p>
+                                        Asiento seleccionado:
+                                        <?php echo $pasaje_usuario[0]["asiento_seleccionado"] ?>
+                                    </p>
                                 </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                         <?php if (!empty($pasaje_usuario[1])): ?>
-                        <div class="transaction">
-                            <div class="t-icon-container"><i class="fa-solid fa-bus"></i></div>
-                            <div class="t-details">
-                                <div class="t-title">
-                                    <p>Origen: <?php echo $pasaje_usuario[1]["origen"] ?></p>
-                                    <p>Destino: <?php echo $pasaje_usuario[1]["destino"] ?></p>
-                                    <p>$<?php echo $pasaje_usuario[1]["precio"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["estado"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["tipo_medio_pago"] ?></p>
+                            <div class="transaction">
+                                <div class="t-icon-container"><i class="fa-solid fa-bus"></i></div>
+                                <div class="t-details">
+                                    <div class="t-title">
+                                        <p>Origen:
+                                            <?php echo $pasaje_usuario[1]["origen"] ?>
+                                        </p>
+                                        <p>Destino:
+                                            <?php echo $pasaje_usuario[1]["destino"] ?>
+                                        </p>
+                                        <p> Precio: $
+                                            <?php echo $pasaje_usuario[1]["precio"] ?>
+                                        </p>
+                                        <p>
+                                            Estado:
+                                            <?php echo $pasaje_usuario[1]["estado"] ?>
+                                        </p>
+                                        <p>
+                                            Metodo de pago:
+                                            <?php echo $pasaje_usuario[1]["tipo_medio_pago"] ?>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="t-time">
-                                    <p><?php echo $pasaje_usuario[1]["hora_salida"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["hora_llegada"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["fecha_compra"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["fecha_viaje"] ?></p>
-                                    <p><?php echo $pasaje_usuario[1]["asiento_seleccionado"] ?></p>
+                                    <p>
+                                        Hora de salida:
+                                        <?php echo $pasaje_usuario[1]["hora_salida"] ?>
+                                    </p>
+                                    <p>
+                                        Hora de llegada:
+                                        <?php echo $pasaje_usuario[1]["hora_llegada"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de compra:
+                                        <?php echo $pasaje_usuario[1]["fecha_compra"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de viaje:
+                                        <?php echo $pasaje_usuario[1]["fecha_viaje"] ?>
+                                    </p>
+                                    <p>
+                                        Asiento seleccionado:
+                                        <?php echo $pasaje_usuario[1]["asiento_seleccionado"] ?>
+                                    </p>
                                 </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                         <?php if (!empty($pasaje_usuario[2])): ?>
-                        <div class="transaction">
-                            <div class="t-icon-container">
-                                <i class="fa-solid fa-bus"></i>
-                            </div>
-                            <div class="t-details">
-                                <div class="t-title">
-                                    <p>Origen: <?php echo $pasaje_usuario[2]["origen"] ?></p>
-                                    <p>Destino: <?php echo $pasaje_usuario[2]["destino"] ?></p>
-                                    <p>$<?php echo $pasaje_usuario[2]["precio"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["estado"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["tipo_medio_pago"] ?></p>
+                            <div class="transaction">
+                                <div class="t-icon-container">
+                                    <i class="fa-solid fa-bus"></i>
+                                </div>
+                                <div class="t-details">
+                                    <div class="t-title">
+                                        <p>Origen:
+                                            <?php echo $pasaje_usuario[2]["origen"] ?>
+                                        </p>
+                                        <p>Destino:
+                                            <?php echo $pasaje_usuario[2]["destino"] ?>
+                                        </p>
+                                        <p> Precio: $
+                                            <?php echo $pasaje_usuario[2]["precio"] ?>
+                                        </p>
+                                        <p>
+                                            Estado:
+                                            <?php echo $pasaje_usuario[2]["estado"] ?>
+                                        </p>
+                                        <p>
+                                            Metodo de pago:
+                                            <?php echo $pasaje_usuario[2]["tipo_medio_pago"] ?>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="t-time">
-                                    <p><?php echo $pasaje_usuario[2]["hora_salida"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["hora_llegada"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["fecha_compra"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["fecha_viaje"] ?></p>
-                                    <p><?php echo $pasaje_usuario[2]["asiento_seleccionado"] ?></p>
+                                    <p>
+                                        Hora de salida:
+                                        <?php echo $pasaje_usuario[2]["hora_salida"] ?>
+                                    </p>
+                                    <p>
+                                        Hora de llegada:
+                                        <?php echo $pasaje_usuario[2]["hora_llegada"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de compra:
+                                        <?php echo $pasaje_usuario[2]["fecha_compra"] ?>
+                                    </p>
+                                    <p>
+                                        Fecha de viaje:
+                                        <?php echo $pasaje_usuario[2]["fecha_viaje"] ?>
+                                    </p>
+                                    <p>
+                                        Asiento seleccionado:
+                                        <?php echo $pasaje_usuario[2]["asiento_seleccionado"] ?>
+                                    </p>
                                 </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -164,4 +245,5 @@ if (!empty($_SESSION["rol"])) {
         <?php include('./components/navbar.php'); ?>
         <script src="../js/index.js" type="module"></script>
 </body>
+
 </html>

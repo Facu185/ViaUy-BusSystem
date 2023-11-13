@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Document</title>
+    <title>Modify bus stop</title>
 </head>
 
 <body>
@@ -19,8 +19,8 @@
                 </select>
                 <select name="numeroParadaDestino" id="numeroParadaDestino" style="display: none;"></select>
                 <input type="text" name="localizacion" placeholder="Localizacion">
-                <input type="number" name="latitud" placeholder="Latitud">
-                <input type="number" name="longitud" placeholder="Longitud">
+                <input type="text" name="latitud" placeholder="Latitud">
+                <input type="text" name="longitud" placeholder="Longitud">
                 <input type="submit" name="modifyBusStop" value="Modificar parada">
             </form>
         </section>

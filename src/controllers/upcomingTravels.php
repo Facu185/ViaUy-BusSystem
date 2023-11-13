@@ -1,9 +1,12 @@
 <?php
 require "./database/db.php";
+include_once "./controllers/discordErrorLog.php";
 try {
     date_default_timezone_set('America/Montevideo');
     $hora_actual = date('H:i:s');
+    $hora_actual = htmlspecialchars($hora_actual, ENT_QUOTES, 'UTF-8');
     $diaSemana = date('l');
+    $diaSemana = htmlspecialchars($diaSemana, ENT_QUOTES, 'UTF-8');
     $diasEnIngles = array(
         'Monday' => 'Lunes',
         'Tuesday' => 'Martes',
@@ -53,6 +56,7 @@ try {
         $_SESSION['proximasSalidas'] = $proximasSalidas; 
     }
 } catch (Exception $e) {
+    discordErrorLog('Error al buscar proximas viajes', $error);
     echo $e->getMessage();
 }
 $conn = null;

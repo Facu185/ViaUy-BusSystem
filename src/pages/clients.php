@@ -8,14 +8,14 @@ include "./controllers/lookClient.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Document</title>
+    <title>Clients</title>
 </head>
 
 <body>
     <main class="admin__main">
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
-            <h3>Eliminar usuario</h3>
+            <h3>Administrar usuario</h3>
             <form method="post" action="./lookClient">
                 <input type="email" name="clientEmail" placeholder="Email del usuario">
                 <input type="submit" name="lookClient" value="Buscar usuario">

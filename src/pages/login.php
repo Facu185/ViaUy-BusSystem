@@ -24,8 +24,8 @@ include "./controllers/signin.php"
             <p class="menu__text" id="loginMessage"></p>
             <div class="login__form">
                 <form method="post">
-                    <input type="email" id="loginEmail" name="email" placeholder="Email">
-                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña">
+                    <input type="email" id="loginEmail" name="email" placeholder="Email" required>
+                    <input type="password" id="loginPassword" name="password" placeholder="Contraseña" onpaste="return false;" required>
                     <input type="submit" class="button--primary" id="loginButton" name="loginButton"
                         value="Ingresar"></input>
                 </form>

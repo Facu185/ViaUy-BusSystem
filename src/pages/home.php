@@ -1,11 +1,10 @@
 <?php
 include "./controllers/upcomingTravels.php";
-
 if (!empty($_SESSION["rol"])) {
     header('location: ./dashboard');
 }
-if (!empty($_SESSION["login"])) {
-    $login = $_SESSION["login"];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]])) {
+    $login = $_SESSION[$_COOKIE["login"]];
 }
 
 ?>
@@ -39,12 +38,12 @@ if (!empty($_SESSION["login"])) {
                 <form method="POST" action="./travels">
                     <select name="origen" id="homeOrigin">
 
-                        <option value="origen" selected>Origen</option>
+                        <option value="origen" id="origenHome" selected>Origen</option>
 
                     </select>
                     <i class="fa-solid fa-arrow-right"></i>
                     <select name="destino" id="homeDestination">
-                        <option value="Destino" selected>Destino</option>
+                        <option value="Destino" id="destinoHome" selected>Destino</option>
                     </select>
                     <input id="input__date" type="date" name="date">
                     <input class="button--primary" id="homeButton" type="submit" value="Buscar">
@@ -53,7 +52,7 @@ if (!empty($_SESSION["login"])) {
         </div>
         <section class="main__travels">
 
-            <?php if (!empty($proximasSalidas)): ?>
+            <?php if (!empty($proximasSalidas[0]) && !empty($proximasSalidas[1])): ?>
                 <h2 class="main__text" id="homeTravels"></h2>
                 <div class="travels__list">
                     <div class="travel__card" data-aos="fade-right">

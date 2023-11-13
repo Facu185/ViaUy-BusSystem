@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Document</title>
+    <title>Add bus</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <section class="main__main">
             <h3>Agregar unidad</h3>
             <form method="post" action="./add_Bus">
-                <input type="text" name="matricula" placeholder="Matricula de la unidad">
+                <input type="number" name="matricula" placeholder="Nuemero de unidad">
                 <input type="text" name="cantAsientos" placeholder="Cantidad de asientos">
                 <input type="text" name="tipoAsientos" placeholder="Tipo de asientos">
                 <input type="text" name="caracteristicas" placeholder="Caracteristicas de la unidad">

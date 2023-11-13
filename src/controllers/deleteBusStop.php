@@ -1,8 +1,14 @@
 <?php
 require "./database/db.php";
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["deleteBusStop"])) {
         $parada = $_POST["numeroParadaOrigen"];
+        $parada = htmlspecialchars($parada, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($parada, FILTER_VALIDATE_INT)){
+            echo '<script>alert("La parada solo puede contener numeros"); window.location.href = "./deleteBusStopPage"; </script>';
+            exit;
+        }
         if(empty($parada) || !is_numeric($parada)) {
             echo '<script>alert("Falta completar campos"); window.location.href = "./deleteBusStopPage"; </script>';
             exit;
@@ -36,6 +42,7 @@ try {
         echo '<script>alert("La parada ah sido eliminada con exito"); window.location.href = "./deleteBusStopPage"; </script>';
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al eliminar parada' . $parada, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

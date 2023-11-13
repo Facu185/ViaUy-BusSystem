@@ -1,17 +1,38 @@
 <?php
 require "./database/db.php";
-
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["modifyLine"])) {
         $id_linea = $_POST["lines"];
+        $patron = "/^[a-zA-Z0-9]+$/";
+        $id_linea = htmlspecialchars($id_linea, ENT_QUOTES, 'UTF-8');
         $nombre_linea = $_POST["nombreLinea"];
+        $nombre_linea = htmlspecialchars($nombre_linea, ENT_QUOTES, 'UTF-8');
         $origen_linea = $_POST["origenLinea"];
+        $origen_linea = htmlspecialchars($origen_linea, ENT_QUOTES, 'UTF-8');
         $destino_linea = $_POST["destinoLinea"];
+        $destino_linea = htmlspecialchars($destino_linea, ENT_QUOTES, 'UTF-8');
+        
         if(empty($id_linea) || empty($nombre_linea) || empty($origen_linea) || empty($destino_linea) || !is_numeric($id_linea)) {
             echo '<script>alert("Faltan completar campos"); window.location.href = "./modifyLinePage"; </script>';
             exit;
         }
-
+        if(!filter_var($id_linea,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("Numero de linea no valido"); window.location.href = "./modifyLinePage"; </script>';
+            exit;
+        }
+        if(!filter_var($nombre_linea, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("Nombre de linea no valido"); window.location.href = "./modifyLinePage"; </script>';
+            exit;
+        }
+        if(!filter_var($origen_linea, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("Origen de linea no valido"); window.location.href = "./modifyLinePage"; </script>';
+            exit;
+        }
+        if(!filter_var($destino_linea, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $patron)))){
+            echo '<script>alert("Destino de linea no valido"); window.location.href = "./modifyLinePage"; </script>';
+            exit;
+        }
         $query = "SELECT nombre_linea FROM linea WHERE nombre_linea =:nombre_linea";
         $sql = $conn->prepare($query);
         $sql->bindParam(":nombre_linea", $nombre_linea, PDO::PARAM_STR);
@@ -61,6 +82,7 @@ try {
         }
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al mopdificar linea' . $nombre_linea, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

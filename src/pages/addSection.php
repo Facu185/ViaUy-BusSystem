@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Document</title>
+    <title>Add section</title>
 </head>
 
 <body>
@@ -28,6 +28,7 @@
                         <option value="3">3</option>
                     </select>
                     <input type="number" name="distancia" placeholder="Distancia">
+                    <p>Tiempo del viaje:</p>
                     <input type="time" name="tiempoViaje" placeholder="Tiempo de viaje">
                     <input type="text" name="calles" placeholder="Calles">
                     <input type="text" name="rutas" placeholder="Rutas">

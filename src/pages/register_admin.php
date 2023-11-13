@@ -17,15 +17,15 @@
             <div class="register__admin">
                 <form method="post" action="./singupAdmin">
                     <p>Nombre:</p>
-                    <input type="text" id="registerName" name="registerName" placeholder="Nombre">
+                    <input type="text" id="registerName" name="registerName" placeholder="Nombre" required>
                     <p>Apellido:</p>
-                    <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido">
+                    <input type="text" id="registerLastName" name="registerLastName" placeholder="Apellido" required>
                     <p>Telefono:</p>
-                    <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono">
+                    <input type="number" id="registerPhone" name="registerPhone" placeholder="Numero de telefono" required>
                     <p>Email:</p>
-                    <input type="email" id="registerEmail" name="registerEmail" placeholder="Email">
+                    <input type="email" id="registerEmail" name="registerEmail" placeholder="Email" required>
                     <p>Contraseña:</p>
-                    <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña">
+                    <input type="password" id="registerPassword" name="registerPassword" placeholder="Contraseña" onpaste="return false;" required>
                     <p></p>
                     <input type="submit" name="registerButton" value="Registrar">
                 </form>

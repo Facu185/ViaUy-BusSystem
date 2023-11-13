@@ -1,10 +1,20 @@
 <?php
 require "./database/db.php";
-
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["deleteClient"])) {
         $email = $_POST["clientEmail"];
+        $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($email,  FILTER_VALIDATE_EMAIL)){
+            echo '<script>alert("El email no es valido"); window.location.href = "./deleteClientPage"; </script>';
+            exit;
+        }
         $id_usuario = $_SESSION["usuario"]["ID_usuario"];
+        $id_usuario = htmlspecialchars($id_usuario, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($id_usuario,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("El id del usuario no es valido"); window.location.href = "./deleteClientPage"; </script>';
+            exit;
+        }
         $query = "SELECT ID_rol FROM usuario_rol WHERE ID_usuario =:id_usuario";
         $sql = $conn->prepare($query);
         $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
@@ -31,7 +41,17 @@ try {
     }
     if (!empty($_POST["activateClient"])) {
         $email = $_POST["clientEmail"];
+        $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($email,  FILTER_VALIDATE_EMAIL)){
+            echo '<script>alert("El email no es valido"); window.location.href = "./deleteClientPage"; </script>';
+            exit;
+        }
         $id_usuario = $_SESSION["usuario"]["ID_usuario"];
+        $id_usuario = htmlspecialchars($id_usuario, ENT_QUOTES, 'UTF-8');
+        if(!filter_var($id_usuario,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("El id del usuario no es valido"); window.location.href = "./deleteClientPage"; </script>';
+            exit;
+        }
         $query = "SELECT ID_rol FROM usuario_rol WHERE ID_usuario =:id_usuario";
         $sql = $conn->prepare($query);
         $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
@@ -55,6 +75,7 @@ try {
         echo '<script>alert("Usuario activado con exito"); window.location.href = "./clients"; </script>';
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al eliminar o activar usuario' . $email, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

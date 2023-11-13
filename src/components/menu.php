@@ -10,7 +10,6 @@
             </div>
         </div>
         <div class="dropdown">
-           
             <?php if (isset($login)): ?>
                 <button type="button" class="dropbtn"><?php echo ($login["nombre"]) ?></button>
                 <div class="dropdown-content">

@@ -6,9 +6,25 @@ require "./database/db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $linea = json_decode($_POST['linea']);
     $id_unidad=$linea->ID_unidad;
+    $id_unidad = htmlspecialchars($id_unidad, ENT_QUOTES, 'UTF-8');
+    if(!filter_var($id_unidad, FILTER_VALIDATE_INT)){
+        echo '<script>alert("Debes proporcionar una matricula valida"); window.location.href = "./comprar"; </script>';
+        exit;
+    }
     $id_linea=$linea->idLinea;
+    $id_linea = htmlspecialchars($id_linea, ENT_QUOTES, 'UTF-8');
+    if(!filter_var($id_linea, FILTER_VALIDATE_INT)){
+        echo '<script>alert("Debes proporcionar una matricula valida"); window.location.href = "./comprar"; </script>';
+        exit;
+    }
     $asiento_selecionado = $_POST["asientoSeleccionado"];
+    $asiento_selecionado = htmlspecialchars($asiento_selecionado, ENT_QUOTES, 'UTF-8');
+    if(!filter_var($asiento_selecionado, FILTER_VALIDATE_INT)){
+        echo '<script>alert("Debes proporcionar una matricula valida"); window.location.href = "./comprar"; </script>';
+        exit;
+    }
     $fechaViaje = $linea->fechaViaje;
+    $fechaViaje = htmlspecialchars($fechaViaje, ENT_QUOTES, 'UTF-8');
 
     $query = "SELECT ID_horario FROM horario WHERE ID_linea=:id_linea AND ID_unidad=:id_unidad;";
     $sql = $conn->prepare($query);
@@ -17,6 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql->execute();
     $horario = $sql->fetch(PDO::FETCH_ASSOC);
     $id_horario = $horario["ID_horario"];
+    $id_horario = htmlspecialchars($id_horario, ENT_QUOTES, 'UTF-8');
+    if(!filter_var($id_horario, FILTER_VALIDATE_INT)){
+        echo '<script>alert("Debes proporcionar un horario valido"); window.location.href = "./comprar"; </script>';
+        exit;
+    }
    
     $query = "SELECT disponibilidad_asiento FROM horario_asiento WHERE Numero_asiento=:asiento_selecionado AND fecha_viaje =:fechaViaje AND ID_horario=:id_horario AND ID_linea=:id_linea AND ID_unidad=:id_unidad;";
     $sql = $conn->prepare($query);

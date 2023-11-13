@@ -1,11 +1,23 @@
 <?php
 require "./database/db.php";
+include_once "./controllers/discordErrorLog.php";
 try {
     if (!empty($_POST["deleteSection"])) {
         $parada_origen = $_POST["numeroParadaOrigen"];
+        $parada_origen = htmlspecialchars($parada_origen, ENT_QUOTES, 'UTF-8');
         $parada_destino = $_POST["numeroParadaDestino"];
-        if(empty($parada_origen) || empty($parada_destino) || !is_int($parada_origen) || !is_int($parada_destino)){
+        $parada_destino = htmlspecialchars($parada_destino, ENT_QUOTES, 'UTF-8');
+       
+        if(empty($parada_origen) || empty($parada_destino) || $parada_origen == "Parada de origen del tramo" || $parada_destino == "Parada de destino del tramo"){
             echo '<script>alert("Falta completar datos"); window.location.href = "./deleteSectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($parada_origen,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("Numero de parada no valido"); window.location.href = "./deleteSectionPage"; </script>';
+            exit;
+        }
+        if(!filter_var($parada_destino,  FILTER_VALIDATE_INT)){
+            echo '<script>alert("Numero de parada no valido"); window.location.href = "./deleteSectionPage"; </script>';
             exit;
         }
         $query = "SELECT ID_tramo
@@ -31,6 +43,7 @@ try {
         echo '<script>alert("El tramo ah sido eliminado con exito"); window.location.href = "./deleteSectionPage"; </script>';
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al eliminar tramo' . $id_tramo, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;

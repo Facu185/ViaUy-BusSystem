@@ -7,7 +7,7 @@ burger.addEventListener("click", () => {
     title.style.justifyContent = "space-between";
     document.querySelector(".logoHead").style.display = "block";
     document.getElementById("dashboard").innerHTML =
-      '<i class="fa-solid fa-house"></i> Panel';
+      '<i class="fa-solid fa-chart-column"></i> Estadisticas';
     document.getElementById("users").innerHTML =
       '<i class="fa-solid fa-user"></i> Usuarios';
     document.getElementById("units").innerHTML =
@@ -28,7 +28,7 @@ burger.addEventListener("click", () => {
       document.getElementById("registerAdmin").innerHTML =
         "<i class='fa-solid fa-star'></i> Registrar admin";
       document.getElementById("eliminarUsuarios").innerHTML =
-        "<i class='fa-solid fa-user-xmark'></i> Eliminar usuario";
+        "<i class='fa-solid fa-screwdriver-wrench'></i> Administrar usuario";
       document.getElementById("manageReservations").innerHTML =
         "<i class='fa-solid fa-list-check'></i> Gestionar reservas";
     }
@@ -95,7 +95,7 @@ burger.addEventListener("click", () => {
     title.style.width = "100%";
     document.querySelector(".logoHead").style.display = "none";
     document.getElementById("dashboard").innerHTML =
-      '<i class="fa-solid fa-house"></i>';
+      '<i class="fa-solid fa-chart-column"></i>';
     document.getElementById("users").innerHTML =
       '<i class="fa-solid fa-user"></i>';
     document.getElementById("units").innerHTML =
@@ -116,7 +116,7 @@ burger.addEventListener("click", () => {
       document.getElementById("registerAdmin").innerHTML =
         "<i class='fa-solid fa-star'></i>";
       document.getElementById("eliminarUsuarios").innerHTML =
-        "<i class='fa-solid fa-user-xmark'></i>";
+        "<i class='fa-solid fa-screwdriver-wrench'></i>";
       document.getElementById("manageReservations").innerHTML =
         "<i class='fa-solid fa-list-check'></i>";
     }
@@ -196,7 +196,7 @@ users.addEventListener("click", () => {
     let lieliminarUsuarios = document.createElement("li");
     eliminarUsuarios.id = "eliminarUsuarios";
     eliminarUsuarios.innerHTML =
-      "<i class='fa-solid fa-user-xmark'></i> Eliminar usuario";
+      "<i class='fa-solid fa-screwdriver-wrench'></i> Administrar usuario";
     eliminarUsuarios.setAttribute("href", "./clients");
     lieliminarUsuarios.appendChild(eliminarUsuarios);
     usersList.appendChild(lieliminarUsuarios);

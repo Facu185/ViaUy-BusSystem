@@ -4,7 +4,9 @@ require "../database/db.php";
 try {
 
     $f_date = $_POST["fDate"];
+    $f_date = htmlspecialchars($f_date, ENT_QUOTES, 'UTF-8');
     $s_date = $_POST["sDate"];
+    $s_date = htmlspecialchars($s_date, ENT_QUOTES, 'UTF-8');
     if(empty($f_date) || empty($s_date)){
        echo '<script>alert("Faltan completar datos"); window.location.href ="./dashboard"; </script>';
     }

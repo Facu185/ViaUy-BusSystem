@@ -2,6 +2,7 @@
 function findBus()
 {
     require "./database/db.php";
+    include_once "./controllers/discordErrorLog.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -12,7 +13,11 @@ function findBus()
             }
 
             $origen = $_POST["origen"];
+            $origen = htmlspecialchars($origen, ENT_QUOTES, 'UTF-8');
+
             $destino = $_POST["destino"];
+            $destino = htmlspecialchars($destino, ENT_QUOTES, 'UTF-8');
+
 
             $query = "SELECT numero_parada, localizacion FROM parada 
             WHERE localizacion=:origen OR localizacion=:destino;";
@@ -133,6 +138,7 @@ function findBus()
             $linea = implode(",", $lineas_utiles);
 
             $fecha = $_POST["date"];
+            $fecha = htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8');
             $fechaObj = new DateTime($fecha);
 
             $diasEnIngles = array(
@@ -284,8 +290,9 @@ function findBus()
 
                             $query = "SELECT *
                              FROM asiento 
-                             WHERE id_unidad in ($unidad)";
+                             WHERE id_unidad in (:unidad)";
                             $sql = $conn->prepare($query);
+                            $sql->bindParam(':unidad', $unidad);
                             $sql->execute();
                             $info_asientos = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -334,8 +341,9 @@ function findBus()
 
                             $query = "SELECT *
                             FROM caracteristicas
-                            WHERE id_unidad in ($unidad)";
+                            WHERE id_unidad in (:unidad)";
                             $sql = $conn->prepare($query);
+                            $sql->bindParam(':unidad', $unidad);
                             $sql->execute();
                             $caracteristicas_unidad = $sql->fetchAll(PDO::FETCH_ASSOC);
                         }
@@ -393,6 +401,7 @@ function findBus()
             $precio_total = 0;
             return $info_linea;
         } catch (Exception $e) {
+            discordErrorLog('Error al buscar viaje' . $numero_parada_1 . $numero_parada_2, $e);
             echo $e->getMessage();
         }
     }
@@ -400,8 +409,7 @@ function findBus()
 
 $info_linea = findBus();
 if (empty($info_linea)) {
-    echo '<script>alert("No existe una línea para ese recorrido.");</script>';
-    echo '<script>window.location.href = "../page/home";</script>';
+    echo '<script>alert("No existe una línea para ese recorrido."); window.location.href = "../page/home";</script>';
     exit;
 }
 $conn = null;

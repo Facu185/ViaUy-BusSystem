@@ -1,8 +1,8 @@
 <?php
-if (!empty($_SESSION["login"]) && !empty($_SESSION["rol"])) {
-    $login = $_SESSION["login"];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]]) && !empty($_SESSION["rol"])) {
+    $login = $_SESSION[$_COOKIE["login"]];
     $rol = $_SESSION["rol"];
-} elseif (empty($_SESSION["login"]) && empty($_SESSION["rol"])) {
+} else {
     header("location:./login");
 }
 ?>
@@ -24,6 +24,7 @@ if (!empty($_SESSION["login"]) && !empty($_SESSION["rol"])) {
         <?php include_once "./components/AdminSidebar.php"; ?>
         <section class="main__main">
             <h3>Estadisticas</h3>
+            <p>Seleccione las fechas para mostrar las estadisticas</p>
             <form id="staticsForm">
                 <input type="date" name="fDate" id="fDate">
                 <input type="date" name="sDate" id="sDate">

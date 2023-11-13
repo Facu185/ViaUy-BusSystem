@@ -69,6 +69,7 @@ const translate = async (language) => {
       document.getElementById("closeSesion").textContent =
         data[language].closeSesion;
     }
+   
 
     if (document.getElementById("homeWelcome")) {
       document.getElementById("homeWelcome").textContent =
@@ -79,19 +80,22 @@ const translate = async (language) => {
         data[language].homeOrigin;
       document.getElementById("homeDestination").placeholder =
         data[language].homeDestination;
-      document.getElementById("homeButton").textContent =
-        data[language].homeButton;
+        document.getElementById("origenHome").textContent =
+        data[language].origenHome;
+      document.getElementById("destinoHome").textContent =
+        data[language].destinoHome;
+      document.getElementById("homeButton").value = data[language].homeButton;  
       if (document.getElementById("homeTravels")) {
         document.getElementById("homeTravels").textContent =
-        data[language].homeTravels;
-      document.getElementById("homeStartingPoint").textContent =
-        data[language].homeStartingPoint;
-      document.getElementById("homeArrivalPoint").textContent =
-        data[language].homeArrivalPoint;
-      document.getElementById("homeStartingPoint1").textContent =
-        data[language].homeStartingPoint1;
-      document.getElementById("homeArrivalPoint1").textContent =
-        data[language].homeArrivalPoint1;
+          data[language].homeTravels;
+        document.getElementById("homeStartingPoint").textContent =
+          data[language].homeStartingPoint;
+        document.getElementById("homeArrivalPoint").textContent =
+          data[language].homeArrivalPoint;
+        document.getElementById("homeStartingPoint1").textContent =
+          data[language].homeStartingPoint1;
+        document.getElementById("homeArrivalPoint1").textContent =
+          data[language].homeArrivalPoint1;
       }
       document.getElementById("adHome").textContent = data[language].adHome;
       document.getElementById("likeHome").textContent = data[language].likeHome;
@@ -113,7 +117,7 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
-        document.getElementById("footerContactTitle").textContent =
+      document.getElementById("footerContactTitle").textContent =
         data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
@@ -238,6 +242,7 @@ const translate = async (language) => {
         data[language].profileModify;
       document.getElementById("mineTravels").textContent =
         data[language].mineTravels;
+        
     }
 
     document.getElementById("homeStart").textContent = data[language].homeStart;
@@ -296,7 +301,7 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
-        document.getElementById("footerContactTitle").textContent =
+      document.getElementById("footerContactTitle").textContent =
         data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
@@ -360,7 +365,7 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
-        document.getElementById("footerContactTitle").textContent =
+      document.getElementById("footerContactTitle").textContent =
         data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;
@@ -466,7 +471,7 @@ const translate = async (language) => {
         data[language].navigateFooter;
       document.getElementById("socialFooter").textContent =
         data[language].socialFooter;
-        document.getElementById("footerContactTitle").textContent =
+      document.getElementById("footerContactTitle").textContent =
         data[language].footerContactTitle;
       document.getElementById("footerHome").textContent =
         data[language].homeStart;

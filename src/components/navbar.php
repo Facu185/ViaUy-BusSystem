@@ -1,10 +1,7 @@
 <?php
-
-if (!empty($_SESSION["login"])) {
-    $login = $_SESSION["login"];
+if (isset($_COOKIE["login"]) && isset($_SESSION[$_COOKIE["login"]])) {
+    $login = $_SESSION[$_COOKIE["login"]];
 }
-
-
 ?>
 
 <nav class="nav__bar">

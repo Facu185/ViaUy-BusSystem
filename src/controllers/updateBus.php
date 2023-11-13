@@ -1,13 +1,27 @@
 <?php
 require "./database/db.php";
+include_once "./controllers/discordErrorLog.php";
 try {
+   
     if (!empty($_POST["updateBus"])) {
         $matricula = $_POST["matricula"];
+        $matricula = htmlspecialchars($matricula, ENT_QUOTES, 'UTF-8');
         $cantidad_asientos = $_POST["cantAsientos"];
+        $cantidad_asientos = htmlspecialchars($cantidad_asientos, ENT_QUOTES, 'UTF-8'); 
         $tipo_asientos = $_POST["tipoAsientos"];
+        $tipo_asientos = htmlspecialchars($tipo_asientos, ENT_QUOTES, 'UTF-8');
         $caracteristicas = $_POST["caracteristicas"];
-        if(empty($matricula) || empty($caracteristicas) || empty($cantidad_asientos) || empty($tipo_asientos) || empty($caracteristicas) || $matricula="Matricula de la unidad"){
+        $caracteristicas = htmlspecialchars($caracteristicas, ENT_QUOTES, 'UTF-8');
+        if(empty($matricula) || empty($caracteristicas) || empty($cantidad_asientos) || empty($tipo_asientos) || $matricula == "Matricula de la unidad"){
             echo '<script>alert("Faltan completar datos"); window.location.href = "./modifyBus"; </script>';
+            exit;
+        }
+        if (!filter_var($matricula, FILTER_VALIDATE_INT)) {
+            echo '<script>alert("Debes proporcionar una matricula valida"); window.location.href = "./modifyBus"; </script>';
+            exit;
+        }
+        if(!filter_var($cantidad_asientos, FILTER_VALIDATE_INT)){
+            echo '<script>alert("Debes proporcionar una cantidad de asientos valida"); window.location.href = "./modifyBus"; </script>';
             exit;
         }
         if (!empty($cantidad_asientos)) {
@@ -74,6 +88,7 @@ try {
         }
     }
 } catch (Exception $error) {
+    discordErrorLog('Error al modfiicar unidad'. $matricula, $error);
     echo '<script>alert("' . $error->getMessage() . '"); </script>';
 }
 $conn = null;
