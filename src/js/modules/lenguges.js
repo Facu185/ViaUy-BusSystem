@@ -4,6 +4,5 @@ $(document).ready(function() {
         $(this).addClass("selected");
     });
 
-    // Establecer el botón "esHome" como seleccionado por defecto
     $("#esHome").addClass("selected");
 });

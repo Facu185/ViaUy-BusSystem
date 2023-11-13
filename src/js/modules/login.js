@@ -1,6 +1,6 @@
 
 function login() {
-  //recuperamos el valor de los input
+
   const loginButton = document.getElementById("loginButton");
   function checkCredentials (){
     const email = document.getElementById("loginEmail").value;

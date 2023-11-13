@@ -1,7 +1,7 @@
 export async function fetchData() {
     try {
       const response = await fetch("../controllers/stopRoutes.php");
-      const data = await response.json(); // Obtén el conjunto de resultados completo
+      const data = await response.json(); 
 
       const opcionesSelect1 = document.getElementById("numeroParadaOrigenTramo");
 

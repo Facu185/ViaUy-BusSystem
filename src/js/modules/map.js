@@ -4,14 +4,14 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// Variables para mantener las paradas de origen y destino
+
 var origen = null;
 var destino = null;
 
-// Contenedor para los botones
+
 var containerDiv = null;
 
-// Realiza una solicitud AJAX para obtener los puntos desde PHP
+
 $.ajax({
   url: "../controllers/findmap.php",
   method: "GET",
@@ -24,16 +24,16 @@ $.ajax({
       if (!isNaN(latitud) && !isNaN(longitud)) {
         var marker = L.marker([latitud, longitud]).addTo(map);
 
-        // Agrega eventos de clic al marcador
+       
         marker.on("click", function (e) {
-          // Elimina cualquier contenido previo en el contenedor
+          
           removeContainerDiv();
 
-          // Crea un nuevo contenedor
+         
           containerDiv = document.createElement("div");
           containerDiv.className = "custom-container";
 
-          // Crea botones dinámicamente y agrega eventos de clic
+         
           var origenButton = createButton("Seleccionar como parada de origen", function () {
             var valorOrigen = (origen = punto.Localizacion);
             document.getElementById("homeOrigin").value = valorOrigen;
@@ -51,13 +51,13 @@ $.ajax({
           containerDiv.appendChild(destinoButton);
           containerDiv.appendChild(localizacionParrafo);
 
-          // Posiciona el contenedor en la ubicación del marcador
+          
           var markerPos = map.latLngToContainerPoint(marker.getLatLng());
           containerDiv.style.position = "absolute";
           containerDiv.style.left = markerPos.x + "px";
           containerDiv.style.top = markerPos.y + "px";
 
-          // Agrega el contenedor al cuerpo del documento
+          
           document.body.appendChild(containerDiv);
         });
       }

@@ -139,10 +139,3 @@ if (document.getElementById("prContact")) {
     location.reload();
   });
 }
-
-
-
-
-
-
-

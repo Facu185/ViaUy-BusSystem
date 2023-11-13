@@ -155,7 +155,6 @@ try {
             $mensaje .= "Asientos Seleccionados: " . $asientos_seleccionado . "\n";
             $mensaje .= "Fecha compra: " . $fecha_actual . "\n";
 
-            // Cabeceras del correo
             $headers = "From: viauy@example.com\r\n";
             $headers .= "Reply-To: viauy@example.com\r\n";
             $headers .= "X-Mailer: PHP/" . phpversion();

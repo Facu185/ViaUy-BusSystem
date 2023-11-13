@@ -1,5 +1,5 @@
 document.getElementById("staticsForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+    event.preventDefault(); 
     var fecha1 = document.getElementById("fDate").value;
     var fecha2 = document.getElementById("sDate").value;
 
