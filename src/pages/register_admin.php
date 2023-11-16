@@ -1,3 +1,10 @@
+<?php
+
+if ($_SESSION["rol"] == 2) {
+    echo '<script>alert("Debe ser super usuario para registrar nuevos adminitradores."); window.location.href = "./dashboard";</script>';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

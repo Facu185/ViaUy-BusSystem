@@ -24,7 +24,21 @@ try {
             echo '<script>alert("Debes proporcionar una cantidad de asientos valida"); window.location.href = "./modifyBus"; </script>';
             exit;
         }
-        if (!empty($cantidad_asientos)) {
+        if (!empty($cantidad_asientos) && !empty($tipo_asientos) && !empty($caracteristicas)) {
+
+            $query = "UPDATE asiento SET tipo_asiento=:tipo_asientos WHERE ID_unidad = :matricula";
+            $sql = $conn->prepare($query);
+            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+            $sql->bindParam(":tipo_asientos", $tipo_asientos, PDO::PARAM_STR);
+            $sql->execute();
+            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
+
+            $query = "UPDATE caracteristicas SET tipo=:caracteristicas WHERE ID_unidad = :matricula";
+            $sql = $conn->prepare($query);
+            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
+            $sql->bindParam(":caracteristicas", $caracteristicas, PDO::PARAM_STR);
+            $sql->execute();
+            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
             if (!empty($tipo_asientos)) {
                 $query = "SELECT total_de_asientos FROM unidad WHERE ID_unidad = :matricula";
                 $sql = $conn->prepare($query);
@@ -70,22 +84,12 @@ try {
                 echo '<script>alert("Debe ingresar el tipo de asiento"); window.location.href = "./modifyBus"; </script>';
             }
         }
-        if (!empty($tipo_asientos)) {
-            $query = "UPDATE asiento SET tipo_asiento=:tipo_asientos WHERE ID_unidad = :matricula";
-            $sql = $conn->prepare($query);
-            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
-            $sql->bindParam(":tipo_asientos", $tipo_asientos, PDO::PARAM_STR);
-            $sql->execute();
-            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
-        }
-        if (!empty($caracteristicas)) {
-            $query = "UPDATE caracteristicas SET tipo=:caracteristicas WHERE ID_unidad = :matricula";
-            $sql = $conn->prepare($query);
-            $sql->bindParam(":matricula", $matricula, PDO::PARAM_STR);
-            $sql->bindParam(":caracteristicas", $caracteristicas, PDO::PARAM_STR);
-            $sql->execute();
-            echo '<script>alert("Unidad modificada con exito"); window.location.href = "./modifyBus"; </script>';
-        }
+        
+            
+        
+        
+          
+        
     }
 } catch (Exception $error) {
     discordErrorLog('Error al modfiicar unidad'. $matricula, $error);

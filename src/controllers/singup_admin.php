@@ -37,9 +37,6 @@ try {
             throw new Exception("El nombre o apellido no deben contener caracteres especiales", 400);
         $telefono = $_POST["registerPhone"];
         $telefono = htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');
-        if (!filter_var($telefono, FILTER_VALIDATE_INT)) {
-            throw new Exception("El telefono no es valido", 400);
-        }
         if (strlen($telefono) !== 9)
             throw new Exception("El telefono debe contener 9 numeros", 400);
         $email = $_POST["registerEmail"];
@@ -89,7 +86,7 @@ try {
         $sql->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
         $sql->execute();
         sendDiscord('https://discord.com/api/webhooks/1173407330998702162/-s8S53yswZ3xbJpNi03lPLiZOUY-9glwVQJCdiii7hUW75J94wQHMYZOJ-RoSmYxY9y9', 'Se ha registrado un nuevo administrador ' . 'Nombre' . $nombre . ' Apellido ' . $apellido . ' Email ' . $email . ' Celular ' . $telefono);
-        header("location:./login");
+        echo '<script>alert("El administrador fue registrado con exito."); window.location.href = "./registerAdmin";</script>';
 
     }
 } catch (Exception $error) {
